@@ -60,8 +60,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-07-18T08:56:00.000Z" itemprop="datePublished">2020-07-18</time>
+      <a href="/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-07-17T11:32:00.000Z" itemprop="datePublished">2020-07-17</time>
 </a>
       
   <div class="article-category">
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">231</span>
+            <span class="post-count">503</span>
         </span>
     </span>
 
@@ -119,8 +119,30 @@
 
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
 <ul>
-<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
+<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4><p>間違えた：3, 7</p>
+</li>
 </ul>
+<p>間違えし易い：</p>
+<p>分からない：8, </p>
+<ol>
+<li>略</li>
+<li>略</li>
+<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
+<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
+<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
+<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+</ol>
+</li>
+<li><code>java</code>命令的参数指定问题<ol>
+<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
+<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+</ol>
+</li>
+</ol>
 
       
       <!-- reward -->
@@ -185,7 +207,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -203,10 +225,19 @@
   
   <nav class="article-nav">
     
-    
       <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java SE 11 Sliver学习笔记(第二章)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Sliver学习笔记(第二章)</div>
+        <div class="article-nav-title">生活杂记</div>
       </a>
     
   </nav>
