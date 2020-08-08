@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Joe&#39;s blog</title>
+  
+  <subtitle>失乐园</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://mickeyjoe666.github.io/"/>
+  <updated>2020-08-08T09:10:06.289Z</updated>
+  <id>https://mickeyjoe666.github.io/</id>
+  
+  <author>
+    <name>Joe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第八章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</id>
+    <published>2020-08-08T06:28:19.000Z</published>
+    <updated>2020-08-08T09:10:06.289Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我们都爱cheese！！🧀</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</id>
+    <published>2020-07-26T09:20:59.000Z</published>
+    <updated>2020-07-26T12:40:28.358Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;记录一下我吃过的cheese（定期更新）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="美食" scheme="https://mickeyjoe666.github.io/categories/%E7%BE%8E%E9%A3%9F/"/>
+    
+    
+      <category term="美食" scheme="https://mickeyjoe666.github.io/tags/%E7%BE%8E%E9%A3%9F/"/>
+    
+      <category term="随笔" scheme="https://mickeyjoe666.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第七章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/26/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/26/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/</id>
+    <published>2020-07-26T01:05:59.000Z</published>
+    <updated>2020-07-26T08:57:59.058Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第六章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</id>
+    <published>2020-07-19T07:21:00.000Z</published>
+    <updated>2020-07-19T12:06:01.269Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第三章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</id>
+    <published>2020-07-18T09:00:00.000Z</published>
+    <updated>2020-07-27T13:02:41.436Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</id>
+    <published>2020-07-18T08:56:00.000Z</published>
+    <updated>2020-07-19T07:27:48.958Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第一章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</id>
+    <published>2020-07-17T11:32:00.000Z</published>
+    <updated>2020-07-19T07:27:44.380Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="https://mickeyjoe666.github.io/tags/java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生活杂记</title>
+    <link href="https://mickeyjoe666.github.io/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
+    <id>https://mickeyjoe666.github.io/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</id>
+    <published>2020-07-05T06:38:58.000Z</published>
+    <updated>2020-07-05T07:20:10.783Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;2020已经过去一半了。。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="https://mickeyjoe666.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="https://mickeyjoe666.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="生活" scheme="https://mickeyjoe666.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>myfirstblog</title>
+    <link href="https://mickeyjoe666.github.io/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/"/>
+    <id>https://mickeyjoe666.github.io/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</id>
+    <published>2020-05-04T16:53:11.000Z</published>
+    <updated>2020-05-04T16:53:31.662Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>

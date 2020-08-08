@@ -36,6 +36,7 @@
 
   
 
+<link rel="alternate" href="/atom.xml" title="Joe's blog" type="application/atom+xml">
 </head>
 
 </html>
@@ -76,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">714</span>
+            <span class="post-count">716</span>
         </span>
     </span>
 
@@ -137,7 +138,7 @@
 </li>
 <li>关于var变量类型推论的用法：<ol>
 <li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = {1, 2, 3}</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
 <li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
 </ol>
 </li>

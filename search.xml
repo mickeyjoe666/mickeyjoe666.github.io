@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第一章)</title>
+    <url>/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<p>所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。</p>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
+<ul>
+<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
+</ul>
+<p>間違えた：3, 7</p>
+<p>間違えし易い：</p>
+<p>分からない：8, </p>
+<ol>
+<li>略</li>
+<li>略</li>
+<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
+<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
+<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
+<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+</ol>
+</li>
+<li><code>java</code>命令的参数指定问题<ol>
+<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
+<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第七章)</title>
+    <url>/2020/07/26/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第七章-クラスの継承、インタフェース、抽象クラス"><a href="#第七章-クラスの継承、インタフェース、抽象クラス" class="headerlink" title="第七章 クラスの継承、インタフェース、抽象クラス"></a>第七章 クラスの継承、インタフェース、抽象クラス</h4><p>間違えた：3, 4, 8, 10, 11, 12, 17, 19, 20, 21</p>
+<p>間違えし易い：13，20</p>
+<p>分からない：全部</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>继承的概念，子类中没有定义的要去父类中寻找。</p>
+</li>
+<li><p>继承的原则，不会被继承的为：</p>
+<ol>
+<li>父类的构造方法</li>
+<li>父类的private的变量和方法</li>
+</ol>
+<p>因此在子类的非继承方法中，是不能访问父类的private的变量的。</p>
+</li>
+<li><p>接口（interface）的说明。</p>
+<ol>
+<li>接口中的方法即使不写访问修饰符，也会自动编译为<code>public</code>，这是因为便于其他的类访问。并且接口的抽象方法是不能被<code>protected</code>或者<code>private</code>修饰。</li>
+<li>接口是不能instance化的，只能被其他的类实现。并且一个类可以实现多个接口，用逗号区分开即可。</li>
+<li>接口中的方法不能有方法体，也就是不能写<code>&#123;&#125;</code>。</li>
+<li>接口中可以定义filed，但是要满足两个条件（全部？）：<ol>
+<li>用<code>final</code>修饰的，也就是定值。</li>
+<li>用<code>static</code>修饰的，不需要instance化就可以访问的。</li>
+</ol>
+</li>
+<li>接口可以扩张。也就是接口可以继承其他的接口，使用<code>extends</code>关键字即可。</li>
+</ol>
+</li>
+<li><p>Java8后，接口可以有静态方法和方法体了,写法如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">default</span> 返回值 方法名（参数类型 参数名）&#123;</span><br><span class="line">  some code...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.lang.Object</code>类中定义的方法不能被接口所重写。否则会出现编译错误。</p>
+</li>
+<li><p>使用接口的default方法时的写法为：<code>接口名.super.methodName()</code>。但是只能在直接实现接口的类中使用，不能在两次实现或者两次继承中使用！！</p>
+</li>
+<li><p>在接口的多重实现类中，使用接口的default方法时，如果方法同名，首先要override后在方法体中指定具体实现哪个接口的default方法。例如</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">implements</span> <span class="title">A</span>, <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Main().test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    A.<span class="keyword">super</span>.test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>抽象类也可以继承抽象类，因此抽象类的方法不一定是所有子类都需要实现。（如果是被抽象类继承就不需要实现）</p>
+</li>
+<li><p>抽象类中的抽象方法没有方法体，因此执行的是子类中被重写的方法。</p>
+</li>
+<li><p>重写：方法名，参数类型，数量，顺序都不能改变。从java SE 5开始，返回值可以更改了？</p>
+</li>
+<li><p>重写的三个规则：</p>
+<ol>
+<li>シグニチャ（签名）必须相同。</li>
+<li>返回值为相同类型，或者为父类返回值类型的子类。</li>
+<li>访问权限词相同，或者是比父类更松。（例如父类为public，子类就不能用protected）</li>
+</ol>
+</li>
+<li><p>继承时父类和子类可以使用相同的变量名。当父类和子类有同名变量存在时，使用哪个取决于：</p>
+<ol>
+<li><p>参照变量时，变数的宣言来决定。</p>
+</li>
+<li><p>被方法呼出时，根据方法的指定。看具体的例子, 输出结果应为<code>AAAA</code>,因为14和15行instance的类型为A，所以打印时使用A类中的val变量，18行和19行因为B类中压根没有print方法，所以使用A类中的print方法，自然也就参照的A类中的val变量：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  String val = <span class="string">&quot;A&quot;</span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  String val = <span class="string">&quot;B&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    A a = <span class="keyword">new</span> A();</span><br><span class="line">    A b = <span class="keyword">new</span> B();</span><br><span class="line">    System.out.println(a.val);</span><br><span class="line">    System.out.println(b.val);</span><br><span class="line">    a.print();</span><br><span class="line">    b.print();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>略</p>
+</li>
+<li><p><a href="https://www.weblio.jp/content/polymorphism">polymorphism</a>相关的问题。遇到多态的问题要确定一下两点：</p>
+<ol>
+<li>有没有继承关系或者实现关系，具不具备多态性实现的条件。</li>
+<li>对instance的限制的类型中，有没有方法的定义。</li>
+</ol>
+</li>
+<li><p>略</p>
+</li>
+<li><p>向上转型和向下转型相关。向上转型可以自动完成，但是向下转型需要声明。（cast）例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A a = <span class="keyword">new</span> B(); <span class="comment">//B的向上转型</span></span><br><span class="line">B b = (B) a  ; <span class="comment">//向下转型</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于java的向下转型，强制向下转型，编译不会报错。但是在运行时，如果对象本身并非是该类型，强制转型，<br>在运行时会报<code>java.lang.ClassCastException</code>。因此只有把子类型赋给父类的引用，然后把该引用向下转型的情况，才不会报错。<br>父类不能强制向下转型！向上转型则是安全的。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> <span class="keyword">extends</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">          correctDown();</span><br><span class="line">          errorDown();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">correctDown</span><span class="params">()</span></span>&#123;</span><br><span class="line">        People people=<span class="keyword">new</span> Man();</span><br><span class="line">        System.out.println((Man) people);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//类型转换错误，java.lang.ClassCastException: People cannot be cast to Man</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">errorDown</span><span class="params">()</span></span>&#123;</span><br><span class="line">        People people=<span class="keyword">new</span> People();</span><br><span class="line">        System.out.println((Man) people);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="18">
+<li><p>scope（作用范围）相关问题。<code>this</code>是指向instance自身的用法。在方法中如果有和全局变量相同名的变量，可以在方法中使用局部变量。但是也可以通过<code>this.fieldName</code>来直接使用全局变量。</p>
+</li>
+<li><p>this的作用域！！！如果父子类变量名重复的情况下想访问父类的成员变量时要使用<code>super</code>关键字！</p>
+</li>
+<li><p>拥有继承关系时候的构造方法的构建顺序相关问题。需要注意的是：</p>
+<ol>
+<li><p>首先，子类需要准备父类的instance和子类差分的instance。</p>
+</li>
+<li><p>首先构建的是“基盘”部分的父类的instance，因此父类的构造方法会先被执行。例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>();<span class="comment">//编译器会自动加入这一行，确保在构建子类instance前就生成了父类的instance。</span></span><br><span class="line">    System.out.println(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String )</span></span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> B();<span class="comment">//输出结果为：A，B    </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="21">
+<li>在构造方法中想要使用被重载的其他的构造方法时用<code>this</code>关键字，想使用父类的构造方法时要用<code>super</code>关键字。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第三章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
+<p>間違えし易い：3, 19</p>
+<p>分からない：2</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
+</li>
+<li><p>类型转换问题。</p>
+<ol>
+<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
+<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
+<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
+</ol>
+</li>
+<li><p>略</p>
+</li>
+<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
+</li>
+<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
+</li>
+<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
+</li>
+<li><p>java的同一性和同值性的判断问题。</p>
+</li>
+<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
+</li>
+<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
+</li>
+<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
+</li>
+<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
+</li>
+<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
+</li>
+<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
+<ol>
+<li>int型以下的整数型和他们的包装类。</li>
+<li>文字和文字列。</li>
+<li>列举型（枚举型）。</li>
+</ol>
+</li>
+<li><p>switch的case值需满足以下三个条件：</p>
+<ol>
+<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
+<li>是定数，在编译时能确定值。</li>
+<li>不能为null。</li>
+</ol>
+</li>
+<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
+<p>間違えし易い：2, 5, 19</p>
+<p>分からない：2, 3</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>java压根没有bool这个数据类型，审题失败。</li>
+<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
+<li>下划线出现的规则：<ol>
+<li>不能在Literal的先头或者末尾出现</li>
+<li>不能在记号的前后出现</li>
+</ol>
+</li>
+<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
+<li>关于java中变量的命名规则<ol>
+<li>不能用预约词和记号</li>
+<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
+<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
+</ol>
+</li>
+<li>关于var变量类型推论的用法：<ol>
+<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
+</ol>
+</li>
+<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
+<li>略</li>
+<li>略</li>
+<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
+<li>略</li>
+<li>略</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第八章)</title>
+    <url>/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
+<p>間違えし易い：</p>
+<p>分からない：5，6， </p>
+<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3">函数型接口</a>, </p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>lamda式的格式：</p>
+<p><code>（变量名参数） -&gt; &#123;处理&#125;;</code>注意，最后要加分号！！</p>
+<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
+</li>
+<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; &#123;处理&#125;;</code>中：</p>
+<ol>
+<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; &#123;处理&#125;;</code></li>
+<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
+<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
+<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
+</ol>
+</li>
+<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = &quot;Hello World!!&quot;;</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数式接口</th>
+<th align="center">参数类型</th>
+<th align="center">返回类型</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>void</code></td>
+<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
+</tr>
+<tr>
+<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
+<td align="center"><code>无</code></td>
+<td align="center"><code>T</code></td>
+<td align="center">返回类型为T的对象。 <code>T get();</code></td>
+</tr>
+<tr>
+<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>R</code></td>
+<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
+</tr>
+<tr>
+<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>boolean</code></td>
+<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
+</li>
+<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
+</li>
+<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e">参照这里</a>。</p>
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://juejin.im/post/6844903892166148110#heading-0">「Java8系列」神奇的函数式接口</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第六章)</title>
+    <url>/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第六章-インスタンスとメソッド"><a href="#第六章-インスタンスとメソッド" class="headerlink" title="第六章 インスタンスとメソッド"></a>第六章 インスタンスとメソッド</h4><p>間違えた：3, 5, 18, 19, 20, 21, 22, 23, 24, 27, 30</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>在Java中，变量有两种类型，一种是原始类型（プリミティブ型），一种是引用类型。引用型只能有两种（1.保存了向对象的参照link。2.没有保存向对象的参照link）因此像object类型可以代入null，但是打印时打印的是null而不是NULL，更不能把NULL直接代入给object类型的变量。还需要注意文字数为0的空string可以代入给object类型的变量，但是并不等于null，因为null相当于什么也没有指向。</p>
+</li>
+<li><p>JVM的garbage collector（垃圾回收机制）相关的问题。垃圾回收的时机只能由JVM决定。</p>
+<p>对于Java对象来讲，如果说这个对象没有被其他对象所引用该对象就是无用的，此对象就被称为垃圾，其占用的内存也就要被销毁。例如，将null代入给变量的时候，没有被参照的instance就会被销毁。例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">null</span>; <span class="comment">//在这时,原来生成的instace会没有任何参照</span></span><br></pre></td></tr></table></figure>
+
+<p>其他还有，把变量代入新的instance的参照时，旧的instance就会变成没有参照的对象，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">new</span> Object(); <span class="comment">//在这时，obj对instance的参照会被overwrite</span></span><br></pre></td></tr></table></figure>
+
+<p>疑问：第四行的b也被赋予了null，原来b所指向的instance是否也是垃圾回收的对象？？？</p>
+</li>
+<li><p>Java的<code>Static area</code>与<code>Heap area</code>的问题。在读入class时使用的两种内存领域。static修饰的变量和方法放在static领域中，因此不需要创造instance也可以直接使用。当对一个class中的static变量进行值的变更时，会直接影响到那个class的static变量的值。</p>
+</li>
+<li><p>static修饰的方法，只能访问static修饰的变量或者方法。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>返回值接收时只能是同一类型或者是有互换性的值。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>可变长参数的问题。使用可变长参数时必须遵循两个原则：</p>
+<ol>
+<li>对于可变长参数。必须要是相同类型的集合，因为JVM传参时会把他们以数组的形式传进去。</li>
+<li>当参数除了可变长参数之外还有其他参数时，可变长参数一定要放到参数的最后！！</li>
+</ol>
+</li>
+<li><p>略</p>
+</li>
+<li><p>overload的定义。必须要是参数的数量，类型，顺序不同，且返回值类型相同的同名方法才算是overload。</p>
+</li>
+<li><p>当有两个同名函数，且参数的数量相同时，如果代入函数的参数有暧昧的性质时，JVM因为不知道应该选择哪个函数执行会出现编译错误。</p>
+</li>
+<li><p>只有访问修饰词不同的两个函数不能算overload（<code>public string test()&#123;&#125;</code>和<code>private string test()&#123;&#125;</code>就不能算重载）。</p>
+</li>
+<li><p>构造方法也是方法的一种，因此可以对构造方法进行重载。构造方法的三个rule为：</p>
+<ol>
+<li>构造方法必须与类名同名。</li>
+<li>不能有返回值类型</li>
+<li>只能与<code>new</code>关键字同时使用。因此，构造方法的访问关键字没有要求，即使是<code>private</code>也是可以的。例如可以在类中定义一个static的方法，在方法中调用<code>private</code>的构造方法并返回。有时，还会存在一个类有两个访问权限不同，参数不同的构造方法同时存在，可以由外部调用公开的构造方法，再在公开的构造方法中对私有的构造方法进行调用，达到保护内部信息的目的。</li>
+</ol>
+</li>
+<li><p>判断函数是不是构造方法时看有没有写返回值类型（尤其是<code>void</code>！！）。</p>
+</li>
+<li><p><a href="https://blog.csdn.net/sswqzx/article/details/85684980">构造代码块</a>的问题。构造代码块和构造函数同时出现时，要记住构造代码块一定在所有的构造函数之前被执行。</p>
+</li>
+<li><p>static的变量是在instance生成之后才能被初始化的，因此在构造代码块和构造函数中无法对它的值进行初期化。如果想在instance生成前对static的类变量进行初始化处理，可以使用static的构造代码块。例如下面的例子，在instance生成前num的值就是10了。</p>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> num;</span><br><span class="line">  <span class="keyword">static</span>&#123;</span><br><span class="line">    num = <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">()</span></span>&#123;</span><br><span class="line">    num = <span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>当类中有自己定义的有参数的构造方法时，无参的构造方法就不会被自动引入。（判断同名的方法是不是构造方法是关键！！）</p>
+</li>
+<li><p>当一个构造函数中想使用同一个类的其他构造函数时要使用<code>this（另外构造函数的参数）</code>。</p>
+</li>
+<li><p>24问题的后续，在一个构造方法中使用this叫另外的构造方法时，必须在最开始使用，如果在这个this前有别的处理，编译时候会报错.例如这样就会报错。</p>
+<p>public class This {</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">This</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">this</span>(<span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(String str, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(<span class="keyword">int</span> num, String str)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;not ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
+</li>
+<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
+</li>
+<li><p>因为要防止其他的类对自己的变量进行出乎自己意料的更改，所以需要将变量private，方法public，又名胶囊化。</p>
+</li>
+<li><p>当函数的参数是原始类型（プリミティブ型）时，函数被呼出时，参数是从呼出的地方被拷贝到函数本身去的。不会对传入的instance造成影响。</p>
+</li>
+<li><p>当函数的参数是object类型时，函数被呼出时，被拷贝的是指向instance的link。因此可能会对原本的instance产生影响。因此，函数的参数是原始类型（プリミティブ型）还是参照类型，非常关键！！！！！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我们都爱cheese！！🧀</title>
+    <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
+    <content><![CDATA[<blockquote>
+<p>记录一下我吃过的cheese（定期更新）</p>
+</blockquote>
+<p>最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。</p>
+<a id="more"></a>
+
+<br>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4k9egsqmg30dw08c163.gif" alt="It&#39;s an all-consuming love_"></p>
+<p>如题，我们都爱cheese！！开一个post记录一下最近吃的奶酪们🧀~~</p>
+<br>
+
+<p>先来一款黑暗的，蓝纹奶酪，貌似意大利语中“piccante”是辛辣的意思。这款不适合喝酒，味道太辛辣，适合小口小口的吃。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ifzccmaj30u00u07wj.jpg" alt="piccante" style="zoom:33%;" />
+
+<br>
+
+<p>这款是我目前吃过最好吃的，有一点像布里，有一点像卡芒贝尔。但是外面的白色霉菌质感还是不太一样，不太清楚学名叫什么，口感非常棒，适合搭配红酒。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ieyi57ej30u00u0kjo.jpg" alt="beili" style="zoom: 33%;" />
+
+<br>
+
+<p>德国经典品牌Bergader的蓝纹奶酪，不用多说，喜欢蓝纹的可以一试，性价比超高。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ijvdt1yj30u00u0npf.jpg" style="zoom: 33%;" />
+
+<br>
+
+<p>日本品牌雪印的卡芒贝尔奶酪，卡芒贝尔也算是我非常喜欢的一个品类。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4im3pur6j30u00u01l0.jpg" alt="camembert" style="zoom:33%;" />
+
+<br>
+
+<p>又一款布里，产自法国，白色霉菌包裹的内部层次感非常好。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4inyo45tj30u00u04qs.jpg" alt="brie" style="zoom:33%;" />
+
+<br>
+
+<p>日本超市随处可见的轻食奶酪，味道很好，尤其左边的这款马苏里拉奶酪，嫩的不行。性价比超高。基本上都在150日元（9RMB）以内。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ipcq8rqj30u00u0b2c.jpg" alt="little" style="zoom:33%;" />
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>美食</category>
+      </categories>
+      <tags>
+        <tag>美食</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirstblog</title>
+    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>生活杂记</title>
+    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>2020已经过去一半了。。。</p>
+</blockquote>
+<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
+<a id="more"></a>
+
+<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
+<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
+<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
+<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
+<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
+<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
+<p>​                                                                                    《爱尔兰人》</p>
+<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
+<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
+<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
+<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+</search>

@@ -36,6 +36,7 @@
 
   
 
+<link rel="alternate" href="/atom.xml" title="Joe's blog" type="application/atom+xml">
 </head>
 
 </html>
@@ -166,7 +167,7 @@
 </li>
 <li><p>当有两个同名函数，且参数的数量相同时，如果代入函数的参数有暧昧的性质时，JVM因为不知道应该选择哪个函数执行会出现编译错误。</p>
 </li>
-<li><p>只有访问修饰词不同的两个函数不能算overload（<code>public string test(){}</code>和<code>private string test(){}</code>就不能算重载）。</p>
+<li><p>只有访问修饰词不同的两个函数不能算overload（<code>public string test()&#123;&#125;</code>和<code>private string test()&#123;&#125;</code>就不能算重载）。</p>
 </li>
 <li><p>构造方法也是方法的一种，因此可以对构造方法进行重载。构造方法的三个rule为：</p>
 <ol>
@@ -177,7 +178,7 @@
 </li>
 <li><p>判断函数是不是构造方法时看有没有写返回值类型（尤其是<code>void</code>！！）。</p>
 </li>
-<li><p><a href="https://blog.csdn.net/sswqzx/article/details/85684980" target="_blank" rel="noopener">构造代码块</a>的问题。构造代码块和构造函数同时出现时，要记住构造代码块一定在所有的构造函数之前被执行。</p>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sswqzx/article/details/85684980">构造代码块</a>的问题。构造代码块和构造函数同时出现时，要记住构造代码块一定在所有的构造函数之前被执行。</p>
 </li>
 <li><p>static的变量是在instance生成之后才能被初始化的，因此在构造代码块和构造函数中无法对它的值进行初期化。如果想在instance生成前对static的类变量进行初始化处理，可以使用static的构造代码块。例如下面的例子，在instance生成前num的值就是10了。</p>
 <ol>
@@ -191,11 +192,11 @@
 </li>
 <li><p>24问题的后续，在一个构造方法中使用this叫另外的构造方法时，必须在最开始使用，如果在这个this前有别的处理，编译时候会报错.例如这样就会报错。</p>
 <p>public class This {</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">This</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">this</span>(<span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(String str, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(<span class="keyword">int</span> num, String str)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"not ok"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">This</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">this</span>(<span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(String str, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(<span class="keyword">int</span> num, String str)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;not ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121" target="_blank" rel="noopener">参考这里</a>。</p>
+<li><p>关于访问修饰词权限的问题，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
 </li>
-<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121" target="_blank" rel="noopener">参考这里</a>。</p>
+<li><p>关于访问修饰词权限的问题，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
 </li>
 <li><p>因为要防止其他的类对自己的变量进行出乎自己意料的更改，所以需要将变量private，方法public，又名胶囊化。</p>
 </li>
