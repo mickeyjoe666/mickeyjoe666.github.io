@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Sliver学习笔记(第二章) |  Joe&#39;s blog
+    Java SE 11 Sliver学习笔记(第八章) |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11sliver资格考试相关(第二章)" class="article article-type-post" itemscope
+  <article id="post-JavaSE11sliver资格考试相关(第八章)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -52,7 +52,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Sliver学习笔记(第二章)
+  Java SE 11 Sliver学习笔记(第八章)
 </h1>
  
 
@@ -61,8 +61,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-07-18T08:56:00.000Z" itemprop="datePublished">2020-07-18</time>
+      <a href="/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-08-08T06:28:19.000Z" itemprop="datePublished">2020-08-08</time>
 </a>
       
   <div class="article-category">
@@ -76,7 +76,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">714</span>
+            <span class="post-count">884</span>
         </span>
     </span>
 
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -117,47 +117,75 @@
 
 
 
-<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
-<p>間違えし易い：2, 5, 19</p>
-<p>分からない：2, 3</p>
+<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
+<p>間違えし易い：</p>
+<p>分からない：5，6， </p>
+<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41" target="_blank" rel="noopener">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3" target="_blank" rel="noopener">函数型接口</a>, </p>
 <h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>java压根没有bool这个数据类型，审题失败。</li>
-<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
-<li>下划线出现的规则：<ol>
-<li>不能在Literal的先头或者末尾出现</li>
-<li>不能在记号的前后出现</li>
+<li><p>lamda式的格式：</p>
+<p><code>（变量名参数） -&gt; {处理};</code>注意，最后要加分号！！</p>
+<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
+</li>
+<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; {处理};</code>中：</p>
+<ol>
+<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; {处理};</code></li>
+<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
+<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
+<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
 </ol>
 </li>
-<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
-<li>关于java中变量的命名规则<ol>
-<li>不能用预约词和记号</li>
-<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
-<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
-</ol>
+<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>关于var变量类型推论的用法：<ol>
-<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = {1, 2, 3}</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
-<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
-</ol>
+<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18" target="_blank" rel="noopener">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">"Hello"</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = "Hello World!!";</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
-<li>略</li>
-<li>略</li>
-<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
-<li>略</li>
-<li>略</li>
+<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3" target="_blank" rel="noopener">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数式接口</th>
+<th align="center">参数类型</th>
+<th align="center">返回类型</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>void</code></td>
+<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
+</tr>
+<tr>
+<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
+<td align="center"><code>无</code></td>
+<td align="center"><code>T</code></td>
+<td align="center">返回类型为T的对象。 <code>T get();</code></td>
+</tr>
+<tr>
+<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>R</code></td>
+<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
+</tr>
+<tr>
+<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>boolean</code></td>
+<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
+</li>
+<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
+</li>
+<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e" target="_blank" rel="noopener">参照这里</a>。</p>
+</li>
 </ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://juejin.im/post/6844903892166148110#heading-0" target="_blank" rel="noopener">「Java8系列」神奇的函数式接口</a></li>
+</ul>
 
       
       <!-- reward -->
@@ -222,7 +250,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -240,19 +268,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java SE 11 Sliver学习笔记(第三章)
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Sliver学习笔记(第一章)</div>
+        <div class="article-nav-title">我们都爱cheese！！🧀</div>
       </a>
     
   </nav>
