@@ -602,4 +602,87 @@
         <tag>生活</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第九章)</title>
+    <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第九章-API"><a href="#第九章-API" class="headerlink" title="第九章 API"></a>第九章 API</h4><p>間違えた：2，3，4，6，7，9，12，13，19</p>
+<p>間違えし易い：</p>
+<p>分からない： 2，15，17</p>
+<p>关键词：</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p><code>Math.pow</code>方法，没什么好说的。第一个参数是累乘对象，第二个是指数。</p>
+</li>
+<li><p><code>java.util.Comparator</code>接口相关。例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">comparator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Sample[] samples = &#123;</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>),</span><br><span class="line">        &#125;;</span><br><span class="line">        List&lt;Sample&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(samples));</span><br><span class="line">          <span class="comment">//实现Comparator接口，自己在定义compare方法进行排序</span></span><br><span class="line">        list.sort(<span class="keyword">new</span> samplecomParator());</span><br><span class="line">        <span class="keyword">for</span> (Sample s: list ) &#123;</span><br><span class="line">              System.out.println(s.getName());</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//因为Integer类已经实现了Comparable接口所以可以直接使用集合类的sort方法排序</span></span><br><span class="line">        List&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;(); </span><br><span class="line">        list2.add(<span class="number">1</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">3</span>);</span><br><span class="line">        Collections.sort(list2);</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : list2) &#123;</span><br><span class="line">            System.out.println(integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">samplecomParator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Sample</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Sample o1, Sample o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &lt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &gt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>();</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> id;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list.sort()中使用lamda表达式，传入比较方法，题目中想实现的是倒序，而Integer中实现的Comparable接口定义的compareTo是升序，所以要加负号。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> chapter09;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">compareLamda</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;);</span><br><span class="line"><span class="comment">//        Collections.sort(list);          //y也可以使用collections类的sort方法，只不过比较慢</span></span><br><span class="line"><span class="comment">//        Collections.reverse(list);</span></span><br><span class="line">        </span><br><span class="line">        list.sort((a, b) -&gt; -a.compareTo(b));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Integer num : list) &#123;</span><br><span class="line">            System.out.println(num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三种方法参数都是char型因此不会报编译错误。</p>
+</li>
+<li><p>LocalDate类相关。<code>parse</code>方法传入的是字符串并且连接的必须是<code>-</code>，of方法中月份是从1开始。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LocalDate a = LocalDate.of(<span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        LocalDate b = LocalDate.parse(<span class="string">&quot;2015-01-01&quot;</span>);</span><br><span class="line">        System.out.println(a.equals(b));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LocalDate类是immutable的所以调用with方法不会影响之前instance中的值，而是会生成一个新的instance。</p>
+</li>
+<li><p>ArrayList中是可以存<code>null</code>的，而且可以存重复元素，并且ArrayList是线程不安全的，<code>vector</code>是线程安全的。</p>
+</li>
+<li><p>不指定类型的ArrayList什么都可以存，除非这样指定的情况下，就是只能存String：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;String&gt; (); <span class="comment">//Java SE6开始</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;&gt; ();       <span class="comment">//Java SE7开始</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于ArrayList的初始化问题，初始化size的长度为0，容量为10？随着加入数据慢慢增加，size也慢慢增加。size指的是存的元素的个数。</p>
+</li>
+<li><p>ArrayList的set方法，将置换指定index的元素值。</p>
+</li>
+<li><p>ArrayList的remove方法，从list中删除元素。如果删除的对象有多个存在时，使用<code>equals</code>方法判断<code>true</code>的最初的对象删除。<code>equal</code>方法可以重写。</p>
+</li>
+<li><p>ArrayList的remove方法后后面的元素会向前移动，注意扩张for是将list中的元素一个一个取出，当删除完时之后的元素如果不再存在for循环将会终止。</p>
+</li>
+<li><p>ArrayList类的remove方法后不能在将List输出，<a href="https://www.cnblogs.com/dolphin0520/p/3933551.html">原因参考这里</a>，具体内容不需要理解，考试中注意当使用了remove方法后如果使用for循环读取list时会在运行时跳出<code>java.util.ConcurrentModificationException</code>异常。</p>
+</li>
+<li><p>List是不可以变更长度的。</p>
+</li>
+<li><p>Arrays类的mismatch方法的使用，返回的是两个输入数组最开始不相同元素的index，当两个数组完全相同时返回-1。</p>
+</li>
+<li><p>Arrays类的compare方法的返回值。因为是String类的compareTo方法，是按按字典顺序进行比较。参考参照最后一个链接。</p>
+</li>
+<li><p>关于List的removeIf方法，通过传入实现Predicate接口的lamda式（返回值必须为Boolean！！）判断删除的rule。需要注意第7行一开始生成的list不能直接删除，因为Arrays.asList生成的List是不能变更长度的！！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">listRemoveIf</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;));</span><br><span class="line">        <span class="comment">//Arrays.asList生成的List是不能变更长度的，因此一定要在包装一下</span></span><br><span class="line">        list.removeIf((String s) -&gt;&#123;</span><br><span class="line">            <span class="keyword">return</span> s.equals(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.runoob.com/java/java8-method-references.html">方法引用</a>。forEach接受的事Consumer型的参数，也就是参数只有1个，没有返回值。此外，关于经常使用的方法，还可以使用方法引用。直接上例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">methodReferences</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            String[] array = <span class="keyword">new</span> String[] &#123; <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Lemon&quot;</span> &#125;;</span><br><span class="line">            Arrays.sort(array, methodReferences::cmp);<span class="comment">//注意方法引用这里不需要加参数！！</span></span><br><span class="line">            Arrays.sort(array, String::compareTo);</span><br><span class="line">            <span class="comment">//因为实例方法有一个隐含的this参数，String类的compareTo()方法在实际调用的时候，第一个隐含参数总是传入                                this，相当于静态方法</span></span><br><span class="line">            System.out.println(String.join(<span class="string">&quot;, &quot;</span>, array));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> s1.compareTo(s2);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="19">
+<li><p>HashMap类是Map接口的实现类，key和value都可以使用null，并且使用put方法时如果key已经存在了将会覆盖之前的key对应的value而不是新插入元素。null不是存在第0位！！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;D&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;null&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;new null &quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">0</span>, <span class="string">&quot;??&quot;</span>);</span><br><span class="line">        System.out.println(hashMap.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://blog.csdn.net/xu962336414/article/details/84032693">ArrayList 集合中怎么插入元素的</a></li>
+<li><a href="https://blog.csdn.net/Somhu/article/details/78020547">ArrayList添加元素流程</a></li>
+<li><a href="https://blog.csdn.net/m0_37884977/article/details/80514809">ArrayList初始化容量的问题</a></li>
+<li>[<a href="https://www.cnblogs.com/lzq198754/p/5780165.html">Java map 详解 - 用法、遍历、排序、常用API等</a></li>
+<li><a href="https://blog.csdn.net/qq_25827845/article/details/53870329">String类中的compareTo方法总结</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
 </search>
