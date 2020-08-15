@@ -264,7 +264,6 @@
 <h4 id="第九章-API"><a href="#第九章-API" class="headerlink" title="第九章 API"></a>第九章 API</h4><p>間違えた：2，3，4，6，7，9，12，13，19</p>
 <p>間違えし易い：</p>
 <p>分からない： 2，15，17</p>
-<p>关键词：</p>
 <h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
 <li><p><code>Math.pow</code>方法，没什么好说的。第一个参数是累乘对象，第二个是指数。</p>
 </li>
@@ -596,6 +595,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Sliver学习笔记(第十章)</title>
+    <url>/2020/08/15/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第十章-例外処理"><a href="#第十章-例外処理" class="headerlink" title="第十章 例外処理"></a>第十章 例外処理</h4><p>間違えた：3，7，10，11，12，14，17</p>
+<p>間違えし易い：</p>
+<p>分からない： </p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>略</li>
+<li>略</li>
+<li>父类异常一定要写在子类异常的下面1，否则父类异常就会被先捕捉导致子类异常无法到达，出现编译错误。</li>
+<li>略</li>
+<li>finally中的代码一定会执行，即使是catch中有return的情况下。</li>
+<li>finally权限最大，当catch和fianlly中都有return时，finally中的return会被执行。</li>
+<li>不懂？return中返回的是一个变量？finally不能对那个变量进行操作？</li>
+<li>一个try只能对应一个finally，但是可以对应多个catch，并且catch可以省略</li>
+<li>嵌套的try catch文中如果有异常，最接近异常的那层try catch将会捕捉异常。</li>
+<li>try中声明的变量，catch和finally中不能访问。try-with-resources的运行顺序是<ol>
+<li>resource中的释放</li>
+<li>catch中的处理</li>
+<li>finally的处理</li>
+</ol>
+</li>
+<li>检查例外（Exception以及继承它的子类（除去RuntimeException））和非检查例外（RuntimeException以及继承它的子类）的区别。检查例外必须要用try catch围起来，或者是必须用throws宣言。而非检查例外就不需要强制，可以自由选择。多个例外throws是用逗号分隔</li>
+<li>Error为了分类，是可以继承Errors类的。常见的例如<code>OutOfMemoryError</code>,<code>NoClassDefFoundError</code>。Error是在程序运行时被抛出的。但是也可以被throw-catch或者throws。</li>
+<li>略</li>
+<li>ArrayList的越界访问时丢出的是<code>IndexOutOfBoundException</code>。数组越界访问异常是<code>ArrayIndexOutOfBoundException</code>。文字越界异常是<code>StringIndexOutOfBoundException</code>。不存在<code>ListIndexOutOfBoundsException</code>这样的例外。</li>
+<li>没有继承或者实现关系の1两个类强制转型时候，运行时会报<code>ClassCastException</code>。强制转型前应该使用<code>instanceof</code>进行判断。</li>
+<li>null是无参照的，因此null使用方法时会报空指针异常。</li>
+<li>因为会发生嵌套引用，用尽stack空间，所以会报StackOverflowError。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirstblog</title>
+    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>我们都爱cheese！！🧀</title>
     <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
     <content><![CDATA[<blockquote>
@@ -656,12 +707,6 @@
         <tag>美食</tag>
         <tag>随笔</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>myfirstblog</title>
-    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
-]]></content>
   </entry>
   <entry>
     <title>生活杂记</title>
