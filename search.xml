@@ -812,4 +812,63 @@
         <tag>生活</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第十一章)</title>
+    <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第十一章-モジュールシステム"><a href="#第十一章-モジュールシステム" class="headerlink" title="第十一章 モジュールシステム"></a>第十一章 モジュールシステム</h4><p>間違えた：1，4，6</p>
+<p>間違えし易い：</p>
+<p>分からない： 1，2，3，4，5，6，7</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>module系统存在的意义。可以更方便的管理需要公开的包和不想公开的包。<code>module-info.java</code>中记述的内容为以下两条：</p>
+<ol>
+<li>要公开哪个包</li>
+<li>要使用其他的哪个module</li>
+</ol>
+<p>另外需要注意，<code>module-info.java</code>的生成位置，写法为<code>module hello &#123;&#125;</code>。module之后的是module的名字，如果中括号里什么都不写，意味着任何包都不公开，也不利用任何的外部module。为了实现模组化需要将<code>module-info.java</code>与source code一起编译。编译文件的保存地址为mods文件夹。</p>
+<p>编译命令：<code>javac -d classfile的保存目录 需要编译的文件的目录</code>。因此第二参数需要包含<code>module-info.java</code>文件的路径和想要编译的源代码的路径。</p>
+</li>
+<li><p>关于module的运行问题。命令:<code>java --module-path module文件路径 -m 要运行的module class</code>。当想运行有被module包含的class时，需要在module和想要运行的class的完全修饰名之间加上<code>/</code>。<br>例如 ：<code>java --module-path mods -m hello/com.sample.Main</code></p>
+</li>
+<li><p>module的公开设定相关。例如在test module中设置需要公开的包时需要在<code>module-info.java</code>中这样写：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> test&#123;</span><br><span class="line">  <span class="keyword">exports</span> com.test; <span class="comment">//记述需要公开的包。不写的默认为非公开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而如果hello module想要利用test中的方法，需要在自己的<code>module-info.java</code>中做如下记述：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> hello &#123;</span><br><span class="line">  <span class="keyword">requires</span> test; <span class="comment">//使用requires来引入自己想利用的module</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：更改完成后需要重新编译。</p>
+</li>
+<li><p>关于各个module之间的依存关系问题。当module1依存module2，module2依存module3时，module1是无法使用module3中的类的。因为module2中引入的包，是为了module2而引入的，如果想在module1中也能使用的module3的类，需要在module2中做出如下的设置:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> module2 &#123;</span><br><span class="line">  <span class="keyword">requires</span> transitive module3; <span class="comment">//transitive是推移的意思，意味着在module1中也可以使用module3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://juejin.im/entry/6844903501311524871">参考这里</a>。关于java內建的module。都被归纳到java.base module中，这个module即使不用requires声明会被直接代入。</p>
+</li>
+<li><p>关于确认module的命令，想要确认一个module公开了什么包，依存了什么包，不需要<code>module-info.java</code>也可以确认，可以使用这两个命令:</p>
+<ol>
+<li><p>java命令的 <code>--describe-modue</code>选项  例：<code>java --module-path mods --describle-module foo</code> </p>
+</li>
+<li><p>jmod命令的<code>describe</code>模式                例：<code>jmod create -class-path mods/foo foo.jmod</code>生成jmod文件后，使用<code>jmod describe foo.jmod</code>查看</p>
+<p>jdeps命令是用来查询类和方法，jar文件，module的依存关系的命令。（module的包公开信息不能通过此命令查询！！）</p>
+<p>java命令的 <code>--show-module-resolution</code>是用来表示查看程序运行时怎样寻找依存module的option。</p>
+</li>
+</ol>
+</li>
+<li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
 </search>
