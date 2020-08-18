@@ -170,6 +170,88 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Sliver学习笔记(第三章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
+<p>間違えし易い：3, 19</p>
+<p>分からない：2</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
+</li>
+<li><p>类型转换问题。</p>
+<ol>
+<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
+<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
+<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
+</ol>
+</li>
+<li><p>略</p>
+</li>
+<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
+</li>
+<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
+</li>
+<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
+</li>
+<li><p>java的同一性和同值性的判断问题。</p>
+</li>
+<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
+</li>
+<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
+</li>
+<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
+</li>
+<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
+</li>
+<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
+</li>
+<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
+<ol>
+<li>int型以下的整数型和他们的包装类。</li>
+<li>文字和文字列。</li>
+<li>列举型（枚举型）。</li>
+</ol>
+</li>
+<li><p>switch的case值需满足以下三个条件：</p>
+<ol>
+<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
+<li>是定数，在编译时能确定值。</li>
+<li>不能为null。</li>
+</ol>
+</li>
+<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Sliver学习笔记(第九章)</title>
     <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -259,88 +341,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第三章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
-<p>間違えし易い：3, 19</p>
-<p>分からない：2</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>略</p>
-</li>
-<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
-</li>
-<li><p>类型转换问题。</p>
-<ol>
-<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
-<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
-<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
-</ol>
-</li>
-<li><p>略</p>
-</li>
-<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
-</li>
-<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
-</li>
-<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
-</li>
-<li><p>java的同一性和同值性的判断问题。</p>
-</li>
-<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
-</li>
-<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
-</li>
-<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
-</li>
-<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
-</li>
-<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
-</li>
-<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
-<ol>
-<li>int型以下的整数型和他们的包装类。</li>
-<li>文字和文字列。</li>
-<li>列举型（枚举型）。</li>
-</ol>
-</li>
-<li><p>switch的case值需满足以下三个条件：</p>
-<ol>
-<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
-<li>是定数，在编译时能确定值。</li>
-<li>不能为null。</li>
-</ol>
-</li>
-<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第二章)</title>
     <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -390,6 +390,85 @@
 <li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
 <li>略</li>
 <li>略</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第五章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第五章-配列の操作-二次"><a href="#第五章-配列の操作-二次" class="headerlink" title="第五章  配列の操作(二次)"></a>第五章  配列の操作(二次)</h4><p>間違えた：1，3，5，6，7，9</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>数组只能存相同类型或者是有互换性的值。并且数组可容纳的要素个数在数组的instance生成的时候被确定，之后是无法变更的。<br>数组存基本型和object型的区别是，基本型是存的数据本身，object是存的参照（指向要素本身的link）。<br><code>println</code>方法是把使用传入参数的<code>toString</code>方法，并将结果打印，数组的toString是继承自object类，内容为将类名和唯一化的instance的hashcode组合值返回。</p>
+</li>
+<li><p>声明数组变量时，<code>[]</code>既可以写在变量名之前，也可以写在变量名之后，因此分开写（多次元数组两边都写）也是可以的。</p>
+</li>
+<li><p>由于数组变量只是用来存数组instance的参照，跟具体的数组instance中有多少个元素无关，因此在声明数组变量时，是不能在<code>[]</code>中指定数组的要素个数的。例如<code>int[3]a</code>就会报编译错误。</p>
+</li>
+<li><p>数组instance生成时，必须要指定要素个数。并且要素的个数只能是整数值。并且要素数的指定只能使用<code>int</code>型，<code>long</code>型也是不能使用的。<br>当生成多元数组的instance时，如果一元和二元分开生成时，第一次元的要素数是无法省略的。例如<br><code>int[][]e = new int[][3]</code>会报错，而<code>int[][]e = new int[2][]</code>就不会。<br>另外，数组变量和生成的instance的次元数也必须一致。一元的要素数和二元的要素数不相同也是可以的。</p>
+</li>
+<li><p>生成object数组instance时，要注意生成的只是指向object的参照，并不是生成了object本身<br>数组生成时default的值如下表所示</p>
+<table>
+<thead>
+<tr>
+<th align="center">型</th>
+<th align="center">default值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">整数型</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">浮点小数型</td>
+<td align="center">0.0</td>
+</tr>
+<tr>
+<td align="center">boolean型</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">文字型</td>
+<td align="center">¥u0000</td>
+</tr>
+<tr>
+<td align="center">object</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>如果想在生成数组instance的时候也对数组的要素值进行初期化时，可以使用初始化符号<code>&#123;&#125;</code><br>null是可以带入String变量的，打印的时候会直接打印null。</p>
+</li>
+<li><p>生成数组的几种方法。</p>
+<ol>
+<li>最简单的<code>int[] array = &#123;3, 4&#125;</code></li>
+<li><code>int[] array = new int[] &#123;3, 4&#125;</code>注意，在这种情况下，一定要在<code>&#123;&#125;</code>中指定要素的个数，根据大括号中值的个数，决定生成数组的要素数，因此不需要在中括号中写入要素的个数，如果同时写入的话，会报错。</li>
+<li>数组变量的次元数和instance中的次元数必须相同，因此这样的code也会报：错<code>int[][] array = new int[]&#123;&#125;</code>。</li>
+<li><code>int[][] array = &#123;&#125;</code>不会报错。</li>
+<li>初始化符号<code>&#123;&#125;</code>必须要跟变量宣言同时使用。除非明示的将次元数指定了。<br>例如<code>int[][] array; array = new int[][];</code> 就不会报错。但是如果后面改为<code>array = &#123;2, 3&#125;</code>就会报错。</li>
+</ol>
+</li>
+<li><p><code>array.length</code>中的<code>length</code>不是变量，而是在编译时，转换为查数组中要素的个数的命令。类似于方法。</p>
+</li>
+<li><p>可以生成interface的数组。数组中也可以存interface的实现类，如果是父类的数组，数组中可以存子类。如果是抽象类的数组，可以存实现抽象类的具象类。</p>
+</li>
+<li><p>可以使用数组的clone方法生成原数组的instance相同的另一个instance。如果是二维数组，一维的instance虽然不同，但是指向的二维的instance是相同的。</p>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -583,6 +662,65 @@
 <li><p>当函数的参数是原始类型（プリミティブ型）时，函数被呼出时，参数是从呼出的地方被拷贝到函数本身去的。不会对传入的instance造成影响。</p>
 </li>
 <li><p>当函数的参数是object类型时，函数被呼出时，被拷贝的是指向instance的link。因此可能会对原本的instance产生影响。因此，函数的参数是原始类型（プリミティブ型）还是参照类型，非常关键！！！！！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>资格考试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第十一章)</title>
+    <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第十一章-モジュールシステム"><a href="#第十一章-モジュールシステム" class="headerlink" title="第十一章 モジュールシステム"></a>第十一章 モジュールシステム</h4><p>間違えた：1，4，6</p>
+<p>間違えし易い：</p>
+<p>分からない： 1，2，3，4，5，6，7</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>module系统存在的意义。可以更方便的管理需要公开的包和不想公开的包。<code>module-info.java</code>中记述的内容为以下两条：</p>
+<ol>
+<li>要公开哪个包</li>
+<li>要使用其他的哪个module</li>
+</ol>
+<p>另外需要注意，<code>module-info.java</code>的生成位置，写法为<code>module hello &#123;&#125;</code>。module之后的是module的名字，如果中括号里什么都不写，意味着任何包都不公开，也不利用任何的外部module。为了实现模组化需要将<code>module-info.java</code>与source code一起编译。编译文件的保存地址为mods文件夹。</p>
+<p>编译命令：<code>javac -d classfile的保存目录 需要编译的文件的目录</code>。因此第二参数需要包含<code>module-info.java</code>文件的路径和想要编译的源代码的路径。</p>
+</li>
+<li><p>关于module的运行问题。命令:<code>java --module-path module文件路径 -m 要运行的module class</code>。当想运行有被module包含的class时，需要在module和想要运行的class的完全修饰名之间加上<code>/</code>。<br>例如 ：<code>java --module-path mods -m hello/com.sample.Main</code></p>
+</li>
+<li><p>module的公开设定相关。例如在test module中设置需要公开的包时需要在<code>module-info.java</code>中这样写：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> test&#123;</span><br><span class="line">  <span class="keyword">exports</span> com.test; <span class="comment">//记述需要公开的包。不写的默认为非公开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而如果hello module想要利用test中的方法，需要在自己的<code>module-info.java</code>中做如下记述：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> hello &#123;</span><br><span class="line">  <span class="keyword">requires</span> test; <span class="comment">//使用requires来引入自己想利用的module</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：更改完成后需要重新编译。</p>
+</li>
+<li><p>关于各个module之间的依存关系问题。当module1依存module2，module2依存module3时，module1是无法使用module3中的类的。因为module2中引入的包，是为了module2而引入的，如果想在module1中也能使用的module3的类，需要在module2中做出如下的设置:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> module2 &#123;</span><br><span class="line">  <span class="keyword">requires</span> transitive module3; <span class="comment">//transitive是推移的意思，意味着在module1中也可以使用module3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://juejin.im/entry/6844903501311524871">参考这里</a>。关于java內建的module。都被归纳到java.base module中，这个module即使不用requires声明会被直接代入。</p>
+</li>
+<li><p>关于确认module的命令，想要确认一个module公开了什么包，依存了什么包，不需要<code>module-info.java</code>也可以确认，可以使用这两个命令:</p>
+<ol>
+<li><p>java命令的 <code>--describe-modue</code>选项  例：<code>java --module-path mods --describle-module foo</code> </p>
+</li>
+<li><p>jmod命令的<code>describe</code>模式                例：<code>jmod create -class-path mods/foo foo.jmod</code>生成jmod文件后，使用<code>jmod describe foo.jmod</code>查看</p>
+<p>jdeps命令是用来查询类和方法，jar文件，module的依存关系的命令。（module的包公开信息不能通过此命令查询！！）</p>
+<p>java命令的 <code>--show-module-resolution</code>是用来表示查看程序运行时怎样寻找依存module的option。</p>
+</li>
+</ol>
+</li>
+<li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
 </li>
 </ol>
 ]]></content>
@@ -810,65 +948,6 @@
       <tags>
         <tag>随笔</tag>
         <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第十一章)</title>
-    <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第十一章-モジュールシステム"><a href="#第十一章-モジュールシステム" class="headerlink" title="第十一章 モジュールシステム"></a>第十一章 モジュールシステム</h4><p>間違えた：1，4，6</p>
-<p>間違えし易い：</p>
-<p>分からない： 1，2，3，4，5，6，7</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>module系统存在的意义。可以更方便的管理需要公开的包和不想公开的包。<code>module-info.java</code>中记述的内容为以下两条：</p>
-<ol>
-<li>要公开哪个包</li>
-<li>要使用其他的哪个module</li>
-</ol>
-<p>另外需要注意，<code>module-info.java</code>的生成位置，写法为<code>module hello &#123;&#125;</code>。module之后的是module的名字，如果中括号里什么都不写，意味着任何包都不公开，也不利用任何的外部module。为了实现模组化需要将<code>module-info.java</code>与source code一起编译。编译文件的保存地址为mods文件夹。</p>
-<p>编译命令：<code>javac -d classfile的保存目录 需要编译的文件的目录</code>。因此第二参数需要包含<code>module-info.java</code>文件的路径和想要编译的源代码的路径。</p>
-</li>
-<li><p>关于module的运行问题。命令:<code>java --module-path module文件路径 -m 要运行的module class</code>。当想运行有被module包含的class时，需要在module和想要运行的class的完全修饰名之间加上<code>/</code>。<br>例如 ：<code>java --module-path mods -m hello/com.sample.Main</code></p>
-</li>
-<li><p>module的公开设定相关。例如在test module中设置需要公开的包时需要在<code>module-info.java</code>中这样写：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> test&#123;</span><br><span class="line">  <span class="keyword">exports</span> com.test; <span class="comment">//记述需要公开的包。不写的默认为非公开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而如果hello module想要利用test中的方法，需要在自己的<code>module-info.java</code>中做如下记述：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> hello &#123;</span><br><span class="line">  <span class="keyword">requires</span> test; <span class="comment">//使用requires来引入自己想利用的module</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：更改完成后需要重新编译。</p>
-</li>
-<li><p>关于各个module之间的依存关系问题。当module1依存module2，module2依存module3时，module1是无法使用module3中的类的。因为module2中引入的包，是为了module2而引入的，如果想在module1中也能使用的module3的类，需要在module2中做出如下的设置:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> module2 &#123;</span><br><span class="line">  <span class="keyword">requires</span> transitive module3; <span class="comment">//transitive是推移的意思，意味着在module1中也可以使用module3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://juejin.im/entry/6844903501311524871">参考这里</a>。关于java內建的module。都被归纳到java.base module中，这个module即使不用requires声明会被直接代入。</p>
-</li>
-<li><p>关于确认module的命令，想要确认一个module公开了什么包，依存了什么包，不需要<code>module-info.java</code>也可以确认，可以使用这两个命令:</p>
-<ol>
-<li><p>java命令的 <code>--describe-modue</code>选项  例：<code>java --module-path mods --describle-module foo</code> </p>
-</li>
-<li><p>jmod命令的<code>describe</code>模式                例：<code>jmod create -class-path mods/foo foo.jmod</code>生成jmod文件后，使用<code>jmod describe foo.jmod</code>查看</p>
-<p>jdeps命令是用来查询类和方法，jar文件，module的依存关系的命令。（module的包公开信息不能通过此命令查询！！）</p>
-<p>java命令的 <code>--show-module-resolution</code>是用来表示查看程序运行时怎样寻找依存module的option。</p>
-</li>
-</ol>
-</li>
-<li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
       </tags>
   </entry>
 </search>
