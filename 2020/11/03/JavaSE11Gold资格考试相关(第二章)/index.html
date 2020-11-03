@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">40</span>
+            <span class="post-count">518</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -126,42 +126,116 @@
 <p>間違えし易い：</p>
 <p>分からない：</p>
 <ol>
-<li></li>
-<li><p>​      </p>
+<li><p>A</p>
 </li>
-<li><p>​        </p>
+<li><p>E      </p>
 </li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li><p>a</p>
+<li><p>D        </p>
 </li>
-<li><p>a</p>
+<li><p>AE❌    CE⭕️</p>
+<ol>
+<li>需要声明变量类型。</li>
+<li>等号左右必须类型一致，即便是有多态性关系的类型也不行。java7以后，可以省略等号右边声明。</li>
+<li>变量类型不能使用基本类型</li>
+<li>右边是匿名类的情况下，不能省略变量类型。</li>
+</ol>
 </li>
-<li><p>a</p>
+<li><p>FG❌    AG⭕️</p>
+<ol>
+<li>不能使用instanceof T</li>
+<li>不能使用T.class这样来取得泛型的类</li>
+<li>泛型变量声明不能带static关键字</li>
+<li>不能使用泛型要素生成变量或者数组。</li>
+</ol>
 </li>
-<li><p>a</p>
+<li><p>B❌   A ⭕️</p>
+<ol>
+<li>generics method的声明方法为：<code>&lt;型parameter&gt; 返回值类型 方法名（参数list）&#123;方法体&#125;</code></li>
+<li>注意，在generics method中声明的泛型变量在方法以外不能被使用。</li>
+</ol>
 </li>
-<li><p>a</p>
+<li><p>A❌   C ⭕️</p>
+<ol>
+<li><p>泛型的Type Bound 写法为<code>&lt;型变量 extends 型&gt;</code>, 即使是实现接口是也必须使用extends关键字。</p>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics03</span>&lt;<span class="title">T</span>, <span class="title">U</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Integer&gt; sample = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Number&gt; sample1 = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;A, C&gt; sample2 = <span class="keyword">new</span> Generics03&lt;&gt; ();<span class="comment">//A是借口，C是借口的实现类。实现接口的关系也可以通过extends     来体现。</span></span><br><span class="line"><span class="comment">//    Generics03&lt;Number, String&gt; sample2= new Generics03&lt;&gt; ();  没有继承关系因此编译错误。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>a</p>
+</ol>
 </li>
-<li><p>a</p>
+<li><p>ABD</p>
+<ol>
+<li><p>在声明泛型变量时可以使用<code>？</code>来表示不特定的类型(&lt;?&gt;相等于&lt;? extends Object&gt;)</p>
+<ol>
+<li><p>例如<code>Generics03&lt;?, ?&gt; sample3 = new Generics03&lt;&gt;();</code></p>
 </li>
-<li><p>a</p>
+<li><p>可以使用两种方法来声明类型的境界值：<code>&lt;? extends T&gt;</code>表示类型的上限是T类型, <code>&lt;? super T&gt;</code>表示类型的下限是T类型</p>
 </li>
-<li><p>a</p>
+<li><p>?不能使用在类声明时和instance声明时（变量声明的等号右边）如下会报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Generics03&lt;?, ?&gt; sample4 = <span class="keyword">new</span> Generics03&lt;?, ?&gt;();</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>a</p>
+</ol>
 </li>
-<li><p>a</p>
+</ol>
 </li>
-<li><p>a</p>
+<li><p>D❌   A ⭕️</p>
+<ol>
+<li>没有对泛型进行parameter化。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>AD </p>
+<ol>
+<li><p>LinkedList和ArrayList的对比</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>LinkedList</th>
+<th>ArrayList</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>随机访问速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="12">
+<li><p>C</p>
+</li>
+<li><p>E❌   C⭕️</p>
+</li>
+<li><p>D</p>
+</li>
+<li><p>A❌   B ⭕️</p>
+</li>
+<li><p>AC</p>
+</li>
+<li><p>D❌   C ⭕️</p>
+</li>
+<li><p>BC</p>
+</li>
+<li><p>D❌   B ⭕️</p>
+</li>
+<li><p>AC</p>
+</li>
+<li><p>A❌   C ⭕️</p>
+</li>
+<li><p>CE</p>
+</li>
+<li><p>B❌   E ⭕️</p>
+</li>
+<li><p>B</p>
 </li>
 </ol>
 
