@@ -101,8 +101,178 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第二章)</title>
+    <url>/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第二章-コレクションとジェネリクス"><a href="#第二章-コレクションとジェネリクス" class="headerlink" title="第二章 コレクションとジェネリクス"></a>第二章 コレクションとジェネリクス</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li><p>A</p>
+</li>
+<li><p>E      </p>
+</li>
+<li><p>D        </p>
+</li>
+<li><p>AE❌    CE⭕️</p>
+<ol>
+<li>需要声明变量类型。</li>
+<li>等号左右必须类型一致，即便是有多态性关系的类型也不行。java7以后，可以省略等号右边声明。</li>
+<li>变量类型不能使用基本类型</li>
+<li>右边是匿名类的情况下，不能省略变量类型。</li>
+</ol>
+</li>
+<li><p>FG❌    AG⭕️</p>
+<ol>
+<li>不能使用instanceof T</li>
+<li>不能使用T.class这样来取得泛型的类</li>
+<li>泛型变量声明不能带static关键字</li>
+<li>不能使用泛型要素生成变量或者数组。</li>
+</ol>
+</li>
+<li><p>B❌   A ⭕️</p>
+<ol>
+<li>generics method的声明方法为：<code>&lt;型parameter&gt; 返回值类型 方法名（参数list）&#123;方法体&#125;</code></li>
+<li>注意，在generics method中声明的泛型变量在方法以外不能被使用。</li>
+</ol>
+</li>
+<li><p>A❌   C ⭕️</p>
+<ol>
+<li><p>泛型的Type Bound 写法为<code>&lt;型变量 extends 型&gt;</code>, 即使是实现接口是也必须使用extends关键字。</p>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics03</span>&lt;<span class="title">T</span>, <span class="title">U</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Integer&gt; sample = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Number&gt; sample1 = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;A, C&gt; sample2 = <span class="keyword">new</span> Generics03&lt;&gt; ();<span class="comment">//A是借口，C是借口的实现类。实现接口的关系也可以通过extends     来体现。</span></span><br><span class="line"><span class="comment">//    Generics03&lt;Number, String&gt; sample2= new Generics03&lt;&gt; ();  没有继承关系因此编译错误。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>ABD</p>
+<ol>
+<li><p>在声明泛型变量时可以使用<code>？</code>来表示不特定的类型(&lt;?&gt;相等于&lt;? extends Object&gt;)</p>
+<ol>
+<li><p>例如<code>Generics03&lt;?, ?&gt; sample3 = new Generics03&lt;&gt;();</code></p>
+</li>
+<li><p>可以使用两种方法来声明类型的境界值：<code>&lt;? extends T&gt;</code>表示类型的上限是T类型, <code>&lt;? super T&gt;</code>表示类型的下限是T类型</p>
+</li>
+<li><p>?不能使用在类声明时和instance声明时（变量声明的等号右边）如下会报错</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Generics03&lt;?, ?&gt; sample4 = <span class="keyword">new</span> Generics03&lt;?, ?&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>D❌   A ⭕️</p>
+<ol>
+<li>没有对泛型进行parameter化。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>AD </p>
+<ol>
+<li><p>LinkedList和ArrayList的对比</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>LinkedList</th>
+<th>ArrayList</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>随机访问速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="12">
+<li><p>C</p>
+</li>
+<li><p>E❌   C⭕️</p>
+<ol>
+<li>(Arrays.asList生成的list是add不可以但是可以set，并且会影响到原来的数组)</li>
+</ol>
+</li>
+<li><p>D</p>
+</li>
+<li><p>A❌   B ⭕️</p>
+<ol>
+<li>deque又名双边队列，支持队列两侧的添加和删除。</li>
+<li>不支持用index进行要素的访问。</li>
+</ol>
+</li>
+<li><p>AC</p>
+<ol>
+<li>stack是线程安全的。</li>
+<li><code>ArrayDeque&lt;E&gt;</code>不能容纳null要素</li>
+<li>FIFO的时候比ArrayDeque比LinkedList快，FILO的时候比stack快。</li>
+</ol>
+</li>
+<li><p>D❌   C ⭕️</p>
+<ol>
+<li>Set类似与数学的集合，不允许重复要素存在。可以存储null但是只能存1个。</li>
+</ol>
+</li>
+<li><p>BC</p>
+<ol>
+<li>HashSet是使用哈希表进行要素管理</li>
+<li>TreeSet是根据tree构造进行的实现，使得set中的要素带有顺序。</li>
+</ol>
+</li>
+<li><p>D❌   B ⭕️</p>
+<ol>
+<li>唯一的key对应的value</li>
+<li><code>Map&lt;k, v&gt;</code>不是<code>Collection&lt;E&gt;</code>的子接口！！</li>
+</ol>
+</li>
+<li><p>AC</p>
+</li>
+<li><p>A❌   C ⭕️</p>
+<ol>
+<li>从map中取出的是Set类型的Map.Entry的集合</li>
+</ol>
+</li>
+<li><p>CE</p>
+</li>
+<li><p>B❌   E ⭕️ </p>
+<ol>
+<li>没实现能比较接口的类，在存入TreeSet这种自动比较的集合时会有例外</li>
+</ol>
+</li>
+<li><p>B</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资格考试</tag>
+        <tag>Java</tag>
+        <tag>Java Gold</tag>
       </tags>
   </entry>
   <entry>
@@ -211,26 +381,55 @@
 <li><p>C</p>
 </li>
 <li><p>E❌   C⭕️</p>
+<ol>
+<li>(Arrays.asList生成的list是add不可以但是可以set，并且会影响到原来的数组)</li>
+</ol>
 </li>
 <li><p>D</p>
 </li>
 <li><p>A❌   B ⭕️</p>
+<ol>
+<li>deque又名双边队列，支持队列两侧的添加和删除。</li>
+<li>不支持用index进行要素的访问。</li>
+</ol>
 </li>
 <li><p>AC</p>
+<ol>
+<li>stack是线程安全的。</li>
+<li><code>ArrayDeque&lt;E&gt;</code>不能容纳null要素</li>
+<li>FIFO的时候比ArrayDeque比LinkedList快，FILO的时候比stack快。</li>
+</ol>
 </li>
 <li><p>D❌   C ⭕️</p>
+<ol>
+<li>Set类似与数学的集合，不允许重复要素存在。可以存储null但是只能存1个。</li>
+</ol>
 </li>
 <li><p>BC</p>
+<ol>
+<li>HashSet是使用哈希表进行要素管理</li>
+<li>TreeSet是根据tree构造进行的实现，使得set中的要素带有顺序。</li>
+</ol>
 </li>
 <li><p>D❌   B ⭕️</p>
+<ol>
+<li>唯一的key对应的value</li>
+<li><code>Map&lt;k, v&gt;</code>不是<code>Collection&lt;E&gt;</code>的子接口！！</li>
+</ol>
 </li>
 <li><p>AC</p>
 </li>
 <li><p>A❌   C ⭕️</p>
+<ol>
+<li>从map中取出的是Set类型的Map.Entry的集合</li>
+</ol>
 </li>
 <li><p>CE</p>
 </li>
-<li><p>B❌   E ⭕️</p>
+<li><p>B❌   E ⭕️ </p>
+<ol>
+<li>没实现能比较接口的类，在存入TreeSet这种自动比较的集合时会有例外</li>
+</ol>
 </li>
 <li><p>B</p>
 </li>
@@ -240,45 +439,203 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java</tag>
+        <tag>Java Gold</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第一章)</title>
-    <url>/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</url>
+    <title>我们都爱cheese！！🧀</title>
+    <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
+    <content><![CDATA[<blockquote>
+<p>记录一下我吃过的cheese（定期更新）</p>
+</blockquote>
+<p>最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。</p>
+<a id="more"></a>
+
+<br>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4k9egsqmg30dw08c163.gif" alt="It&#39;s an all-consuming love_"></p>
+<p>如题，我们都爱cheese！！开一个post记录一下最近吃的奶酪们🧀~~</p>
+<br>
+
+<p>先来一款黑暗的，蓝纹奶酪，貌似意大利语中“piccante”是辛辣的意思。这款不适合喝酒，味道太辛辣，适合小口小口的吃。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ifzccmaj30u00u07wj.jpg" alt="piccante" style="zoom:33%;" />
+
+<br>
+
+<p>这款是我目前吃过最好吃的，有一点像布里，有一点像卡芒贝尔。但是外面的白色霉菌质感还是不太一样，不太清楚学名叫什么，口感非常棒，适合搭配红酒。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ieyi57ej30u00u0kjo.jpg" alt="beili" style="zoom: 33%;" />
+
+<br>
+
+<p>德国经典品牌Bergader的蓝纹奶酪，不用多说，喜欢蓝纹的可以一试，性价比超高。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ijvdt1yj30u00u0npf.jpg" style="zoom: 33%;" />
+
+<br>
+
+<p>日本品牌雪印的卡芒贝尔奶酪，卡芒贝尔也算是我非常喜欢的一个品类。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4im3pur6j30u00u01l0.jpg" alt="camembert" style="zoom:33%;" />
+
+<br>
+
+<p>又一款布里，产自法国，白色霉菌包裹的内部层次感非常好。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4inyo45tj30u00u04qs.jpg" alt="brie" style="zoom:33%;" />
+
+<br>
+
+<p>日本超市随处可见的轻食奶酪，味道很好，尤其左边的这款马苏里拉奶酪，嫩的不行。性价比超高。基本上都在150日元（9RMB）以内。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ipcq8rqj30u00u0b2c.jpg" alt="little" style="zoom:33%;" />
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>美食</category>
+      </categories>
+      <tags>
+        <tag>美食</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirstblog</title>
+    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>生活杂记</title>
+    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>2020已经过去一半了。。。</p>
+</blockquote>
+<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
+<a id="more"></a>
+
+<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
+<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
+<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
+<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
+<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
+<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
+<p>​                                                                                    《爱尔兰人》</p>
+<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
+<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
+<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
+<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第六章)</title>
+    <url>/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
 <p>Java SE 11 sliver资格考试相关</p>
 </blockquote>
-<p>所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。</p>
 <a id="more"></a>
 
 
 
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
-<ul>
-<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
-</ul>
-<p>間違えた：3, 7</p>
+<h4 id="第六章-インスタンスとメソッド"><a href="#第六章-インスタンスとメソッド" class="headerlink" title="第六章 インスタンスとメソッド"></a>第六章 インスタンスとメソッド</h4><p>間違えた：3, 5, 18, 19, 20, 21, 22, 23, 24, 27, 30</p>
 <p>間違えし易い：</p>
-<p>分からない：8, </p>
+<p>分からない：</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>在Java中，变量有两种类型，一种是原始类型（プリミティブ型），一种是引用类型。引用型只能有两种（1.保存了向对象的参照link。2.没有保存向对象的参照link）因此像object类型可以代入null，但是打印时打印的是null而不是NULL，更不能把NULL直接代入给object类型的变量。还需要注意文字数为0的空string可以代入给object类型的变量，但是并不等于null，因为null相当于什么也没有指向。</p>
+</li>
+<li><p>JVM的garbage collector（垃圾回收机制）相关的问题。垃圾回收的时机只能由JVM决定。</p>
+<p>对于Java对象来讲，如果说这个对象没有被其他对象所引用该对象就是无用的，此对象就被称为垃圾，其占用的内存也就要被销毁。例如，将null代入给变量的时候，没有被参照的instance就会被销毁。例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">null</span>; <span class="comment">//在这时,原来生成的instace会没有任何参照</span></span><br></pre></td></tr></table></figure>
+
+<p>其他还有，把变量代入新的instance的参照时，旧的instance就会变成没有参照的对象，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">new</span> Object(); <span class="comment">//在这时，obj对instance的参照会被overwrite</span></span><br></pre></td></tr></table></figure>
+
+<p>疑问：第四行的b也被赋予了null，原来b所指向的instance是否也是垃圾回收的对象？？？</p>
+</li>
+<li><p>Java的<code>Static area</code>与<code>Heap area</code>的问题。在读入class时使用的两种内存领域。static修饰的变量和方法放在static领域中，因此不需要创造instance也可以直接使用。当对一个class中的static变量进行值的变更时，会直接影响到那个class的static变量的值。</p>
+</li>
+<li><p>static修饰的方法，只能访问static修饰的变量或者方法。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>返回值接收时只能是同一类型或者是有互换性的值。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>可变长参数的问题。使用可变长参数时必须遵循两个原则：</p>
 <ol>
-<li>略</li>
-<li>略</li>
-<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
-<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
-<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
-<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+<li>对于可变长参数。必须要是相同类型的集合，因为JVM传参时会把他们以数组的形式传进去。</li>
+<li>当参数除了可变长参数之外还有其他参数时，可变长参数一定要放到参数的最后！！</li>
 </ol>
 </li>
-<li><code>java</code>命令的参数指定问题<ol>
-<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
-<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+<li><p>略</p>
+</li>
+<li><p>overload的定义。必须要是参数的数量，类型，顺序不同，且返回值类型相同的同名方法才算是overload。</p>
+</li>
+<li><p>当有两个同名函数，且参数的数量相同时，如果代入函数的参数有暧昧的性质时，JVM因为不知道应该选择哪个函数执行会出现编译错误。</p>
+</li>
+<li><p>只有访问修饰词不同的两个函数不能算overload（<code>public string test()&#123;&#125;</code>和<code>private string test()&#123;&#125;</code>就不能算重载）。</p>
+</li>
+<li><p>构造方法也是方法的一种，因此可以对构造方法进行重载。构造方法的三个rule为：</p>
+<ol>
+<li>构造方法必须与类名同名。</li>
+<li>不能有返回值类型</li>
+<li>只能与<code>new</code>关键字同时使用。因此，构造方法的访问关键字没有要求，即使是<code>private</code>也是可以的。例如可以在类中定义一个static的方法，在方法中调用<code>private</code>的构造方法并返回。有时，还会存在一个类有两个访问权限不同，参数不同的构造方法同时存在，可以由外部调用公开的构造方法，再在公开的构造方法中对私有的构造方法进行调用，达到保护内部信息的目的。</li>
 </ol>
+</li>
+<li><p>判断函数是不是构造方法时看有没有写返回值类型（尤其是<code>void</code>！！）。</p>
+</li>
+<li><p><a href="https://blog.csdn.net/sswqzx/article/details/85684980">构造代码块</a>的问题。构造代码块和构造函数同时出现时，要记住构造代码块一定在所有的构造函数之前被执行。</p>
+</li>
+<li><p>static的变量是在instance生成之后才能被初始化的，因此在构造代码块和构造函数中无法对它的值进行初期化。如果想在instance生成前对static的类变量进行初始化处理，可以使用static的构造代码块。例如下面的例子，在instance生成前num的值就是10了。</p>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> num;</span><br><span class="line">  <span class="keyword">static</span>&#123;</span><br><span class="line">    num = <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">()</span></span>&#123;</span><br><span class="line">    num = <span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>当类中有自己定义的有参数的构造方法时，无参的构造方法就不会被自动引入。（判断同名的方法是不是构造方法是关键！！）</p>
+</li>
+<li><p>当一个构造函数中想使用同一个类的其他构造函数时要使用<code>this（另外构造函数的参数）</code>。</p>
+</li>
+<li><p>24问题的后续，在一个构造方法中使用this叫另外的构造方法时，必须在最开始使用，如果在这个this前有别的处理，编译时候会报错.例如这样就会报错。</p>
+<p>public class This {</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">This</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">this</span>(<span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(String str, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(<span class="keyword">int</span> num, String str)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;not ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
+</li>
+<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
+</li>
+<li><p>因为要防止其他的类对自己的变量进行出乎自己意料的更改，所以需要将变量private，方法public，又名胶囊化。</p>
+</li>
+<li><p>当函数的参数是原始类型（プリミティブ型）时，函数被呼出时，参数是从呼出的地方被拷贝到函数本身去的。不会对传入的instance造成影响。</p>
+</li>
+<li><p>当函数的参数是object类型时，函数被呼出时，被拷贝的是指向instance的link。因此可能会对原本的instance产生影响。因此，函数的参数是原始类型（プリミティブ型）还是参照类型，非常关键！！！！！</p>
 </li>
 </ol>
 ]]></content>
@@ -286,8 +643,160 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
+<p>間違えし易い：2, 5, 19</p>
+<p>分からない：2, 3</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>java压根没有bool这个数据类型，审题失败。</li>
+<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
+<li>下划线出现的规则：<ol>
+<li>不能在Literal的先头或者末尾出现</li>
+<li>不能在记号的前后出现</li>
+</ol>
+</li>
+<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
+<li>关于java中变量的命名规则<ol>
+<li>不能用预约词和记号</li>
+<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
+<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
+</ol>
+</li>
+<li>关于var变量类型推论的用法：<ol>
+<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
+</ol>
+</li>
+<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
+<li>略</li>
+<li>略</li>
+<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
+<li>略</li>
+<li>略</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第九章)</title>
+    <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第九章-API"><a href="#第九章-API" class="headerlink" title="第九章 API"></a>第九章 API</h4><p>間違えた：2，3，4，6，7，9，12，13，19</p>
+<p>間違えし易い：</p>
+<p>分からない： 2，15，17</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p><code>Math.pow</code>方法，没什么好说的。第一个参数是累乘对象，第二个是指数。</p>
+</li>
+<li><p><code>java.util.Comparator</code>接口相关。例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">comparator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Sample[] samples = &#123;</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>),</span><br><span class="line">        &#125;;</span><br><span class="line">        List&lt;Sample&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(samples));</span><br><span class="line">          <span class="comment">//实现Comparator接口，自己在定义compare方法进行排序</span></span><br><span class="line">        list.sort(<span class="keyword">new</span> samplecomParator());</span><br><span class="line">        <span class="keyword">for</span> (Sample s: list ) &#123;</span><br><span class="line">              System.out.println(s.getName());</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//因为Integer类已经实现了Comparable接口所以可以直接使用集合类的sort方法排序</span></span><br><span class="line">        List&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;(); </span><br><span class="line">        list2.add(<span class="number">1</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">3</span>);</span><br><span class="line">        Collections.sort(list2);</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : list2) &#123;</span><br><span class="line">            System.out.println(integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">samplecomParator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Sample</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Sample o1, Sample o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &lt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &gt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>();</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> id;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list.sort()中使用lamda表达式，传入比较方法，题目中想实现的是倒序，而Integer中实现的Comparable接口定义的compareTo是升序，所以要加负号。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> chapter09;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">compareLamda</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;);</span><br><span class="line"><span class="comment">//        Collections.sort(list);          //y也可以使用collections类的sort方法，只不过比较慢</span></span><br><span class="line"><span class="comment">//        Collections.reverse(list);</span></span><br><span class="line">        </span><br><span class="line">        list.sort((a, b) -&gt; -a.compareTo(b));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Integer num : list) &#123;</span><br><span class="line">            System.out.println(num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三种方法参数都是char型因此不会报编译错误。</p>
+</li>
+<li><p>LocalDate类相关。<code>parse</code>方法传入的是字符串并且连接的必须是<code>-</code>，of方法中月份是从1开始。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LocalDate a = LocalDate.of(<span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        LocalDate b = LocalDate.parse(<span class="string">&quot;2015-01-01&quot;</span>);</span><br><span class="line">        System.out.println(a.equals(b));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LocalDate类是immutable的所以调用with方法不会影响之前instance中的值，而是会生成一个新的instance。</p>
+</li>
+<li><p>ArrayList中是可以存<code>null</code>的，而且可以存重复元素，并且ArrayList是线程不安全的，<code>vector</code>是线程安全的。</p>
+</li>
+<li><p>不指定类型的ArrayList什么都可以存，除非这样指定的情况下，就是只能存String：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;String&gt; (); <span class="comment">//Java SE6开始</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;&gt; ();       <span class="comment">//Java SE7开始</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于ArrayList的初始化问题，初始化size的长度为0，容量为10？随着加入数据慢慢增加，size也慢慢增加。size指的是存的元素的个数。</p>
+</li>
+<li><p>ArrayList的set方法，将置换指定index的元素值。</p>
+</li>
+<li><p>ArrayList的remove方法，从list中删除元素。如果删除的对象有多个存在时，使用<code>equals</code>方法判断<code>true</code>的最初的对象删除。<code>equal</code>方法可以重写。</p>
+</li>
+<li><p>ArrayList的remove方法后后面的元素会向前移动，注意扩张for是将list中的元素一个一个取出，当删除完时之后的元素如果不再存在for循环将会终止。</p>
+</li>
+<li><p>ArrayList类的remove方法后不能在将List输出，<a href="https://www.cnblogs.com/dolphin0520/p/3933551.html">原因参考这里</a>，具体内容不需要理解，考试中注意当使用了remove方法后如果使用for循环读取list时会在运行时跳出<code>java.util.ConcurrentModificationException</code>异常。例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;D&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;E&quot;</span>);</span><br><span class="line">        <span class="comment">//错误的</span></span><br><span class="line">        <span class="keyword">for</span>(String str : list)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(str)) &#123;</span><br><span class="line">                list.remove(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//正确的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(list.get(i))) &#123;</span><br><span class="line">                list.remove(list.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//正确的</span></span><br><span class="line">        <span class="keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;</span><br><span class="line">            String str = it.next();</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(str)) &#123;</span><br><span class="line">                list.remove(str);</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(String str : list)&#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="14">
+<li><p>List是不可以变更长度的。</p>
+</li>
+<li><p>Arrays类的mismatch方法的使用，返回的是两个输入数组最开始不相同元素的index，当两个数组完全相同时返回-1。</p>
+</li>
+<li><p>Arrays类的compare方法的返回值。因为是String类的compareTo方法，是按按字典顺序进行比较。参考参照最后一个链接。</p>
+</li>
+<li><p>关于List的removeIf方法，通过传入实现Predicate接口的lamda式（返回值必须为Boolean！！）判断删除的rule。需要注意第7行一开始生成的list不能直接删除，因为Arrays.asList生成的List是不能变更长度的！！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">listRemoveIf</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;));</span><br><span class="line">        <span class="comment">//Arrays.asList生成的List是不能变更长度的，因此一定要在包装一下</span></span><br><span class="line">        list.removeIf((String s) -&gt;&#123;</span><br><span class="line">            <span class="keyword">return</span> s.equals(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.runoob.com/java/java8-method-references.html">方法引用</a>。forEach接受的是Consumer型的参数，也就是参数只有1个，没有返回值。此外，关于经常使用的方法，还可以使用方法引用。直接上例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">methodReferences</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            String[] array = <span class="keyword">new</span> String[] &#123; <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Lemon&quot;</span> &#125;;</span><br><span class="line">            Arrays.sort(array, methodReferences::cmp);<span class="comment">//注意方法引用这里不需要加参数！！</span></span><br><span class="line">            Arrays.sort(array, String::compareTo);</span><br><span class="line">            <span class="comment">//因为实例方法有一个隐含的this参数，String类的compareTo()方法在实际调用的时候，第一个隐含参数总是传入                                this，相当于静态方法</span></span><br><span class="line">            System.out.println(String.join(<span class="string">&quot;, &quot;</span>, array));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> s1.compareTo(s2);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="19">
+<li><p>HashMap类是Map接口的实现类，key和value都可以使用null，并且使用put方法时如果key已经存在了将会覆盖之前的key对应的value而不是新插入元素。null不是存在第0位！！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;D&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;null&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;new null &quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">0</span>, <span class="string">&quot;??&quot;</span>);</span><br><span class="line">        System.out.println(hashMap.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://blog.csdn.net/xu962336414/article/details/84032693">ArrayList 集合中怎么插入元素的</a></li>
+<li><a href="https://blog.csdn.net/Somhu/article/details/78020547">ArrayList添加元素流程</a></li>
+<li><a href="https://blog.csdn.net/m0_37884977/article/details/80514809">ArrayList初始化容量的问题</a></li>
+<li><a href="https://www.cnblogs.com/lzq198754/p/5780165.html">Java map 详解 - 用法、遍历、排序、常用API等</a></li>
+<li><a href="https://blog.csdn.net/qq_25827845/article/details/53870329">String类中的compareTo方法总结</a></li>
+<li><a href="https://www.cnblogs.com/dolphin0520/p/3933551.html">Java ConcurrentModificationException异常原因和解决方法</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -409,8 +918,9 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -491,13 +1001,14 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第九章)</title>
-    <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
+    <title>Java SE 11 Sliver学习笔记(第十一章)</title>
+    <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
 <p>Java SE 11 sliver资格考试相关</p>
 </blockquote>
@@ -505,88 +1016,59 @@
 
 
 
-<h4 id="第九章-API"><a href="#第九章-API" class="headerlink" title="第九章 API"></a>第九章 API</h4><p>間違えた：2，3，4，6，7，9，12，13，19</p>
+<h4 id="第十一章-モジュールシステム"><a href="#第十一章-モジュールシステム" class="headerlink" title="第十一章 モジュールシステム"></a>第十一章 モジュールシステム</h4><p>間違えた：1，4，6</p>
 <p>間違えし易い：</p>
-<p>分からない： 2，15，17</p>
+<p>分からない： 1，2，3，4，5，6，7</p>
 <h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p><code>Math.pow</code>方法，没什么好说的。第一个参数是累乘对象，第二个是指数。</p>
+<li><p>module系统存在的意义。可以更方便的管理需要公开的包和不想公开的包。<code>module-info.java</code>中记述的内容为以下两条：</p>
+<ol>
+<li>要公开哪个包</li>
+<li>要使用其他的哪个module</li>
+</ol>
+<p>另外需要注意，<code>module-info.java</code>的生成位置，写法为<code>module hello &#123;&#125;</code>。module之后的是module的名字，如果中括号里什么都不写，意味着任何包都不公开，也不利用任何的外部module。为了实现模组化需要将<code>module-info.java</code>与source code一起编译。编译文件的保存地址为mods文件夹。</p>
+<p>编译命令：<code>javac -d classfile的保存目录 需要编译的文件的目录</code>。因此第二参数需要包含<code>module-info.java</code>文件的路径和想要编译的源代码的路径。</p>
 </li>
-<li><p><code>java.util.Comparator</code>接口相关。例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">comparator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Sample[] samples = &#123;</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> Sample(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>),</span><br><span class="line">        &#125;;</span><br><span class="line">        List&lt;Sample&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(samples));</span><br><span class="line">          <span class="comment">//实现Comparator接口，自己在定义compare方法进行排序</span></span><br><span class="line">        list.sort(<span class="keyword">new</span> samplecomParator());</span><br><span class="line">        <span class="keyword">for</span> (Sample s: list ) &#123;</span><br><span class="line">              System.out.println(s.getName());</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//因为Integer类已经实现了Comparable接口所以可以直接使用集合类的sort方法排序</span></span><br><span class="line">        List&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;(); </span><br><span class="line">        list2.add(<span class="number">1</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">3</span>);</span><br><span class="line">        Collections.sort(list2);</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : list2) &#123;</span><br><span class="line">            System.out.println(integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">samplecomParator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Sample</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Sample o1, Sample o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &lt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (o1.getId() &gt; o2.getId()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>();</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> id;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<li><p>关于module的运行问题。命令:<code>java --module-path module文件路径 -m 要运行的module class</code>。当想运行有被module包含的class时，需要在module和想要运行的class的完全修饰名之间加上<code>/</code>。<br>例如 ：<code>java --module-path mods -m hello/com.sample.Main</code></p>
 </li>
-<li><p>list.sort()中使用lamda表达式，传入比较方法，题目中想实现的是倒序，而Integer中实现的Comparable接口定义的compareTo是升序，所以要加负号。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> chapter09;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">compareLamda</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;);</span><br><span class="line"><span class="comment">//        Collections.sort(list);          //y也可以使用collections类的sort方法，只不过比较慢</span></span><br><span class="line"><span class="comment">//        Collections.reverse(list);</span></span><br><span class="line">        </span><br><span class="line">        list.sort((a, b) -&gt; -a.compareTo(b));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Integer num : list) &#123;</span><br><span class="line">            System.out.println(num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>三种方法参数都是char型因此不会报编译错误。</p>
-</li>
-<li><p>LocalDate类相关。<code>parse</code>方法传入的是字符串并且连接的必须是<code>-</code>，of方法中月份是从1开始。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LocalDate a = LocalDate.of(<span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        LocalDate b = LocalDate.parse(<span class="string">&quot;2015-01-01&quot;</span>);</span><br><span class="line">        System.out.println(a.equals(b));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>LocalDate类是immutable的所以调用with方法不会影响之前instance中的值，而是会生成一个新的instance。</p>
-</li>
-<li><p>ArrayList中是可以存<code>null</code>的，而且可以存重复元素，并且ArrayList是线程不安全的，<code>vector</code>是线程安全的。</p>
-</li>
-<li><p>不指定类型的ArrayList什么都可以存，除非这样指定的情况下，就是只能存String：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;String&gt; (); <span class="comment">//Java SE6开始</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> Arraylist&lt;&gt; ();       <span class="comment">//Java SE7开始</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于ArrayList的初始化问题，初始化size的长度为0，容量为10？随着加入数据慢慢增加，size也慢慢增加。size指的是存的元素的个数。</p>
-</li>
-<li><p>ArrayList的set方法，将置换指定index的元素值。</p>
-</li>
-<li><p>ArrayList的remove方法，从list中删除元素。如果删除的对象有多个存在时，使用<code>equals</code>方法判断<code>true</code>的最初的对象删除。<code>equal</code>方法可以重写。</p>
-</li>
-<li><p>ArrayList的remove方法后后面的元素会向前移动，注意扩张for是将list中的元素一个一个取出，当删除完时之后的元素如果不再存在for循环将会终止。</p>
-</li>
-<li><p>ArrayList类的remove方法后不能在将List输出，<a href="https://www.cnblogs.com/dolphin0520/p/3933551.html">原因参考这里</a>，具体内容不需要理解，考试中注意当使用了remove方法后如果使用for循环读取list时会在运行时跳出<code>java.util.ConcurrentModificationException</code>异常。例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;D&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;E&quot;</span>);</span><br><span class="line">        <span class="comment">//错误的</span></span><br><span class="line">        <span class="keyword">for</span>(String str : list)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(str)) &#123;</span><br><span class="line">                list.remove(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//正确的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(list.get(i))) &#123;</span><br><span class="line">                list.remove(list.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//正确的</span></span><br><span class="line">        <span class="keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;</span><br><span class="line">            String str = it.next();</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;C&quot;</span>.equals(str)) &#123;</span><br><span class="line">                list.remove(str);</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(String str : list)&#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<li><p>module的公开设定相关。例如在test module中设置需要公开的包时需要在<code>module-info.java</code>中这样写：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> test&#123;</span><br><span class="line">  <span class="keyword">exports</span> com.test; <span class="comment">//记述需要公开的包。不写的默认为非公开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>而如果hello module想要利用test中的方法，需要在自己的<code>module-info.java</code>中做如下记述：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> hello &#123;</span><br><span class="line">  <span class="keyword">requires</span> test; <span class="comment">//使用requires来引入自己想利用的module</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<p>注意：更改完成后需要重新编译。</p>
+</li>
+<li><p>关于各个module之间的依存关系问题。当module1依存module2，module2依存module3时，module1是无法使用module3中的类的。因为module2中引入的包，是为了module2而引入的，如果想在module1中也能使用的module3的类，需要在module2中做出如下的设置:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> module2 &#123;</span><br><span class="line">  <span class="keyword">requires</span> transitive module3; <span class="comment">//transitive是推移的意思，意味着在module1中也可以使用module3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://juejin.im/entry/6844903501311524871">参考这里</a>。关于java內建的module。都被归纳到java.base module中，这个module即使不用requires声明会被直接代入。</p>
+</li>
+<li><p>关于确认module的命令，想要确认一个module公开了什么包，依存了什么包，不需要<code>module-info.java</code>也可以确认，可以使用这两个命令:</p>
+<ol>
+<li><p>java命令的 <code>--describe-modue</code>选项  例：<code>java --module-path mods --describle-module foo</code> </p>
+</li>
+<li><p>jmod命令的<code>describe</code>模式                例：<code>jmod create -class-path mods/foo foo.jmod</code>生成jmod文件后，使用<code>jmod describe foo.jmod</code>查看</p>
+<p>jdeps命令是用来查询类和方法，jar文件，module的依存关系的命令。（module的包公开信息不能通过此命令查询！！）</p>
+<p>java命令的 <code>--show-module-resolution</code>是用来表示查看程序运行时怎样寻找依存module的option。</p>
 </li>
 </ol>
-<ol start="14">
-<li><p>List是不可以变更长度的。</p>
 </li>
-<li><p>Arrays类的mismatch方法的使用，返回的是两个输入数组最开始不相同元素的index，当两个数组完全相同时返回-1。</p>
-</li>
-<li><p>Arrays类的compare方法的返回值。因为是String类的compareTo方法，是按按字典顺序进行比较。参考参照最后一个链接。</p>
-</li>
-<li><p>关于List的removeIf方法，通过传入实现Predicate接口的lamda式（返回值必须为Boolean！！）判断删除的rule。需要注意第7行一开始生成的list不能直接删除，因为Arrays.asList生成的List是不能变更长度的！！</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">listRemoveIf</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;));</span><br><span class="line">        <span class="comment">//Arrays.asList生成的List是不能变更长度的，因此一定要在包装一下</span></span><br><span class="line">        list.removeIf((String s) -&gt;&#123;</span><br><span class="line">            <span class="keyword">return</span> s.equals(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://www.runoob.com/java/java8-method-references.html">方法引用</a>。forEach接受的是Consumer型的参数，也就是参数只有1个，没有返回值。此外，关于经常使用的方法，还可以使用方法引用。直接上例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">methodReferences</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            String[] array = <span class="keyword">new</span> String[] &#123; <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Lemon&quot;</span> &#125;;</span><br><span class="line">            Arrays.sort(array, methodReferences::cmp);<span class="comment">//注意方法引用这里不需要加参数！！</span></span><br><span class="line">            Arrays.sort(array, String::compareTo);</span><br><span class="line">            <span class="comment">//因为实例方法有一个隐含的this参数，String类的compareTo()方法在实际调用的时候，第一个隐含参数总是传入                                this，相当于静态方法</span></span><br><span class="line">            System.out.println(String.join(<span class="string">&quot;, &quot;</span>, array));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> s1.compareTo(s2);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
 </li>
 </ol>
-<ol start="19">
-<li><p>HashMap类是Map接口的实现类，key和value都可以使用null，并且使用put方法时如果key已经存在了将会覆盖之前的key对应的value而不是新插入元素。null不是存在第0位！！</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">1</span>, <span class="string">&quot;D&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;null&quot;</span>);</span><br><span class="line">        hashMap.put(<span class="keyword">null</span>, <span class="string">&quot;new null &quot;</span>);</span><br><span class="line">        hashMap.put(<span class="number">0</span>, <span class="string">&quot;??&quot;</span>);</span><br><span class="line">        System.out.println(hashMap.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
-<li><a href="https://blog.csdn.net/xu962336414/article/details/84032693">ArrayList 集合中怎么插入元素的</a></li>
-<li><a href="https://blog.csdn.net/Somhu/article/details/78020547">ArrayList添加元素流程</a></li>
-<li><a href="https://blog.csdn.net/m0_37884977/article/details/80514809">ArrayList初始化容量的问题</a></li>
-<li><a href="https://www.cnblogs.com/lzq198754/p/5780165.html">Java map 详解 - 用法、遍历、排序、常用API等</a></li>
-<li><a href="https://blog.csdn.net/qq_25827845/article/details/53870329">String类中的compareTo方法总结</a></li>
-<li><a href="https://www.cnblogs.com/dolphin0520/p/3933551.html">Java ConcurrentModificationException异常原因和解决方法</a></li>
-</ul>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第二章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <title>Java SE 11 Sliver学习笔记(第十章)</title>
+    <url>/2020/08/15/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
 <p>Java SE 11 sliver资格考试相关</p>
 </blockquote>
@@ -594,54 +1076,117 @@
 
 
 
-<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
-<p>間違えし易い：2, 5, 19</p>
-<p>分からない：2, 3</p>
+<h4 id="第十章-例外処理"><a href="#第十章-例外処理" class="headerlink" title="第十章 例外処理"></a>第十章 例外処理</h4><p>間違えた：3，7，10，11，12，14，17</p>
+<p>間違えし易い：</p>
+<p>分からない： </p>
 <h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>java压根没有bool这个数据类型，审题失败。</li>
-<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
-<li>下划线出现的规则：<ol>
-<li>不能在Literal的先头或者末尾出现</li>
-<li>不能在记号的前后出现</li>
+<li>略</li>
+<li>略</li>
+<li>父类异常一定要写在子类异常的下面1，否则父类异常就会被先捕捉导致子类异常无法到达，出现编译错误。</li>
+<li>略</li>
+<li>finally中的代码一定会执行，即使是catch中有return的情况下。</li>
+<li>finally权限最大，当catch和fianlly中都有return时，finally中的return会被执行。</li>
+<li>不懂？return中返回的是一个变量？finally不能对那个变量进行操作？</li>
+<li>一个try只能对应一个finally，但是可以对应多个catch，并且catch可以省略</li>
+<li>嵌套的try catch文中如果有异常，最接近异常的那层try catch将会捕捉异常。</li>
+<li>try中声明的变量，catch和finally中不能访问。try-with-resources的运行顺序是<ol>
+<li>resource中的释放</li>
+<li>catch中的处理</li>
+<li>finally的处理</li>
 </ol>
 </li>
-<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
-<li>关于java中变量的命名规则<ol>
-<li>不能用预约词和记号</li>
-<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
-<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
-</ol>
-</li>
-<li>关于var变量类型推论的用法：<ol>
-<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
-<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
-</ol>
-</li>
-<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>检查例外（Exception以及继承它的子类（除去RuntimeException））和非检查例外（RuntimeException以及继承它的子类）的区别。检查例外必须要用try catch围起来，或者是必须用throws宣言。而非检查例外就不需要强制，可以自由选择。多个例外throws是用逗号分隔</li>
+<li>Error为了分类，是可以继承Errors类的。常见的例如<code>OutOfMemoryError</code>,<code>NoClassDefFoundError</code>。Error是在程序运行时被抛出的。但是也可以被throw-catch或者throws。</li>
 <li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
-<li>略</li>
-<li>略</li>
-<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
-<li>略</li>
-<li>略</li>
+<li>ArrayList的越界访问时丢出的是<code>IndexOutOfBoundException</code>。数组越界访问异常是<code>ArrayIndexOutOfBoundException</code>。文字越界异常是<code>StringIndexOutOfBoundException</code>。不存在<code>ListIndexOutOfBoundsException</code>这样的例外。</li>
+<li>没有继承或者实现关系の1两个类强制转型时候，运行时会报<code>ClassCastException</code>。强制转型前应该使用<code>instanceof</code>进行判断。</li>
+<li>null是无参照的，因此null使用方法时会报空指针异常。</li>
+<li>因为会发生嵌套引用，用尽stack空间，所以会报StackOverflowError。</li>
 </ol>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第四章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第四章-制御構造-二次"><a href="#第四章-制御構造-二次" class="headerlink" title="第四章 制御構造 (二次)"></a>第四章 制御構造 (二次)</h4><p>間違えた：3，4，13</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>while后面不加括号时，运行的只有一行（行以<code>；</code>去区分）。<code>do while</code>后面不写中括号是，如果do的后面有多行代码，会报编译错误。</p>
+</li>
+<li><p>for的第一个初始化可以初始化多个变量，但是要求必须是同一类型，否则就会报编译错误。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>for中的条件只能有一个，如果写了多个会报编译错误，如果想使用多个条件同时判断是可以使用<code>&amp;&amp;</code>。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>for可以省略条件表达式。</p>
+</li>
+<li><p>除了数组，ArrayList也可以使用扩张for(collection类继承了<code>java.lang.Iterable</code>)。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>while的条件虽然判断失败，但是变量的自增也会完成。</p>
+</li>
+<li><p>如果有双重for循环，break能中断的只有最内层的。</p>
+</li>
+<li><p>continue只是跳过之后的处理，不会中断循环。</p>
+</li>
+<li><p>label可以写入的地方：</p>
+<ol>
+<li><p>code block（用<code>&#123;&#125;</code>括起来的代码）</p>
+</li>
+<li><p>所有的循环或者条件判断（if和switch）</p>
+</li>
+<li><p>式子，例如:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>; </span><br><span class="line">d: x = <span class="number">2</span>; </span><br><span class="line">e: System.out.println(x);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代入</p>
+</li>
+<li><p>return</p>
+</li>
+<li><p>try block</p>
+</li>
+<li><p>throw</p>
+</li>
+</ol>
+</li>
+<li><p>当break和continue配合label使用时一定要确认代码的跳转位置。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -719,8 +1264,56 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第一章)</title>
+    <url>/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<p>所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。</p>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
+<ul>
+<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
+</ul>
+<p>間違えた：3, 7</p>
+<p>間違えし易い：</p>
+<p>分からない：8, </p>
+<ol>
+<li>略</li>
+<li>略</li>
+<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
+<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
+<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
+<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+</ol>
+</li>
+<li><code>java</code>命令的参数指定问题<ol>
+<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
+<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -807,391 +1400,9 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+        <tag>Java</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第六章)</title>
-    <url>/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第六章-インスタンスとメソッド"><a href="#第六章-インスタンスとメソッド" class="headerlink" title="第六章 インスタンスとメソッド"></a>第六章 インスタンスとメソッド</h4><p>間違えた：3, 5, 18, 19, 20, 21, 22, 23, 24, 27, 30</p>
-<p>間違えし易い：</p>
-<p>分からない：</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>在Java中，变量有两种类型，一种是原始类型（プリミティブ型），一种是引用类型。引用型只能有两种（1.保存了向对象的参照link。2.没有保存向对象的参照link）因此像object类型可以代入null，但是打印时打印的是null而不是NULL，更不能把NULL直接代入给object类型的变量。还需要注意文字数为0的空string可以代入给object类型的变量，但是并不等于null，因为null相当于什么也没有指向。</p>
-</li>
-<li><p>JVM的garbage collector（垃圾回收机制）相关的问题。垃圾回收的时机只能由JVM决定。</p>
-<p>对于Java对象来讲，如果说这个对象没有被其他对象所引用该对象就是无用的，此对象就被称为垃圾，其占用的内存也就要被销毁。例如，将null代入给变量的时候，没有被参照的instance就会被销毁。例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">null</span>; <span class="comment">//在这时,原来生成的instace会没有任何参照</span></span><br></pre></td></tr></table></figure>
-
-<p>其他还有，把变量代入新的instance的参照时，旧的instance就会变成没有参照的对象，例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">obj = <span class="keyword">new</span> Object(); <span class="comment">//在这时，obj对instance的参照会被overwrite</span></span><br></pre></td></tr></table></figure>
-
-<p>疑问：第四行的b也被赋予了null，原来b所指向的instance是否也是垃圾回收的对象？？？</p>
-</li>
-<li><p>Java的<code>Static area</code>与<code>Heap area</code>的问题。在读入class时使用的两种内存领域。static修饰的变量和方法放在static领域中，因此不需要创造instance也可以直接使用。当对一个class中的static变量进行值的变更时，会直接影响到那个class的static变量的值。</p>
-</li>
-<li><p>static修饰的方法，只能访问static修饰的变量或者方法。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>返回值接收时只能是同一类型或者是有互换性的值。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>可变长参数的问题。使用可变长参数时必须遵循两个原则：</p>
-<ol>
-<li>对于可变长参数。必须要是相同类型的集合，因为JVM传参时会把他们以数组的形式传进去。</li>
-<li>当参数除了可变长参数之外还有其他参数时，可变长参数一定要放到参数的最后！！</li>
-</ol>
-</li>
-<li><p>略</p>
-</li>
-<li><p>overload的定义。必须要是参数的数量，类型，顺序不同，且返回值类型相同的同名方法才算是overload。</p>
-</li>
-<li><p>当有两个同名函数，且参数的数量相同时，如果代入函数的参数有暧昧的性质时，JVM因为不知道应该选择哪个函数执行会出现编译错误。</p>
-</li>
-<li><p>只有访问修饰词不同的两个函数不能算overload（<code>public string test()&#123;&#125;</code>和<code>private string test()&#123;&#125;</code>就不能算重载）。</p>
-</li>
-<li><p>构造方法也是方法的一种，因此可以对构造方法进行重载。构造方法的三个rule为：</p>
-<ol>
-<li>构造方法必须与类名同名。</li>
-<li>不能有返回值类型</li>
-<li>只能与<code>new</code>关键字同时使用。因此，构造方法的访问关键字没有要求，即使是<code>private</code>也是可以的。例如可以在类中定义一个static的方法，在方法中调用<code>private</code>的构造方法并返回。有时，还会存在一个类有两个访问权限不同，参数不同的构造方法同时存在，可以由外部调用公开的构造方法，再在公开的构造方法中对私有的构造方法进行调用，达到保护内部信息的目的。</li>
-</ol>
-</li>
-<li><p>判断函数是不是构造方法时看有没有写返回值类型（尤其是<code>void</code>！！）。</p>
-</li>
-<li><p><a href="https://blog.csdn.net/sswqzx/article/details/85684980">构造代码块</a>的问题。构造代码块和构造函数同时出现时，要记住构造代码块一定在所有的构造函数之前被执行。</p>
-</li>
-<li><p>static的变量是在instance生成之后才能被初始化的，因此在构造代码块和构造函数中无法对它的值进行初期化。如果想在instance生成前对static的类变量进行初始化处理，可以使用static的构造代码块。例如下面的例子，在instance生成前num的值就是10了。</p>
-<ol>
-<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> num;</span><br><span class="line">  <span class="keyword">static</span>&#123;</span><br><span class="line">    num = <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Sample</span><span class="params">()</span></span>&#123;</span><br><span class="line">    num = <span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>当类中有自己定义的有参数的构造方法时，无参的构造方法就不会被自动引入。（判断同名的方法是不是构造方法是关键！！）</p>
-</li>
-<li><p>当一个构造函数中想使用同一个类的其他构造函数时要使用<code>this（另外构造函数的参数）</code>。</p>
-</li>
-<li><p>24问题的后续，在一个构造方法中使用this叫另外的构造方法时，必须在最开始使用，如果在这个this前有别的处理，编译时候会报错.例如这样就会报错。</p>
-<p>public class This {</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">This</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">this</span>(<span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(String str, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">This</span><span class="params">(<span class="keyword">int</span> num, String str)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;not ok&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
-</li>
-<li><p>关于访问修饰词权限的问题，<a href="https://blog.csdn.net/qq_33642117/article/details/52166121">参考这里</a>。</p>
-</li>
-<li><p>因为要防止其他的类对自己的变量进行出乎自己意料的更改，所以需要将变量private，方法public，又名胶囊化。</p>
-</li>
-<li><p>当函数的参数是原始类型（プリミティブ型）时，函数被呼出时，参数是从呼出的地方被拷贝到函数本身去的。不会对传入的instance造成影响。</p>
-</li>
-<li><p>当函数的参数是object类型时，函数被呼出时，被拷贝的是指向instance的link。因此可能会对原本的instance产生影响。因此，函数的参数是原始类型（プリミティブ型）还是参照类型，非常关键！！！！！</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第十一章)</title>
-    <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第十一章-モジュールシステム"><a href="#第十一章-モジュールシステム" class="headerlink" title="第十一章 モジュールシステム"></a>第十一章 モジュールシステム</h4><p>間違えた：1，4，6</p>
-<p>間違えし易い：</p>
-<p>分からない： 1，2，3，4，5，6，7</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>module系统存在的意义。可以更方便的管理需要公开的包和不想公开的包。<code>module-info.java</code>中记述的内容为以下两条：</p>
-<ol>
-<li>要公开哪个包</li>
-<li>要使用其他的哪个module</li>
-</ol>
-<p>另外需要注意，<code>module-info.java</code>的生成位置，写法为<code>module hello &#123;&#125;</code>。module之后的是module的名字，如果中括号里什么都不写，意味着任何包都不公开，也不利用任何的外部module。为了实现模组化需要将<code>module-info.java</code>与source code一起编译。编译文件的保存地址为mods文件夹。</p>
-<p>编译命令：<code>javac -d classfile的保存目录 需要编译的文件的目录</code>。因此第二参数需要包含<code>module-info.java</code>文件的路径和想要编译的源代码的路径。</p>
-</li>
-<li><p>关于module的运行问题。命令:<code>java --module-path module文件路径 -m 要运行的module class</code>。当想运行有被module包含的class时，需要在module和想要运行的class的完全修饰名之间加上<code>/</code>。<br>例如 ：<code>java --module-path mods -m hello/com.sample.Main</code></p>
-</li>
-<li><p>module的公开设定相关。例如在test module中设置需要公开的包时需要在<code>module-info.java</code>中这样写：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> test&#123;</span><br><span class="line">  <span class="keyword">exports</span> com.test; <span class="comment">//记述需要公开的包。不写的默认为非公开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而如果hello module想要利用test中的方法，需要在自己的<code>module-info.java</code>中做如下记述：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> hello &#123;</span><br><span class="line">  <span class="keyword">requires</span> test; <span class="comment">//使用requires来引入自己想利用的module</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：更改完成后需要重新编译。</p>
-</li>
-<li><p>关于各个module之间的依存关系问题。当module1依存module2，module2依存module3时，module1是无法使用module3中的类的。因为module2中引入的包，是为了module2而引入的，如果想在module1中也能使用的module3的类，需要在module2中做出如下的设置:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> module2 &#123;</span><br><span class="line">  <span class="keyword">requires</span> transitive module3; <span class="comment">//transitive是推移的意思，意味着在module1中也可以使用module3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://juejin.im/entry/6844903501311524871">参考这里</a>。关于java內建的module。都被归纳到java.base module中，这个module即使不用requires声明会被直接代入。</p>
-</li>
-<li><p>关于确认module的命令，想要确认一个module公开了什么包，依存了什么包，不需要<code>module-info.java</code>也可以确认，可以使用这两个命令:</p>
-<ol>
-<li><p>java命令的 <code>--describe-modue</code>选项  例：<code>java --module-path mods --describle-module foo</code> </p>
-</li>
-<li><p>jmod命令的<code>describe</code>模式                例：<code>jmod create -class-path mods/foo foo.jmod</code>生成jmod文件后，使用<code>jmod describe foo.jmod</code>查看</p>
-<p>jdeps命令是用来查询类和方法，jar文件，module的依存关系的命令。（module的包公开信息不能通过此命令查询！！）</p>
-<p>java命令的 <code>--show-module-resolution</code>是用来表示查看程序运行时怎样寻找依存module的option。</p>
-</li>
-</ol>
-</li>
-<li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第十章)</title>
-    <url>/2020/08/15/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第十章-例外処理"><a href="#第十章-例外処理" class="headerlink" title="第十章 例外処理"></a>第十章 例外処理</h4><p>間違えた：3，7，10，11，12，14，17</p>
-<p>間違えし易い：</p>
-<p>分からない： </p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>略</li>
-<li>略</li>
-<li>父类异常一定要写在子类异常的下面1，否则父类异常就会被先捕捉导致子类异常无法到达，出现编译错误。</li>
-<li>略</li>
-<li>finally中的代码一定会执行，即使是catch中有return的情况下。</li>
-<li>finally权限最大，当catch和fianlly中都有return时，finally中的return会被执行。</li>
-<li>不懂？return中返回的是一个变量？finally不能对那个变量进行操作？</li>
-<li>一个try只能对应一个finally，但是可以对应多个catch，并且catch可以省略</li>
-<li>嵌套的try catch文中如果有异常，最接近异常的那层try catch将会捕捉异常。</li>
-<li>try中声明的变量，catch和finally中不能访问。try-with-resources的运行顺序是<ol>
-<li>resource中的释放</li>
-<li>catch中的处理</li>
-<li>finally的处理</li>
-</ol>
-</li>
-<li>检查例外（Exception以及继承它的子类（除去RuntimeException））和非检查例外（RuntimeException以及继承它的子类）的区别。检查例外必须要用try catch围起来，或者是必须用throws宣言。而非检查例外就不需要强制，可以自由选择。多个例外throws是用逗号分隔</li>
-<li>Error为了分类，是可以继承Errors类的。常见的例如<code>OutOfMemoryError</code>,<code>NoClassDefFoundError</code>。Error是在程序运行时被抛出的。但是也可以被throw-catch或者throws。</li>
-<li>略</li>
-<li>ArrayList的越界访问时丢出的是<code>IndexOutOfBoundException</code>。数组越界访问异常是<code>ArrayIndexOutOfBoundException</code>。文字越界异常是<code>StringIndexOutOfBoundException</code>。不存在<code>ListIndexOutOfBoundsException</code>这样的例外。</li>
-<li>没有继承或者实现关系の1两个类强制转型时候，运行时会报<code>ClassCastException</code>。强制转型前应该使用<code>instanceof</code>进行判断。</li>
-<li>null是无参照的，因此null使用方法时会报空指针异常。</li>
-<li>因为会发生嵌套引用，用尽stack空间，所以会报StackOverflowError。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第四章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第四章-制御構造-二次"><a href="#第四章-制御構造-二次" class="headerlink" title="第四章 制御構造 (二次)"></a>第四章 制御構造 (二次)</h4><p>間違えた：3，4，13</p>
-<p>間違えし易い：</p>
-<p>分からない：</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>while后面不加括号时，运行的只有一行（行以<code>；</code>去区分）。<code>do while</code>后面不写中括号是，如果do的后面有多行代码，会报编译错误。</p>
-</li>
-<li><p>for的第一个初始化可以初始化多个变量，但是要求必须是同一类型，否则就会报编译错误。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>for中的条件只能有一个，如果写了多个会报编译错误，如果想使用多个条件同时判断是可以使用<code>&amp;&amp;</code>。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>for可以省略条件表达式。</p>
-</li>
-<li><p>除了数组，ArrayList也可以使用扩张for(collection类继承了<code>java.lang.Iterable</code>)。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>while的条件虽然判断失败，但是变量的自增也会完成。</p>
-</li>
-<li><p>如果有双重for循环，break能中断的只有最内层的。</p>
-</li>
-<li><p>continue只是跳过之后的处理，不会中断循环。</p>
-</li>
-<li><p>label可以写入的地方：</p>
-<ol>
-<li><p>code block（用<code>&#123;&#125;</code>括起来的代码）</p>
-</li>
-<li><p>所有的循环或者条件判断（if和switch）</p>
-</li>
-<li><p>式子，例如:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>; </span><br><span class="line">d: x = <span class="number">2</span>; </span><br><span class="line">e: System.out.println(x);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>代入</p>
-</li>
-<li><p>return</p>
-</li>
-<li><p>try block</p>
-</li>
-<li><p>throw</p>
-</li>
-</ol>
-</li>
-<li><p>当break和continue配合label使用时一定要确认代码的跳转位置。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>资格考试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我们都爱cheese！！🧀</title>
-    <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
-    <content><![CDATA[<blockquote>
-<p>记录一下我吃过的cheese（定期更新）</p>
-</blockquote>
-<p>最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。</p>
-<a id="more"></a>
-
-<br>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4k9egsqmg30dw08c163.gif" alt="It&#39;s an all-consuming love_"></p>
-<p>如题，我们都爱cheese！！开一个post记录一下最近吃的奶酪们🧀~~</p>
-<br>
-
-<p>先来一款黑暗的，蓝纹奶酪，貌似意大利语中“piccante”是辛辣的意思。这款不适合喝酒，味道太辛辣，适合小口小口的吃。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ifzccmaj30u00u07wj.jpg" alt="piccante" style="zoom:33%;" />
-
-<br>
-
-<p>这款是我目前吃过最好吃的，有一点像布里，有一点像卡芒贝尔。但是外面的白色霉菌质感还是不太一样，不太清楚学名叫什么，口感非常棒，适合搭配红酒。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ieyi57ej30u00u0kjo.jpg" alt="beili" style="zoom: 33%;" />
-
-<br>
-
-<p>德国经典品牌Bergader的蓝纹奶酪，不用多说，喜欢蓝纹的可以一试，性价比超高。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ijvdt1yj30u00u0npf.jpg" style="zoom: 33%;" />
-
-<br>
-
-<p>日本品牌雪印的卡芒贝尔奶酪，卡芒贝尔也算是我非常喜欢的一个品类。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4im3pur6j30u00u01l0.jpg" alt="camembert" style="zoom:33%;" />
-
-<br>
-
-<p>又一款布里，产自法国，白色霉菌包裹的内部层次感非常好。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4inyo45tj30u00u04qs.jpg" alt="brie" style="zoom:33%;" />
-
-<br>
-
-<p>日本超市随处可见的轻食奶酪，味道很好，尤其左边的这款马苏里拉奶酪，嫩的不行。性价比超高。基本上都在150日元（9RMB）以内。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ipcq8rqj30u00u0b2c.jpg" alt="little" style="zoom:33%;" />
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>美食</category>
-      </categories>
-      <tags>
-        <tag>美食</tag>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>生活杂记</title>
-    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>2020已经过去一半了。。。</p>
-</blockquote>
-<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
-<a id="more"></a>
-
-<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
-<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
-<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
-<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
-<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
-<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
-<p>​                                                                                    《爱尔兰人》</p>
-<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
-<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
-<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
-<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>myfirstblog</title>
-    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
-]]></content>
   </entry>
 </search>

@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Sliver学习笔记(第三章) |  Joe&#39;s blog
+    Java SE 11 Gold学习笔记(第二章) |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11sliver资格考试相关(第三章)" class="article article-type-post" itemscope
+  <article id="post-JavaSE11Gold资格考试相关(第三章)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -53,7 +53,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Sliver学习笔记(第三章)
+  Java SE 11 Gold学习笔记(第二章)
 </h1>
  
 
@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-07-18T09:00:00.000Z" itemprop="datePublished">2020-07-18</time>
+      <a href="/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-11-03T02:29:00.000Z" itemprop="datePublished">2020-11-03</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">750</span>
+            <span class="post-count">732</span>
         </span>
     </span>
 
@@ -112,73 +112,159 @@
 
       
       <blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
+<p>Java SE 11 Gold资格考试相关</p>
 </blockquote>
 <a id="more"></a>
 
 
 
-<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
-<p>間違えし易い：3, 19</p>
-<p>分からない：2</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>略</p>
-</li>
-<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
-</li>
-<li><p>类型转换问题。</p>
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第二章-コレクションとジェネリクス"><a href="#第二章-コレクションとジェネリクス" class="headerlink" title="第二章 コレクションとジェネリクス"></a>第二章 コレクションとジェネリクス</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
 <ol>
-<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
-<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
-<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
+<li><p>A</p>
+</li>
+<li><p>E      </p>
+</li>
+<li><p>D        </p>
+</li>
+<li><p>AE❌    CE⭕️</p>
+<ol>
+<li>需要声明变量类型。</li>
+<li>等号左右必须类型一致，即便是有多态性关系的类型也不行。java7以后，可以省略等号右边声明。</li>
+<li>变量类型不能使用基本类型</li>
+<li>右边是匿名类的情况下，不能省略变量类型。</li>
 </ol>
 </li>
-<li><p>略</p>
-</li>
-<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
-</li>
-<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
-</li>
-<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
-</li>
-<li><p>java的同一性和同值性的判断问题。</p>
-</li>
-<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
-</li>
-<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
-</li>
-<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
-</li>
-<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
-</li>
-<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
-</li>
-<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
+<li><p>FG❌    AG⭕️</p>
 <ol>
-<li>int型以下的整数型和他们的包装类。</li>
-<li>文字和文字列。</li>
-<li>列举型（枚举型）。</li>
+<li>不能使用instanceof T</li>
+<li>不能使用T.class这样来取得泛型的类</li>
+<li>泛型变量声明不能带static关键字</li>
+<li>不能使用泛型要素生成变量或者数组。</li>
 </ol>
 </li>
-<li><p>switch的case值需满足以下三个条件：</p>
+<li><p>B❌   A ⭕️</p>
 <ol>
-<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
-<li>是定数，在编译时能确定值。</li>
-<li>不能为null。</li>
+<li>generics method的声明方法为：<code>&lt;型parameter&gt; 返回值类型 方法名（参数list）&#123;方法体&#125;</code></li>
+<li>注意，在generics method中声明的泛型变量在方法以外不能被使用。</li>
 </ol>
 </li>
-<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
+<li><p>A❌   C ⭕️</p>
+<ol>
+<li><p>泛型的Type Bound 写法为<code>&lt;型变量 extends 型&gt;</code>, 即使是实现接口是也必须使用extends关键字。</p>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics03</span>&lt;<span class="title">T</span>, <span class="title">U</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Integer&gt; sample = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Number&gt; sample1 = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;A, C&gt; sample2 = <span class="keyword">new</span> Generics03&lt;&gt; ();<span class="comment">//A是借口，C是借口的实现类。实现接口的关系也可以通过extends     来体现。</span></span><br><span class="line"><span class="comment">//    Generics03&lt;Number, String&gt; sample2= new Generics03&lt;&gt; ();  没有继承关系因此编译错误。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>ABD</p>
+<ol>
+<li><p>在声明泛型变量时可以使用<code>？</code>来表示不特定的类型(&lt;?&gt;相等于&lt;? extends Object&gt;)</p>
+<ol>
+<li><p>例如<code>Generics03&lt;?, ?&gt; sample3 = new Generics03&lt;&gt;();</code></p>
+</li>
+<li><p>可以使用两种方法来声明类型的境界值：<code>&lt;? extends T&gt;</code>表示类型的上限是T类型, <code>&lt;? super T&gt;</code>表示类型的下限是T类型</p>
+</li>
+<li><p>?不能使用在类声明时和instance声明时（变量声明的等号右边）如下会报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Generics03&lt;?, ?&gt; sample4 = <span class="keyword">new</span> Generics03&lt;?, ?&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>D❌   A ⭕️</p>
+<ol>
+<li>没有对泛型进行parameter化。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>AD </p>
+<ol>
+<li><p>LinkedList和ArrayList的对比</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>LinkedList</th>
+<th>ArrayList</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>随机访问速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="12">
+<li><p>C</p>
+</li>
+<li><p>E❌   C⭕️</p>
+<ol>
+<li>(Arrays.asList生成的list是add不可以但是可以set，并且会影响到原来的数组)</li>
+</ol>
+</li>
+<li><p>D</p>
+</li>
+<li><p>A❌   B ⭕️</p>
+<ol>
+<li>deque又名双边队列，支持队列两侧的添加和删除。</li>
+<li>不支持用index进行要素的访问。</li>
+</ol>
+</li>
+<li><p>AC</p>
+<ol>
+<li>stack是线程安全的。</li>
+<li><code>ArrayDeque&lt;E&gt;</code>不能容纳null要素</li>
+<li>FIFO的时候比ArrayDeque比LinkedList快，FILO的时候比stack快。</li>
+</ol>
+</li>
+<li><p>D❌   C ⭕️</p>
+<ol>
+<li>Set类似与数学的集合，不允许重复要素存在。可以存储null但是只能存1个。</li>
+</ol>
+</li>
+<li><p>BC</p>
+<ol>
+<li>HashSet是使用哈希表进行要素管理</li>
+<li>TreeSet是根据tree构造进行的实现，使得set中的要素带有顺序。</li>
+</ol>
+</li>
+<li><p>D❌   B ⭕️</p>
+<ol>
+<li>唯一的key对应的value</li>
+<li><code>Map&lt;k, v&gt;</code>不是<code>Collection&lt;E&gt;</code>的子接口！！</li>
+</ol>
+</li>
+<li><p>AC</p>
+</li>
+<li><p>A❌   C ⭕️</p>
+<ol>
+<li>从map中取出的是Set类型的Map.Entry的集合</li>
+</ol>
+</li>
+<li><p>CE</p>
+</li>
+<li><p>B❌   E ⭕️ </p>
+<ol>
+<li>没实现能比较接口的类，在存入TreeSet这种自动比较的集合时会有例外</li>
+</ol>
+</li>
+<li><p>B</p>
 </li>
 </ol>
 
@@ -245,14 +331,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Sliver/" rel="tag">Java Sliver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/" rel="tag">资格考试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Gold/" rel="tag">Java Gold</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/" rel="tag">资格考试</a></li></ul>
 
 
     </footer>
@@ -263,19 +349,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java SE 11 Sliver学习笔记(第四章)
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Sliver学习笔记(第二章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第二章)</div>
       </a>
     
   </nav>
