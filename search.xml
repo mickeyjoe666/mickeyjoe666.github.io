@@ -107,8 +107,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Gold学习笔记(第二章)</title>
-    <url>/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
+    <title>Java SE 11 Gold学习笔记(第三章)</title>
+    <url>/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
 <p>Java SE 11 Gold资格考试相关</p>
 </blockquote>
@@ -118,151 +118,70 @@
 
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
 <ul>
-<li><h4 id="第二章-コレクションとジェネリクス"><a href="#第二章-コレクションとジェネリクス" class="headerlink" title="第二章 コレクションとジェネリクス"></a>第二章 コレクションとジェネリクス</h4></li>
+<li><h4 id="第三章-ラムダ式と組込み関数型インタフェース"><a href="#第三章-ラムダ式と組込み関数型インタフェース" class="headerlink" title="第三章 ラムダ式と組込み関数型インタフェース"></a>第三章 ラムダ式と組込み関数型インタフェース</h4></li>
 </ul>
 <p>間違えた：</p>
 <p>間違えし易い：</p>
 <p>分からない：</p>
 <ol>
-<li><p>A</p>
-</li>
-<li><p>E      </p>
-</li>
-<li><p>D        </p>
-</li>
-<li><p>AE❌    CE⭕️</p>
-<ol>
-<li>需要声明变量类型。</li>
-<li>等号左右必须类型一致，即便是有多态性关系的类型也不行。java7以后，可以省略等号右边声明。</li>
-<li>变量类型不能使用基本类型</li>
-<li>右边是匿名类的情况下，不能省略变量类型。</li>
+<li>BCF</li>
+<li>C ❌    B⭕️  <ol>
+<li>只定义一个抽象方法的接口就称为“函数型接口”。AC选项中的function关键字和接口是不存在的。这个抽象方法被称作Single Abstart Method（SAM）。</li>
 </ol>
 </li>
-<li><p>FG❌    AG⭕️</p>
-<ol>
-<li>不能使用instanceof T</li>
-<li>不能使用T.class这样来取得泛型的类</li>
-<li>泛型变量声明不能带static关键字</li>
-<li>不能使用泛型要素生成变量或者数组。</li>
+<li>BC❌ DE⭕️<ol>
+<li>接口中的default方法和static方法不是抽象方法，因此和SAM不干涉。只拥有一个default方法的接口不是函数型接口。</li>
 </ol>
 </li>
-<li><p>B❌   A ⭕️</p>
-<ol>
-<li>generics method的声明方法为：<code>&lt;型parameter&gt; 返回值类型 方法名（参数list）&#123;方法体&#125;</code></li>
-<li>注意，在generics method中声明的泛型变量在方法以外不能被使用。</li>
+<li>A❌     D⭕️<ol>
+<li>java8中追加的@FunctionalInterface注解可以用来判断接口是不是满足函数型接口，即是不是只有一个抽象方法，使用此注解可以避免向被lamda用的前提的设计的接口中追加抽象方法引起的失误。</li>
 </ol>
 </li>
-<li><p>A❌   C ⭕️</p>
-<ol>
-<li><p>泛型的Type Bound 写法为<code>&lt;型变量 extends 型&gt;</code>, 即使是实现接口是也必须使用extends关键字。</p>
-<p>例子</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics03</span>&lt;<span class="title">T</span>, <span class="title">U</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Integer&gt; sample = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;Number, Number&gt; sample1 = <span class="keyword">new</span> Generics03&lt;&gt; ();</span><br><span class="line"></span><br><span class="line">    Generics03&lt;A, C&gt; sample2 = <span class="keyword">new</span> Generics03&lt;&gt; ();<span class="comment">//A是借口，C是借口的实现类。实现接口的关系也可以通过extends     来体现。</span></span><br><span class="line"><span class="comment">//    Generics03&lt;Number, String&gt; sample2= new Generics03&lt;&gt; ();  没有继承关系因此编译错误。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>B</li>
+<li>C java的lamda式看上去貌似是将函数代入了参数的位置，实际上代入的是接口的实现object。</li>
+<li>D❌    B⭕️<ol>
+<li>lamda式中接受参数的部分，可以省略参数的类型，并且当参数只有一个时，可以省略括号（），但是当省略括号的时候，是不能写参数的类型的。</li>
 </ol>
 </li>
-<li><p>ABD</p>
-<ol>
-<li><p>在声明泛型变量时可以使用<code>？</code>来表示不特定的类型(&lt;?&gt;相等于&lt;? extends Object&gt;)</p>
-<ol>
-<li><p>例如<code>Generics03&lt;?, ?&gt; sample3 = new Generics03&lt;&gt;();</code></p>
-</li>
-<li><p>可以使用两种方法来声明类型的境界值：<code>&lt;? extends T&gt;</code>表示类型的上限是T类型, <code>&lt;? super T&gt;</code>表示类型的下限是T类型</p>
-</li>
-<li><p>?不能使用在类声明时和instance声明时（变量声明的等号右边）如下会报错</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Generics03&lt;?, ?&gt; sample4 = <span class="keyword">new</span> Generics03&lt;?, ?&gt;();</span><br></pre></td></tr></table></figure>
-</li>
+<li>CD<ol>
+<li>因为有两个参数，所以无法省略括号。</li>
 </ol>
 </li>
+<li>BC❌ BD⭕️<ol>
+<li>lamda式中返回的地方，当省略{}括号时，一定不能写return，相反，当使用{}的时候，一定要写return关键字。</li>
 </ol>
 </li>
-<li><p>D❌   A ⭕️</p>
-<ol>
-<li>没有对泛型进行parameter化。</li>
+<li>ACEF</li>
+<li>A</li>
+<li>D</li>
+<li>A❌  B⭕️<ol>
+<li>Consumer中的抽象方法是void accept(T t)</li>
 </ol>
 </li>
-<li><p>C</p>
+<li>A❌  C⭕️<ol>
+<li>Function中的抽象方法是R apply(T t)</li>
+</ol>
 </li>
-<li><p>AD </p>
-<ol>
-<li><p>LinkedList和ArrayList的对比</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>LinkedList</th>
-<th>ArrayList</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>插入速度</td>
-<td>快</td>
-<td>慢</td>
-</tr>
-<tr>
-<td>随机访问速度</td>
-<td>慢</td>
-<td>快</td>
-</tr>
-</tbody></table>
+<li>A❌  D⭕️<ol>
+<li>BiFunction&lt;T, U, R&gt;的前两个型是参数类型，最后一个R是返回值类型。</li>
+</ol>
 </li>
+<li>D❌  B⭕️<ol>
+<li><code>UnaryOperator&lt;T&gt;</code>接口是，提供函数作用为：参数为T型的参数处理后返回T类型的值。这个接口继承了<code>Function&lt;T, T&gt;</code>。</li>
+</ol>
+</li>
+<li>A❌  B⭕️<ol>
+<li>提供接受两个相同类型参数，返回相同类型的方法的接口是<code>BinaryOperator&lt;T&gt;</code>,该接口继承了<code>BiFunction&lt;T, T, T&gt;</code>。</li>
+</ol>
+</li>
+<li>B<ol>
+<li>method参照的条件是</li>
+<li>method参照的几种方式<ol>
+<li>类名::方法名（构造函数参照也可以使用，例如<code>Integer::new</code>）</li>
+<li>instance变量名::方法名</li>
 </ol>
 </li>
 </ol>
-<ol start="12">
-<li><p>C</p>
-</li>
-<li><p>E❌   C⭕️</p>
-<ol>
-<li>(Arrays.asList生成的list是add不可以但是可以set，并且会影响到原来的数组)</li>
-</ol>
-</li>
-<li><p>D</p>
-</li>
-<li><p>A❌   B ⭕️</p>
-<ol>
-<li>deque又名双边队列，支持队列两侧的添加和删除。</li>
-<li>不支持用index进行要素的访问。</li>
-</ol>
-</li>
-<li><p>AC</p>
-<ol>
-<li>stack是线程安全的。</li>
-<li><code>ArrayDeque&lt;E&gt;</code>不能容纳null要素</li>
-<li>FIFO的时候比ArrayDeque比LinkedList快，FILO的时候比stack快。</li>
-</ol>
-</li>
-<li><p>D❌   C ⭕️</p>
-<ol>
-<li>Set类似与数学的集合，不允许重复要素存在。可以存储null但是只能存1个。</li>
-</ol>
-</li>
-<li><p>BC</p>
-<ol>
-<li>HashSet是使用哈希表进行要素管理</li>
-<li>TreeSet是根据tree构造进行的实现，使得set中的要素带有顺序。</li>
-</ol>
-</li>
-<li><p>D❌   B ⭕️</p>
-<ol>
-<li>唯一的key对应的value</li>
-<li><code>Map&lt;k, v&gt;</code>不是<code>Collection&lt;E&gt;</code>的子接口！！</li>
-</ol>
-</li>
-<li><p>AC</p>
-</li>
-<li><p>A❌   C ⭕️</p>
-<ol>
-<li>从map中取出的是Set类型的Map.Entry的集合</li>
-</ol>
-</li>
-<li><p>CE</p>
-</li>
-<li><p>B❌   E ⭕️ </p>
-<ol>
-<li>没实现能比较接口的类，在存入TreeSet这种自动比较的集合时会有例外</li>
-</ol>
-</li>
-<li><p>B</p>
 </li>
 </ol>
 ]]></content>
