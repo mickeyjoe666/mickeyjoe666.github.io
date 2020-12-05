@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Gold学习笔记(第三章) |  Joe&#39;s blog
+    Java SE 11 Gold学习笔记(第四章) |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11Gold资格考试相关(第三章)" class="article article-type-post" itemscope
+  <article id="post-JavaSE11Gold资格考试相关(第四章)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -53,7 +53,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Gold学习笔记(第三章)
+  Java SE 11 Gold学习笔记(第四章)
 </h1>
  
 
@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-11-09T13:45:50.000Z" itemprop="datePublished">2020-11-09</time>
+      <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-12-05T10:07:50.000Z" itemprop="datePublished">2020-12-05</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">538</span>
+            <span class="post-count">925</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -120,70 +120,133 @@
 
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
 <ul>
-<li><h4 id="第三章-ラムダ式と組込み関数型インタフェース"><a href="#第三章-ラムダ式と組込み関数型インタフェース" class="headerlink" title="第三章 ラムダ式と組込み関数型インタフェース"></a>第三章 ラムダ式と組込み関数型インタフェース</h4></li>
+<li><h4 id="第四章-Stream-API"><a href="#第四章-Stream-API" class="headerlink" title="第四章　Stream API"></a>第四章　Stream API</h4></li>
 </ul>
 <p>間違えた：</p>
 <p>間違えし易い：</p>
 <p>分からない：</p>
 <ol>
-<li>BCF</li>
-<li>C ❌    B⭕️  <ol>
-<li>只定义一个抽象方法的接口就称为“函数型接口”。AC选项中的function关键字和接口是不存在的。这个抽象方法被称作Single Abstart Method（SAM）。</li>
+<li><p>CD</p>
+</li>
+<li><p>AC ❌   ⭕️CD </p>
+<ol>
+<li>中端操作的实际进行是在终端操作被实行的时候，这也可称为迟延评价。</li>
+<li>终端操作是对stream最后的行为。因此经过终端操作处理的最后不能在被进行stream处理。</li>
+<li>中端操作不是必须的，但终端操作是一定要有的。</li>
+<li>中端操作一定会返回Stream object，但终端操作不一定。</li>
 </ol>
 </li>
-<li>BC❌ DE⭕️<ol>
-<li>接口中的default方法和static方法不是抽象方法，因此和SAM不干涉。只拥有一个default方法的接口不是函数型接口。</li>
+<li><p>AC</p>
+</li>
+<li><p>D❌   ⭕️A</p>
+<ol>
+<li>Collection接口中追加了defalut方法stream()，将包含collection object相同类型的stream object生成返回</li>
 </ol>
 </li>
-<li>A❌     D⭕️<ol>
-<li>java8中追加的@FunctionalInterface注解可以用来判断接口是不是满足函数型接口，即是不是只有一个抽象方法，使用此注解可以避免向被lamda用的前提的设计的接口中追加抽象方法引起的失误。</li>
-</ol>
+<li><p>D</p>
 </li>
-<li>B</li>
-<li>C java的lamda式看上去貌似是将函数代入了参数的位置，实际上代入的是接口的实现object。</li>
-<li>D❌    B⭕️<ol>
-<li>lamda式中接受参数的部分，可以省略参数的类型，并且当参数只有一个时，可以省略括号（），但是当省略括号的时候，是不能写参数的类型的。</li>
-</ol>
+<li><p>A❌   ⭕️D</p>
+<ol>
+<li><p>forEach是终端操作，不能对同一个Stream使用两遍。会丢出IllegalStateException</p>
 </li>
-<li>CD<ol>
-<li>因为有两个参数，所以无法省略括号。</li>
-</ol>
-</li>
-<li>BC❌ BD⭕️<ol>
-<li>lamda式中返回的地方，当省略{}括号时，一定不能写return，相反，当使用{}的时候，一定要写return关键字。</li>
-</ol>
-</li>
-<li>ACEF</li>
-<li>A</li>
-<li>D</li>
-<li>A❌  B⭕️<ol>
-<li>Consumer中的抽象方法是void accept(T t)</li>
-</ol>
-</li>
-<li>A❌  C⭕️<ol>
-<li>Function中的抽象方法是R apply(T t)</li>
-</ol>
-</li>
-<li>A❌  D⭕️<ol>
-<li>BiFunction&lt;T, U, R&gt;的前两个型是参数类型，最后一个R是返回值类型。</li>
-</ol>
-</li>
-<li>D❌  B⭕️<ol>
-<li><code>UnaryOperator&lt;T&gt;</code>接口是，提供函数作用为：参数为T型的参数处理后返回T类型的值。这个接口继承了<code>Function&lt;T, T&gt;</code>。</li>
-</ol>
-</li>
-<li>A❌  B⭕️<ol>
-<li>提供接受两个相同类型参数，返回相同类型的方法的接口是<code>BinaryOperator&lt;T&gt;</code>,该接口继承了<code>BiFunction&lt;T, T, T&gt;</code>。</li>
-</ol>
-</li>
-<li>B<ol>
-<li>method参照的条件是</li>
-<li>method参照的几种方式<ol>
-<li>类名::方法名（构造函数参照也可以使用，例如<code>Integer::new</code>）</li>
-<li>instance变量名::方法名</li>
-</ol>
+<li><p>sample</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">    list.forEach(System.out::println);</span><br><span class="line">    list.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    Stream&lt;String&gt; stream = list.stream();</span><br><span class="line"></span><br><span class="line">    stream.forEach(System.out::println);</span><br><span class="line">    stream.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*output</span></span><br><span class="line"><span class="comment">A</span></span><br><span class="line"><span class="comment">B</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line"><span class="comment">A</span></span><br><span class="line"><span class="comment">B</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line"><span class="comment">A</span></span><br><span class="line"><span class="comment">B</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line"><span class="comment">Exception in thread &quot;main&quot; java.lang.IllegalStateException: stream has already been operated upon or closed</span></span><br><span class="line"><span class="comment">    at java.base/java.util.stream.AbstractPipeline.sourceStageSpliterator(AbstractPipeline.java:279)</span></span><br><span class="line"><span class="comment">    at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)</span></span><br><span class="line"><span class="comment">    at chapter04.ForeachMethod.main(ForeachMethod.java:17)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+</li>
+<li><p>D</p>
+<ol>
+<li><p>sample</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer, String&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">hashMap.put(<span class="number">1</span>, <span class="string">&quot;A&quot;</span>);</span><br><span class="line">hashMap.put(<span class="number">2</span>, <span class="string">&quot;B&quot;</span>);</span><br><span class="line">hashMap.put(<span class="number">3</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(hashMap);</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">hashMap.forEach((k, v) -&gt; System.out.println(k + v));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li><p>sample</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Array类的几种stream方法</span></span><br><span class="line"><span class="keyword">int</span>[] intArray = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">double</span>[] doubleArray = &#123;<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>&#125;;</span><br><span class="line"><span class="keyword">long</span>[] longArray = &#123;<span class="number">1L</span>, <span class="number">2L</span>, <span class="number">3L</span>&#125;;</span><br><span class="line">Object[] objectArray = &#123;<span class="keyword">new</span> HashMap&lt;&gt;(), <span class="keyword">new</span> ArrayList(), <span class="keyword">new</span> Arrays[]&#123;&#125;&#125;;</span><br><span class="line"></span><br><span class="line">IntStream intStream = Arrays.stream(intArray);</span><br><span class="line">DoubleStream doubleStream = Arrays.stream(doubleArray);</span><br><span class="line">LongStream longStream = Arrays.stream(longArray);</span><br><span class="line">Stream&lt;Object&gt; objectStream = Arrays.stream(objectArray);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>AF</p>
+<ol>
+<li><p>sample</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntStream.range(<span class="number">1</span>, <span class="number">5</span>).forEach(System.out::print); <span class="comment">//1234</span></span><br><span class="line">IntStream.rangeClosed(<span class="number">1</span>, <span class="number">5</span>).forEach(System.out::print);<span class="comment">//12345</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>B Stream.of( )方法的使用。</p>
+</li>
+<li><p>B❌   ⭕️BD</p>
+<ol>
+<li>从text file中读取文字列到Stream object的方法有两种，java.io.BufferedReader类和java.nio.file.Files类的lines方法，但是参数不同。</li>
+</ol>
+</li>
+<li><p>D stream类的常用方法，filter过滤方法。</p>
+</li>
+<li><p>A</p>
+</li>
+<li><p>A❌   ⭕️C</p>
+<ol>
+<li>Stream的排序函数是sorted，不含参数的是按自然顺序排序，含参数的是<code>Stream&lt;T&gt; sorted(Comparator&lt;? super T&gt; )c</code></li>
+</ol>
+</li>
+<li><p>D❌   ⭕️C</p>
+<ol>
+<li>TreeSet生成时，构造函数的参数应有比较器的object，这道题考的是Comparable的comparing方法，参数应该是生成返回用来sort的key的Function的实现object。因此，get方法符合要求。</li>
+</ol>
+</li>
+<li><p>A❌   C   这道题是关于stream内部的运行顺序，每个对象的处理并不是并行的，banana结束过后才处理apple。peek方法可用在stream中端处理时debug</p>
+<ol>
+<li><p>sample</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;apple&quot;</span>, <span class="string">&quot;orange&quot;</span>)</span><br><span class="line">        .filter(e -&gt; e.length() &gt; <span class="number">5</span>)</span><br><span class="line">        .peek(e -&gt; System.out.print(e + <span class="string">&quot; &quot;</span>))</span><br><span class="line">        .map(String::toUpperCase)</span><br><span class="line">        .peek(e -&gt; System.out.print(e + <span class="string">&quot; &quot;</span>));</span><br><span class="line"></span><br><span class="line">System.out.print(<span class="string">&quot;OK&quot;</span>);</span><br><span class="line"><span class="keyword">long</span> count = stream.count();</span><br><span class="line"></span><br><span class="line"><span class="comment">//result</span></span><br><span class="line"><span class="comment">//OKbanana BANANA orange ORANGE </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>ABC</p>
+</li>
+<li><p>B allMatch方法相当于&amp;&amp;运算</p>
+</li>
+<li><p>D</p>
+<ol>
+<li>flatMap是将stream平坦化的方法。</li>
+</ol>
+</li>
+<li><p>F❌   D</p>
+<ol>
+<li>map接口新追加的merge方法有三个参数（key, value, BiFunction），第三个函数是当指定的键在map中存在，并且对应的value不为null时，才会被使用。</li>
+<li>当key不存在时，直接将指定的键值对插入。</li>
+</ol>
+</li>
+<li><p>C❌   B</p>
+<ol>
+<li>将数据的集合变为一个的处理，在java中叫做リダクション，比如比较常见的reduction操作有count,max,min等等</li>
+<li>减少操作是终端操作。</li>
+</ol>
+</li>
+<li><p>D❌   ⭕️E</p>
+<ol>
+<li>reduce方法是可以通过开发者定义的reduction操作。reduce有3个重载。</li>
+</ol>
+</li>
+<li><p>A   实现可变reduction操作的object叫做收集器（collector）Stream类的collect有以下两种</p>
+<ol>
+<li><p>collect方法1</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R, A&gt; <span class="function">R <span class="title">collect</span><span class="params">(Collector&lt;? <span class="keyword">super</span> T, A, R&gt; collector)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>collect方法2</p>
+</li>
+<li><pre><code class="java">&lt;R&gt; <span class="function">R <span class="title">collect</span><span class="params">(Supplier&lt;R&gt; supplier,</span></span>
+<span class="function"><span class="params">              BiConsumer&lt;R, ? <span class="keyword">super</span> T&gt; accumulator,</span></span>
+<span class="function"><span class="params">              BiConsumer&lt;R, R&gt; combiner)</span></span>;</code></pre>
+</li>
+<li><p>Collectors类提供了很多可变的reduction的static方法。 </p>
+</li>
+</ol>
+</li>
+<li><p>D</p>
 </li>
 </ol>
 
@@ -250,7 +313,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,19 +331,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java SE 11 Gold学习笔记(第四章)
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/11/03/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Gold学习笔记(第二章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第三章)</div>
       </a>
     
   </nav>
