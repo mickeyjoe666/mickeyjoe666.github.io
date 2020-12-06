@@ -1475,4 +1475,45 @@
         <tag>生活</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第五章)</title>
+    <url>/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第五章-例外とアサーション"><a href="#第五章-例外とアサーション" class="headerlink" title="第五章　例外とアサーション"></a>第五章　例外とアサーション</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li>B </li>
+<li>C</li>
+<li>B</li>
+<li>B❌⭕️ D</li>
+<li>B❌⭕️A</li>
+<li>A</li>
+<li>B</li>
+<li>A</li>
+<li>B❌⭕️C</li>
+<li>B</li>
+<li>D❌⭕️A</li>
+<li>B❌⭕️C</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
 </search>
