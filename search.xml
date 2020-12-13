@@ -364,6 +364,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Gold学习笔记(第五章)</title>
+    <url>/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第五章-例外とアサーション"><a href="#第五章-例外とアサーション" class="headerlink" title="第五章　例外とアサーション"></a>第五章　例外とアサーション</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li>B </li>
+<li>C 捕捉例外后再次抛出新的例外的时候，可以使用之前捕捉的例外进行新的例外的构建。</li>
+<li>B</li>
+<li>B❌⭕️ D  复数个例外同时catch的时候是catch（例外型1|例外型2|例外型3 … 变量）变量只能有一个！！<ol>
+<li>也可以多个这种复数catch同时用（应该catch的顺序从左到右）</li>
+</ol>
+</li>
+<li>B❌⭕️A<ol>
+<li>多重捕捉的不能是有继承关系的例外，否则会报编译错误。</li>
+<li>多重捕捉的变数是自动声明为final的，因此不能在之后声明相同的变量。</li>
+</ol>
+</li>
+<li>A</li>
+<li>B<ol>
+<li>try-with-resource是可以记述多个open的式子，用；隔开。</li>
+</ol>
+</li>
+<li>A<ol>
+<li>try-with-resource可以不记载catch和finally（第一目的不是例外处理，而是关闭resource）</li>
+</ol>
+</li>
+<li>B❌⭕️C<ol>
+<li>try-with-resource的参数必须是继承了java.lang.AutoCloseable接口的，或者是子类。可以重写void close() throws Exception方法。</li>
+</ol>
+</li>
+<li>B<ol>
+<li>assert （条件式）,当条件式为false时，会抛出java.lang.AssertionError</li>
+<li>assert和条件式之间，当条件式被括号围起来是，有没有空格都ok</li>
+</ol>
+</li>
+<li>D❌⭕️A<ol>
+<li>AssertionError类的参数可以这样传递：<code>assert 条件式：参数</code></li>
+</ol>
+</li>
+<li>B❌⭕️C<ol>
+<li>java -ea option 全称（enableassertions）开启default无效的断言功能</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Gold学习笔记(第四章)</title>
     <url>/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -769,67 +836,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第二章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
-<p>間違えし易い：2, 5, 19</p>
-<p>分からない：2, 3</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>java压根没有bool这个数据类型，审题失败。</li>
-<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
-<li>下划线出现的规则：<ol>
-<li>不能在Literal的先头或者末尾出现</li>
-<li>不能在记号的前后出现</li>
-</ol>
-</li>
-<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
-<li>关于java中变量的命名规则<ol>
-<li>不能用预约词和记号</li>
-<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
-<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
-</ol>
-</li>
-<li>关于var变量类型推论的用法：<ol>
-<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
-<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
-</ol>
-</li>
-<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
-<li>略</li>
-<li>略</li>
-<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
-<li>略</li>
-<li>略</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第九章)</title>
     <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -988,6 +994,67 @@
 </li>
 <li><p>可以使用数组的clone方法生成原数组的instance相同的另一个instance。如果是二维数组，一维的instance虽然不同，但是指向的二维的instance是相同的。</p>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
+<p>間違えし易い：2, 5, 19</p>
+<p>分からない：2, 3</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>java压根没有bool这个数据类型，审题失败。</li>
+<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
+<li>下划线出现的规则：<ol>
+<li>不能在Literal的先头或者末尾出现</li>
+<li>不能在记号的前后出现</li>
+</ol>
+</li>
+<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
+<li>关于java中变量的命名规则<ol>
+<li>不能用预约词和记号</li>
+<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
+<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
+</ol>
+</li>
+<li>关于var变量类型推论的用法：<ol>
+<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
+</ol>
+</li>
+<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
+<li>略</li>
+<li>略</li>
+<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
+<li>略</li>
+<li>略</li>
 </ol>
 ]]></content>
       <categories>
@@ -1473,47 +1540,6 @@
       <tags>
         <tag>随笔</tag>
         <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Gold学习笔记(第五章)</title>
-    <url>/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 Gold资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
-<ul>
-<li><h4 id="第五章-例外とアサーション"><a href="#第五章-例外とアサーション" class="headerlink" title="第五章　例外とアサーション"></a>第五章　例外とアサーション</h4></li>
-</ul>
-<p>間違えた：</p>
-<p>間違えし易い：</p>
-<p>分からない：</p>
-<ol>
-<li>B </li>
-<li>C</li>
-<li>B</li>
-<li>B❌⭕️ D</li>
-<li>B❌⭕️A</li>
-<li>A</li>
-<li>B</li>
-<li>A</li>
-<li>B❌⭕️C</li>
-<li>B</li>
-<li>D❌⭕️A</li>
-<li>B❌⭕️C</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Gold</tag>
       </tags>
   </entry>
 </search>

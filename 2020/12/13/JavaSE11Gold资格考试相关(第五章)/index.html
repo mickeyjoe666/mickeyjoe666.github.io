@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-12-05T10:07:50.000Z" itemprop="datePublished">2020-12-05</time>
+      <a href="/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-12-13T07:10:15.000Z" itemprop="datePublished">2020-12-13</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">47</span>
+            <span class="post-count">339</span>
         </span>
     </span>
 
@@ -127,17 +127,43 @@
 <p>分からない：</p>
 <ol>
 <li>B </li>
-<li>C</li>
+<li>C 捕捉例外后再次抛出新的例外的时候，可以使用之前捕捉的例外进行新的例外的构建。</li>
 <li>B</li>
-<li>B❌⭕️ D</li>
-<li>B❌⭕️A</li>
+<li>B❌⭕️ D  复数个例外同时catch的时候是catch（例外型1|例外型2|例外型3 … 变量）变量只能有一个！！<ol>
+<li>也可以多个这种复数catch同时用（应该catch的顺序从左到右）</li>
+</ol>
+</li>
+<li>B❌⭕️A<ol>
+<li>多重捕捉的不能是有继承关系的例外，否则会报编译错误。</li>
+<li>多重捕捉的变数是自动声明为final的，因此不能在之后声明相同的变量。</li>
+</ol>
+</li>
 <li>A</li>
-<li>B</li>
-<li>A</li>
-<li>B❌⭕️C</li>
-<li>B</li>
-<li>D❌⭕️A</li>
-<li>B❌⭕️C</li>
+<li>B<ol>
+<li>try-with-resource是可以记述多个open的式子，用；隔开。</li>
+</ol>
+</li>
+<li>A<ol>
+<li>try-with-resource可以不记载catch和finally（第一目的不是例外处理，而是关闭resource）</li>
+</ol>
+</li>
+<li>B❌⭕️C<ol>
+<li>try-with-resource的参数必须是继承了java.lang.AutoCloseable接口的，或者是子类。可以重写void close() throws Exception方法。</li>
+</ol>
+</li>
+<li>B<ol>
+<li>assert （条件式）,当条件式为false时，会抛出java.lang.AssertionError</li>
+<li>assert和条件式之间，当条件式被括号围起来是，有没有空格都ok</li>
+</ol>
+</li>
+<li>D❌⭕️A<ol>
+<li>AssertionError类的参数可以这样传递：<code>assert 条件式：参数</code></li>
+</ol>
+</li>
+<li>B❌⭕️C<ol>
+<li>java -ea option 全称（enableassertions）开启default无效的断言功能</li>
+</ol>
+</li>
 </ol>
 
       
@@ -203,7 +229,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -221,19 +247,10 @@
   
   <nav class="article-nav">
     
+    
       <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java SE 11 Gold学习笔记(第四章)
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Gold学习笔记(第三章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第四章)</div>
       </a>
     
   </nav>
