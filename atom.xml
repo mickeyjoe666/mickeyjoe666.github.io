@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mickeyjoe666.github.io/"/>
-  <updated>2020-12-29T05:49:40.251Z</updated>
+  <updated>2020-12-29T08:06:39.425Z</updated>
   <id>https://mickeyjoe666.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我当社会人8个月啦（技术篇）</title>
+    <link href="https://mickeyjoe666.github.io/2020/12/29/%E6%88%91%E5%BD%93%E7%A4%BE%E4%BC%9A%E4%BA%BA8%E4%B8%AA%E6%9C%88%E5%95%A6/"/>
+    <id>https://mickeyjoe666.github.io/2020/12/29/%E6%88%91%E5%BD%93%E7%A4%BE%E4%BC%9A%E4%BA%BA8%E4%B8%AA%E6%9C%88%E5%95%A6/</id>
+    <published>2020-12-29T06:40:40.000Z</published>
+    <updated>2020-12-29T08:06:39.425Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;四月到十二月，我已经成为社畜八个月了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;听到“社会人”这个词让你想到什么？纹龙画虎的大哥？亦或是一天三顿烧烤的东北汉子？其实这个词在日语中，指的是朝九晚五，兢兢业业上班族。弹指一挥间，我成为“社会人”也八个月了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="杂记" scheme="https://mickeyjoe666.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="随笔" scheme="https://mickeyjoe666.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="杂记" scheme="https://mickeyjoe666.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Java SE 11 Gold学习笔记(第七章)</title>
@@ -526,32 +552,6 @@
       <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
     
       <category term="Java Sliver" scheme="https://mickeyjoe666.github.io/tags/Java-Sliver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生活杂记</title>
-    <link href="https://mickeyjoe666.github.io/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
-    <id>https://mickeyjoe666.github.io/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</id>
-    <published>2020-07-05T06:38:58.000Z</published>
-    <updated>2020-07-05T07:20:10.783Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;2020已经过去一半了。。。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="https://mickeyjoe666.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="https://mickeyjoe666.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="生活" scheme="https://mickeyjoe666.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
