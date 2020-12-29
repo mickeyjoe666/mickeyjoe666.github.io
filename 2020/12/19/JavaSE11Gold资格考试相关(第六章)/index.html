@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Gold学习笔记(第五章) |  Joe&#39;s blog
+    Java SE 11 Gold学习笔记(第六章) |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11Gold资格考试相关(第五章)" class="article article-type-post" itemscope
+  <article id="post-JavaSE11Gold资格考试相关(第六章)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -53,7 +53,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Gold学习笔记(第五章)
+  Java SE 11 Gold学习笔记(第六章)
 </h1>
  
 
@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-12-13T07:10:15.000Z" itemprop="datePublished">2020-12-13</time>
+      <a href="/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-12-19T05:06:31.000Z" itemprop="datePublished">2020-12-19</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">339</span>
+            <span class="post-count">823</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -120,48 +120,79 @@
 
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
 <ul>
-<li><h4 id="第五章-例外とアサーション"><a href="#第五章-例外とアサーション" class="headerlink" title="第五章　例外とアサーション"></a>第五章　例外とアサーション</h4></li>
+<li><h4 id="第六章-日付-時刻API"><a href="#第六章-日付-時刻API" class="headerlink" title="第六章　日付/時刻API"></a>第六章　日付/時刻API</h4></li>
 </ul>
 <p>間違えた：</p>
 <p>間違えし易い：</p>
 <p>分からない：</p>
 <ol>
-<li>B </li>
-<li>C 捕捉例外后再次抛出新的例外的时候，可以使用之前捕捉的例外进行新的例外的构建。</li>
-<li>B</li>
-<li>B❌⭕️ D  复数个例外同时catch的时候是catch（例外型1|例外型2|例外型3 … 变量）变量只能有一个！！<ol>
-<li>也可以多个这种复数catch同时用（应该catch的顺序从左到右）</li>
+<li><p>C ❌⭕️B</p>
+<ol>
+<li>java.time是提供date和time常用api的包。四个子包为<code>java.time.chrono</code>,<code>java.time.format</code>,<code>java.time.terporal</code>,<code>java.time.zone</code>。</li>
 </ol>
 </li>
-<li>B❌⭕️A<ol>
-<li>多重捕捉的不能是有继承关系的例外，否则会报编译错误。</li>
-<li>多重捕捉的变数是自动声明为final的，因此不能在之后声明相同的变量。</li>
+<li><p>D ❌⭕️C</p>
+<ol>
+<li><p><code>LocalDate.now()</code>方法生成现在时间的instance。</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LocalDate d = LocalDate.now(); <span class="comment">// 当前日期</span></span><br><span class="line">LocalTime t = LocalTime.now(); <span class="comment">// 当前时间</span></span><br><span class="line">LocalDateTime dt = LocalDateTime.now(); <span class="comment">// 当前日期和时间</span></span><br><span class="line">System.out.println(d); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br><span class="line">System.out.println(t); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br><span class="line">System.out.println(dt); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
-<li>A</li>
-<li>B<ol>
-<li>try-with-resource是可以记述多个open的式子，用；隔开。</li>
+<li><p>C❌⭕️CD 生成指定日期的of方法，有两种类。推荐使用月份用列举型代入的。</p>
+<ol>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glt4f32shbj30y404ygm1.jpg" alt="スクリーンショット 0002-12-19 午後2.53.38"></li>
 </ol>
 </li>
-<li>A<ol>
-<li>try-with-resource可以不记载catch和finally（第一目的不是例外处理，而是关闭resource）</li>
+<li><p>AD❌⭕️DE</p>
+<ol>
+<li><code>implements Temporal, TemporalAdjuster,</code>主要继承这两个接口，后者是只有读取专用的，前者是定义读取和写入用方法的接口。（注意写入是生成新的instance！！！）</li>
 </ol>
 </li>
-<li>B❌⭕️C<ol>
-<li>try-with-resource的参数必须是继承了java.lang.AutoCloseable接口的，或者是子类。可以重写void close() throws Exception方法。</li>
+<li><p>CE❌⭕️BE</p>
+<ol>
+<li><code>DayOfWeek</code>和<code>Month</code>两种枚举型。</li>
 </ol>
 </li>
-<li>B<ol>
-<li>assert （条件式）,当条件式为false时，会抛出java.lang.AssertionError</li>
-<li>assert和条件式之间，当条件式被括号围起来是，有没有空格都ok</li>
+<li><p>C</p>
+</li>
+<li><p>B</p>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>从LocalDate中取出到LocalDateTime会因为没有时间信息而报错。</li>
 </ol>
 </li>
-<li>D❌⭕️A<ol>
-<li>AssertionError类的参数可以这样传递：<code>assert 条件式：参数</code></li>
+<li><p>D</p>
+<ol>
+<li><code>public enum ChronoUnit implements TemporalUnit</code></li>
 </ol>
 </li>
-<li>B❌⭕️C<ol>
-<li>java -ea option 全称（enableassertions）开启default无效的断言功能</li>
+<li><p>D</p>
+</li>
+<li><p>C❌⭕️A</p>
+<ol>
+<li><pre><code class="java">System.out.println(ZoneId.systemDefault());
+&lt;!--hexoPostRenderEscape:&lt;figure class="highlight plain"&gt;&lt;table&gt;&lt;tr&gt;&lt;td class="gutter"&gt;&lt;pre&gt;&lt;span class="line"&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;12. B❌⭕️D&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    1. Duration是时间的间隔，Period是日期的间隔 这两个类和特定的时间没有关系，因此与时差，timezone这类情报没有关系。&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;13. BE❌⭕️CE&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    1. DateTimeFormatter没有构造函数，多数使用static field。且immutable，因此线程安全。&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    2.  例子&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       &amp;#96;&amp;#96;&amp;#96;java&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       DateTimeFormatter formatter &amp;#x3D; DateTimeFormatter.BASIC_ISO_DATE;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       System.out.println(formatter.format(LocalDateTime.now()));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+</li>
+</ol>
+</li>
+<li><p>A❌⭕️C</p>
+<ol>
+<li><p>使用ofPattern方法来自己定义想要format的格式</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy----MM----dd&quot;</span>);</span><br><span class="line">System.out.println(dateTimeFormatter.format(LocalDateTime.now())); <span class="comment">//2020----12----19</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>BCE❌⭕️ACE</p>
+<ol>
+<li><p>instant是瞬间的意思。从1970年1月1日0点开始经过秒数。</p>
+</li>
+<li><p>可生成Instant instance的几种方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Instant now = Instant.now();</span><br><span class="line"></span><br><span class="line">Instant instant = Instant.ofEpochSecond(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">Instant instant1 = ZonedDateTime.now().toInstant();</span><br><span class="line"></span><br><span class="line">Instant instant2 = LocalDateTime.now().toInstant(ZoneOffset.UTC);</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 </li>
 </ol>
@@ -229,7 +260,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -247,19 +278,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2020/12/28/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Java SE 11 Gold学习笔记(第六章)
+            Java SE 11 Gold学习笔记(第七章)
           
         </div>
       </a>
     
     
-      <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Gold学习笔记(第四章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第五章)</div>
       </a>
     
   </nav>

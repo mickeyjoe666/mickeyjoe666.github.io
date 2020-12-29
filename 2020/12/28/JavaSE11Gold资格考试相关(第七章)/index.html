@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Gold学习笔记(第五章) |  Joe&#39;s blog
+    Java SE 11 Gold学习笔记(第七章) |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11Gold资格考试相关(第五章)" class="article article-type-post" itemscope
+  <article id="post-JavaSE11Gold资格考试相关(第七章)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -53,7 +53,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Gold学习笔记(第五章)
+  Java SE 11 Gold学习笔记(第七章)
 </h1>
  
 
@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" class="article-date">
-  <time datetime="2020-12-13T07:10:15.000Z" itemprop="datePublished">2020-12-13</time>
+      <a href="/2020/12/28/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/" class="article-date">
+  <time datetime="2020-12-28T10:07:50.000Z" itemprop="datePublished">2020-12-28</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">339</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -120,48 +120,214 @@
 
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
 <ul>
-<li><h4 id="第五章-例外とアサーション"><a href="#第五章-例外とアサーション" class="headerlink" title="第五章　例外とアサーション"></a>第五章　例外とアサーション</h4></li>
+<li><h4 id="第七章-Java-I-O"><a href="#第七章-Java-I-O" class="headerlink" title="第七章　Java I/O"></a>第七章　Java I/O</h4></li>
 </ul>
 <p>間違えた：</p>
 <p>間違えし易い：</p>
 <p>分からない：</p>
 <ol>
-<li>B </li>
-<li>C 捕捉例外后再次抛出新的例外的时候，可以使用之前捕捉的例外进行新的例外的构建。</li>
-<li>B</li>
-<li>B❌⭕️ D  复数个例外同时catch的时候是catch（例外型1|例外型2|例外型3 … 变量）变量只能有一个！！<ol>
-<li>也可以多个这种复数catch同时用（应该catch的顺序从左到右）</li>
+<li><p>BC❌⭕️CE</p>
+<ol>
+<li><p>File类能操纵文件或者目录，但是不能对文件的数据进行读取和书写，因此选项B错误。</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3n89sshkj30wu0a2mya.jpg" alt="スクリーンショット 0002-12-28 午後5.20.10">生成File object的四种构造方法，一般指定pathname的用的是最多的。</p>
+</li>
+<li><p>不存在的文件或路径的File object生成也是可能的。要确认文件或者路径是否存在可以使用exist方法。下图是File类的常用方法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3ndty2t5j30z10u0jzn.jpg" alt="スクリーンショット 0002-12-28 午後5.25.28"></p>
+<p>Java SE 7开始，由于NIO.2的导入，比起File类，推荐使用Path接口。</p>
+</li>
 </ol>
 </li>
-<li>B❌⭕️A<ol>
-<li>多重捕捉的不能是有继承关系的例外，否则会报编译错误。</li>
-<li>多重捕捉的变数是自动声明为final的，因此不能在之后声明相同的变量。</li>
+<li><p>B❌⭕️C</p>
+<ol>
+<li>java的IO是不分输出种类的。</li>
+<li>有四个抽象类（InputStream, OutputStream, Reader, Writer）提供最基本的方法，针对于device和处理对象，通过各种子类进行继承实现。</li>
 </ol>
 </li>
-<li>A</li>
-<li>B<ol>
-<li>try-with-resource是可以记述多个open的式子，用；隔开。</li>
+<li><p>C</p>
+<ol>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3nrauf2yj30u00u0whg.jpg" alt="6581609144708_.pic"></li>
 </ol>
 </li>
-<li>A<ol>
-<li>try-with-resource可以不记载catch和finally（第一目的不是例外处理，而是关闭resource）</li>
+<li><p>C</p>
+<ol>
+<li>text file一字一字读取时使用FileReader和FileWriter，一行一行读取时使用BufferedReader，BufferedWriter。</li>
+<li>到达文件终端时返回null</li>
+<li>写文件的时候注意换行！</li>
 </ol>
 </li>
-<li>B❌⭕️C<ol>
-<li>try-with-resource的参数必须是继承了java.lang.AutoCloseable接口的，或者是子类。可以重写void close() throws Exception方法。</li>
+<li><p>D❌⭕️B</p>
+<ol>
+<li>装饰模式</li>
 </ol>
 </li>
-<li>B<ol>
-<li>assert （条件式）,当条件式为false时，会抛出java.lang.AssertionError</li>
-<li>assert和条件式之间，当条件式被括号围起来是，有没有空格都ok</li>
+<li><p>B</p>
+<ol>
+<li><p>InputStream和Reader类在读取数据时，对位置操作的三个方法</p>
+<ol>
+<li><p>void mark(int readlimit)对现在位置进行mark,参数是可以读取的文字数的上限。</p>
+</li>
+<li><p>void reset() 回到mark位置，如果没有设置mark位置就reset，会导致IO Exception(Stream not marked)</p>
+</li>
+<li><p>long skip(long n) 跳过n byte的数据</p>
+<p>注意：不是所有的stream都支持mark，可使用markSupported方法来确认是否支持</p>
+</li>
 </ol>
 </li>
-<li>D❌⭕️A<ol>
-<li>AssertionError类的参数可以这样传递：<code>assert 条件式：参数</code></li>
 </ol>
 </li>
-<li>B❌⭕️C<ol>
-<li>java -ea option 全称（enableassertions）开启default无效的断言功能</li>
+<li><p>AC❌⭕️AB</p>
+<ol>
+<li>关于PrintStream和PrintWriter的使用</li>
+</ol>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li>System使用console时是通过System.console()来使用</li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>console.readPassword的返回值类型是char[ ]。</li>
+</ol>
+</li>
+<li><p>BD</p>
+<ol>
+<li>利用序列化的条件是实现serializable的接口(marker interface，主要起标记作用，不含有成员变量也不含有方法)</li>
+<li>默认所有的类都是不可序列化的。</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li>序列化和反序列化使用的类是ObjectOutputStream和ObjectInputStream</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li>static和transient的变量不会被序列化。</li>
+</ol>
+</li>
+<li><p>C❌⭕️D</p>
+<ol>
+<li>Java SE 7导入了NIO.2 其中的path接口解决了以前File类的一些问题。</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li><p>FileSystems的getDefault方法用来取得platform的default file system。</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    FileSystem fileSystem =  FileSystems.getDefault();</span><br><span class="line">    System.out.println(fileSystem); <span class="comment">//sun.nio.fs.MacOSXFileSystem@2c8d66b2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>BD</p>
+<ol>
+<li>获取Path object的两个方法，<code>FileSystems.getDefault().getPath(&quot;path&quot;)</code>和<code>Paths.get(&quot;path&quot;)</code></li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>File object到 Path object的转换可使用File的toPath 方法。</li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>Path的四种方法</li>
+<li><code>getRoot()</code> 返回root路径，结果包含path的区分号，例如（¥）</li>
+<li><code>getName(int index)</code> 返回index所对应的阶层的path，离root最近的index是0，之后越深一个阶层index增加1。</li>
+<li><code>getFileName()</code> 返回最下层的path，注意不光是文件名字，阶层名也可以包括。当只有root 是该方法返回值是null。</li>
+<li><code>getNameCount()</code>返回path中包含的阶层数，注意不包含root，当只有root阶层时，返回0。</li>
+</ol>
+</li>
+<li><p>A❌⭕️B</p>
+<ol>
+<li>Path接口<code>Path subPath(int beginIndex, int endIndex)</code>方法的使用。subPath方法用于截取原path中的一部分，注意离root最近的index是0，注意endIndex指定的结果不包含因此不会被返回。</li>
+</ol>
+</li>
+<li><p>A❌⭕️E</p>
+<ol>
+<li><p><code>resolve()</code>根据参数不同，返回值也不同。</p>
+<ol>
+<li><p>相对path,将两个path结合后返回。</p>
+</li>
+<li><p>绝对path,直接返回参数</p>
+</li>
+<li><p>空值，返回自身的path</p>
+<p>注意区别绝对路径和相对路径</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>B❌⭕️C</p>
+<ol>
+<li><code>resolveSibling()</code>根据参数不同结果也不同<ol>
+<li>相对path,现在path的父path开始的path返回</li>
+<li>绝对path,直接返回参数</li>
+<li>当call method的path object表示的object是相对path时，返回参数？？</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li><code>normalize()</code>方法是除去现在path的冗长化，返回正规method的path<ol>
+<li>注意<code>.</code>表示当前路径，因此可以忽略，<code>..</code>表示父路径</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>C❌⭕️D</p>
+<ol>
+<li><code>relativize()</code>方法返回的是针对现在的path，参数的path的相对path。</li>
+</ol>
+</li>
+<li><p>B</p>
+</li>
+<li><p>AC❌⭕️CD</p>
+<ol>
+<li>file的copy和移动使用Files的copy和move方法<ol>
+<li>copy的default动作是有重复的文件时丢出例外。如果对象是目录，那么目录中有文件存在的情况下文件不会被copy</li>
+<li>symbolic link被复制的情况，一般copy的是link指向的文件，link不会被copy</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>BDE❌⭕️BCD</p>
+<ol>
+<li>BasicFileAttributes以及它的两个子接口：DosFileAttributes,PosixFileAttribute是用来操纵文件属性的</li>
+</ol>
+</li>
+<li><p>C❌⭕️A</p>
+<ol>
+<li>AttributeView的使用</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li>取得文件或者目录的单一文件属性的时候可用Files类的getAttribute方法。</li>
+<li><code>static Object grtAttribute(Path path, String attribute, LinkOption... options)</code>返回值是Object类型，因此需要cast，第二参数的写法是<code>属性view名:属性名</code>，属性view可以省略</li>
+</ol>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li>walkFileTree方法可以对目录进行遍历处理。</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li>使用lines方法将文件中的内容读取为<code>Stream&lt;String&gt;</code>的object</li>
+</ol>
+</li>
+<li><p>A</p>
+<ol>
+<li>list方法不是递归的，只判断指定目录的文件和目录</li>
+<li>list的参数只能是目录，将文件的path传递给list方法时会抛出java.nio.file.NotDirectoryException异常</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li>walk命令是深度优先的递归操作</li>
 </ol>
 </li>
 </ol>
@@ -229,7 +395,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/13/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2020/12/28/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -247,19 +413,10 @@
   
   <nav class="article-nav">
     
+    
       <a href="/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java SE 11 Gold学习笔记(第六章)
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Gold学习笔记(第四章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第六章)</div>
       </a>
     
   </nav>

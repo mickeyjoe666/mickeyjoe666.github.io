@@ -107,6 +107,239 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Gold学习笔记(第七章)</title>
+    <url>/2020/12/28/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%83%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第七章-Java-I-O"><a href="#第七章-Java-I-O" class="headerlink" title="第七章　Java I/O"></a>第七章　Java I/O</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li><p>BC❌⭕️CE</p>
+<ol>
+<li><p>File类能操纵文件或者目录，但是不能对文件的数据进行读取和书写，因此选项B错误。</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3n89sshkj30wu0a2mya.jpg" alt="スクリーンショット 0002-12-28 午後5.20.10">生成File object的四种构造方法，一般指定pathname的用的是最多的。</p>
+</li>
+<li><p>不存在的文件或路径的File object生成也是可能的。要确认文件或者路径是否存在可以使用exist方法。下图是File类的常用方法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3ndty2t5j30z10u0jzn.jpg" alt="スクリーンショット 0002-12-28 午後5.25.28"></p>
+<p>Java SE 7开始，由于NIO.2的导入，比起File类，推荐使用Path接口。</p>
+</li>
+</ol>
+</li>
+<li><p>B❌⭕️C</p>
+<ol>
+<li>java的IO是不分输出种类的。</li>
+<li>有四个抽象类（InputStream, OutputStream, Reader, Writer）提供最基本的方法，针对于device和处理对象，通过各种子类进行继承实现。</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm3nrauf2yj30u00u0whg.jpg" alt="6581609144708_.pic"></li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li>text file一字一字读取时使用FileReader和FileWriter，一行一行读取时使用BufferedReader，BufferedWriter。</li>
+<li>到达文件终端时返回null</li>
+<li>写文件的时候注意换行！</li>
+</ol>
+</li>
+<li><p>D❌⭕️B</p>
+<ol>
+<li>装饰模式</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li><p>InputStream和Reader类在读取数据时，对位置操作的三个方法</p>
+<ol>
+<li><p>void mark(int readlimit)对现在位置进行mark,参数是可以读取的文字数的上限。</p>
+</li>
+<li><p>void reset() 回到mark位置，如果没有设置mark位置就reset，会导致IO Exception(Stream not marked)</p>
+</li>
+<li><p>long skip(long n) 跳过n byte的数据</p>
+<p>注意：不是所有的stream都支持mark，可使用markSupported方法来确认是否支持</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>AC❌⭕️AB</p>
+<ol>
+<li>关于PrintStream和PrintWriter的使用</li>
+</ol>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li>System使用console时是通过System.console()来使用</li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>console.readPassword的返回值类型是char[ ]。</li>
+</ol>
+</li>
+<li><p>BD</p>
+<ol>
+<li>利用序列化的条件是实现serializable的接口(marker interface，主要起标记作用，不含有成员变量也不含有方法)</li>
+<li>默认所有的类都是不可序列化的。</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li>序列化和反序列化使用的类是ObjectOutputStream和ObjectInputStream</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li>static和transient的变量不会被序列化。</li>
+</ol>
+</li>
+<li><p>C❌⭕️D</p>
+<ol>
+<li>Java SE 7导入了NIO.2 其中的path接口解决了以前File类的一些问题。</li>
+</ol>
+</li>
+<li><p>C</p>
+<ol>
+<li><p>FileSystems的getDefault方法用来取得platform的default file system。</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    FileSystem fileSystem =  FileSystems.getDefault();</span><br><span class="line">    System.out.println(fileSystem); <span class="comment">//sun.nio.fs.MacOSXFileSystem@2c8d66b2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>BD</p>
+<ol>
+<li>获取Path object的两个方法，<code>FileSystems.getDefault().getPath(&quot;path&quot;)</code>和<code>Paths.get(&quot;path&quot;)</code></li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>File object到 Path object的转换可使用File的toPath 方法。</li>
+</ol>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>Path的四种方法</li>
+<li><code>getRoot()</code> 返回root路径，结果包含path的区分号，例如（¥）</li>
+<li><code>getName(int index)</code> 返回index所对应的阶层的path，离root最近的index是0，之后越深一个阶层index增加1。</li>
+<li><code>getFileName()</code> 返回最下层的path，注意不光是文件名字，阶层名也可以包括。当只有root 是该方法返回值是null。</li>
+<li><code>getNameCount()</code>返回path中包含的阶层数，注意不包含root，当只有root阶层时，返回0。</li>
+</ol>
+</li>
+<li><p>A❌⭕️B</p>
+<ol>
+<li>Path接口<code>Path subPath(int beginIndex, int endIndex)</code>方法的使用。subPath方法用于截取原path中的一部分，注意离root最近的index是0，注意endIndex指定的结果不包含因此不会被返回。</li>
+</ol>
+</li>
+<li><p>A❌⭕️E</p>
+<ol>
+<li><p><code>resolve()</code>根据参数不同，返回值也不同。</p>
+<ol>
+<li><p>相对path,将两个path结合后返回。</p>
+</li>
+<li><p>绝对path,直接返回参数</p>
+</li>
+<li><p>空值，返回自身的path</p>
+<p>注意区别绝对路径和相对路径</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>B❌⭕️C</p>
+<ol>
+<li><code>resolveSibling()</code>根据参数不同结果也不同<ol>
+<li>相对path,现在path的父path开始的path返回</li>
+<li>绝对path,直接返回参数</li>
+<li>当call method的path object表示的object是相对path时，返回参数？？</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li><code>normalize()</code>方法是除去现在path的冗长化，返回正规method的path<ol>
+<li>注意<code>.</code>表示当前路径，因此可以忽略，<code>..</code>表示父路径</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>C❌⭕️D</p>
+<ol>
+<li><code>relativize()</code>方法返回的是针对现在的path，参数的path的相对path。</li>
+</ol>
+</li>
+<li><p>B</p>
+</li>
+<li><p>AC❌⭕️CD</p>
+<ol>
+<li>file的copy和移动使用Files的copy和move方法<ol>
+<li>copy的default动作是有重复的文件时丢出例外。如果对象是目录，那么目录中有文件存在的情况下文件不会被copy</li>
+<li>symbolic link被复制的情况，一般copy的是link指向的文件，link不会被copy</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>BDE❌⭕️BCD</p>
+<ol>
+<li>BasicFileAttributes以及它的两个子接口：DosFileAttributes,PosixFileAttribute是用来操纵文件属性的</li>
+</ol>
+</li>
+<li><p>C❌⭕️A</p>
+<ol>
+<li>AttributeView的使用</li>
+</ol>
+</li>
+<li><p>A❌⭕️D</p>
+<ol>
+<li>取得文件或者目录的单一文件属性的时候可用Files类的getAttribute方法。</li>
+<li><code>static Object grtAttribute(Path path, String attribute, LinkOption... options)</code>返回值是Object类型，因此需要cast，第二参数的写法是<code>属性view名:属性名</code>，属性view可以省略</li>
+</ol>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li>walkFileTree方法可以对目录进行遍历处理。</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li>使用lines方法将文件中的内容读取为<code>Stream&lt;String&gt;</code>的object</li>
+</ol>
+</li>
+<li><p>A</p>
+<ol>
+<li>list方法不是递归的，只判断指定目录的文件和目录</li>
+<li>list的参数只能是目录，将文件的path传递给list方法时会抛出java.nio.file.NotDirectoryException异常</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li>walk命令是深度优先的递归操作</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Gold学习笔记(第三章)</title>
     <url>/2020/11/09/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -417,6 +650,104 @@
 </li>
 <li>B❌⭕️C<ol>
 <li>java -ea option 全称（enableassertions）开启default无效的断言功能</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第六章)</title>
+    <url>/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第六章-日付-時刻API"><a href="#第六章-日付-時刻API" class="headerlink" title="第六章　日付/時刻API"></a>第六章　日付/時刻API</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li><p>C ❌⭕️B</p>
+<ol>
+<li>java.time是提供date和time常用api的包。四个子包为<code>java.time.chrono</code>,<code>java.time.format</code>,<code>java.time.terporal</code>,<code>java.time.zone</code>。</li>
+</ol>
+</li>
+<li><p>D ❌⭕️C</p>
+<ol>
+<li><p><code>LocalDate.now()</code>方法生成现在时间的instance。</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LocalDate d = LocalDate.now(); <span class="comment">// 当前日期</span></span><br><span class="line">LocalTime t = LocalTime.now(); <span class="comment">// 当前时间</span></span><br><span class="line">LocalDateTime dt = LocalDateTime.now(); <span class="comment">// 当前日期和时间</span></span><br><span class="line">System.out.println(d); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br><span class="line">System.out.println(t); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br><span class="line">System.out.println(dt); <span class="comment">// 严格按照ISO 8601格式打印</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>C❌⭕️CD 生成指定日期的of方法，有两种类。推荐使用月份用列举型代入的。</p>
+<ol>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glt4f32shbj30y404ygm1.jpg" alt="スクリーンショット 0002-12-19 午後2.53.38"></li>
+</ol>
+</li>
+<li><p>AD❌⭕️DE</p>
+<ol>
+<li><code>implements Temporal, TemporalAdjuster,</code>主要继承这两个接口，后者是只有读取专用的，前者是定义读取和写入用方法的接口。（注意写入是生成新的instance！！！）</li>
+</ol>
+</li>
+<li><p>CE❌⭕️BE</p>
+<ol>
+<li><code>DayOfWeek</code>和<code>Month</code>两种枚举型。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>B</p>
+</li>
+<li><p>B❌⭕️D</p>
+<ol>
+<li>从LocalDate中取出到LocalDateTime会因为没有时间信息而报错。</li>
+</ol>
+</li>
+<li><p>D</p>
+<ol>
+<li><code>public enum ChronoUnit implements TemporalUnit</code></li>
+</ol>
+</li>
+<li><p>D</p>
+</li>
+<li><p>C❌⭕️A</p>
+<ol>
+<li><pre><code class="java">System.out.println(ZoneId.systemDefault());
+&lt;!--hexoPostRenderEscape:&lt;figure class="highlight plain"&gt;&lt;table&gt;&lt;tr&gt;&lt;td class="gutter"&gt;&lt;pre&gt;&lt;span class="line"&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;12. B❌⭕️D&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    1. Duration是时间的间隔，Period是日期的间隔 这两个类和特定的时间没有关系，因此与时差，timezone这类情报没有关系。&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;13. BE❌⭕️CE&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    1. DateTimeFormatter没有构造函数，多数使用static field。且immutable，因此线程安全。&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;    2.  例子&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       &amp;#96;&amp;#96;&amp;#96;java&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       DateTimeFormatter formatter &amp;#x3D; DateTimeFormatter.BASIC_ISO_DATE;&lt;/span&gt;&lt;br&gt;&lt;span class="line"&gt;       System.out.println(formatter.format(LocalDateTime.now()));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+</li>
+</ol>
+</li>
+<li><p>A❌⭕️C</p>
+<ol>
+<li><p>使用ofPattern方法来自己定义想要format的格式</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy----MM----dd&quot;</span>);</span><br><span class="line">System.out.println(dateTimeFormatter.format(LocalDateTime.now())); <span class="comment">//2020----12----19</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>BCE❌⭕️ACE</p>
+<ol>
+<li><p>instant是瞬间的意思。从1970年1月1日0点开始经过秒数。</p>
+</li>
+<li><p>可生成Instant instance的几种方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Instant now = Instant.now();</span><br><span class="line"></span><br><span class="line">Instant instant = Instant.ofEpochSecond(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">Instant instant1 = ZonedDateTime.now().toInstant();</span><br><span class="line"></span><br><span class="line">Instant instant2 = LocalDateTime.now().toInstant(ZoneOffset.UTC);</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 </li>
 </ol>
@@ -926,6 +1257,67 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
+<p>間違えし易い：2, 5, 19</p>
+<p>分からない：2, 3</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>java压根没有bool这个数据类型，审题失败。</li>
+<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
+<li>下划线出现的规则：<ol>
+<li>不能在Literal的先头或者末尾出现</li>
+<li>不能在记号的前后出现</li>
+</ol>
+</li>
+<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
+<li>关于java中变量的命名规则<ol>
+<li>不能用预约词和记号</li>
+<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
+<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
+</ol>
+</li>
+<li>关于var变量类型推论的用法：<ol>
+<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
+</ol>
+</li>
+<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
+<li>略</li>
+<li>略</li>
+<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
+<li>略</li>
+<li>略</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Sliver学习笔记(第五章)</title>
     <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -994,67 +1386,6 @@
 </li>
 <li><p>可以使用数组的clone方法生成原数组的instance相同的另一个instance。如果是二维数组，一维的instance虽然不同，但是指向的二维的instance是相同的。</p>
 </li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第二章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
-<p>間違えし易い：2, 5, 19</p>
-<p>分からない：2, 3</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>java压根没有bool这个数据类型，审题失败。</li>
-<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
-<li>下划线出现的规则：<ol>
-<li>不能在Literal的先头或者末尾出现</li>
-<li>不能在记号的前后出现</li>
-</ol>
-</li>
-<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
-<li>关于java中变量的命名规则<ol>
-<li>不能用预约词和记号</li>
-<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
-<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
-</ol>
-</li>
-<li>关于var变量类型推论的用法：<ol>
-<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
-<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
-</ol>
-</li>
-<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
-<li>略</li>
-<li>略</li>
-<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
-<li>略</li>
-<li>略</li>
 </ol>
 ]]></content>
       <categories>
