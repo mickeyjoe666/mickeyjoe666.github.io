@@ -664,6 +664,134 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Gold学习笔记(第八章)</title>
+    <url>/2020/12/30/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第八章-並行性"><a href="#第八章-並行性" class="headerlink" title="第八章 並行性"></a>第八章 並行性</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li><p>CDEF❌⭕️ABDE</p>
+<ol>
+<li>并行collection，thread pool，atomic变量，Semaphore是java.util.concurrent包提供的功能</li>
+</ol>
+</li>
+<li><p>B</p>
+<ol>
+<li>atomic包提供了一系列保证原子操作的类。</li>
+</ol>
+</li>
+<li><p>ACD</p>
+<ol>
+<li>java.util包多数的collection class都不是设计为线程安全的。其中也有例如Vector和Hashtable这种设计为线程安全的类。但是由于利用状况可能performance也会变差。</li>
+<li>需要记住<code>ConcurrentHashMap</code>, <code>ConcurrentLinkedDeque</code>, <code>CopyonWriteArrayList</code>的使用方法。</li>
+</ol>
+</li>
+<li><p>ACD❌⭕️ABD</p>
+<ol>
+<li><code>ConcurrentMap</code>的实现类有两个<code>ConcurrentHashMap</code>和<code>ConcurrentSkipListMap</code>。</li>
+<li><code>ConcurrentHashMap</code>没有采取锁整个map的方式，而是采用了Lock Striping，在提高了性能上缺点是size和isEmpty方法不一定返回正确的值，而是返回近似值。</li>
+<li><code>ConcurrentHashMap</code>迭代操作允许并行访问对要素的变更操作，因此不会抛出<code>ConcurrentModificationException</code>。</li>
+</ol>
+</li>
+<li><p>BD❌⭕️BC</p>
+<ol>
+<li>在写操作的时候生成原list的复制进行操作后返回。因此在数据量大的时候性能很低。也不会抛出<code>ConcurrentModificationException</code>。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+<li><p>CD❌⭕️AD</p>
+<ol>
+<li>Thread类不能实现设置线程数的上限</li>
+</ol>
+</li>
+<li><p>BDE</p>
+</li>
+<li><p>BD</p>
+<ol>
+<li><p>Executor接口和它的子接口以及实现类的关系可用下图来表现</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gmilkyl52zj31ba0u0q6o.jpg" alt="6691610261151_.pic"></p>
+</li>
+</ol>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li><p>Executor接口的方法是接收Runnable类型参数没有返回值，方法名为excute的方法。</p>
+</li>
+<li><p>生成Executor Object的主要factory method</p>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runable task = <span class="keyword">new</span> MyTask();</span><br><span class="line">Executor executor = Executors.newScheduledThreadPool(<span class="number">3</span>);</span><br><span class="line">executor.execute(task);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>![6701610261847_.pic](https://tva1.sinaimg.cn/large/008eGmZEgy1gmilwml2jqj30zg0twjwm.jpg)</code></pre><ol start="11">
+<li><p>AB❌⭕️BD</p>
+<ol>
+<li><p>Runnable接口的实现类不能丢出可check例外。</p>
+</li>
+<li><p>Callable接口的实现类的运行需要使用Executor接口的子接口的ExecutorService中的submit方法。</p>
+<p><code>&lt;T&gt; Future&lt;T&gt; submit (Callable&lt;T&gt; task)</code></p>
+<p>Future Object需要做例外处理。可能会丢出两种例外。<code>java.lang.InterruptedException</code>和<code>java.util.concurrent.ExecutionException</code></p>
+</li>
+</ol>
+</li>
+<li><p>CD❌⭕️BC</p>
+<ol>
+<li>Future类可以做对线程的取消操作。</li>
+</ol>
+</li>
+<li><p>CD</p>
+</li>
+<li><p>BD❌⭕️BC</p>
+<ol>
+<li>fork/join框架采用了Work stealing 算法</li>
+</ol>
+</li>
+<li><p>B</p>
+</li>
+<li><p>BCD❌⭕️BCE</p>
+<p>ForkJoinPool的三个方法</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gmiq46zcyxj30u00u0b2b.jpg" alt="6711610270544_.pic_hd"></p>
+</li>
+<li><p>A❌⭕️AB</p>
+<p>关于RecursiveTask（有返回值）和RecursiveAction（无返回值时使用）的使用区别要注意！！</p>
+</li>
+<li><p>D❌⭕️C</p>
+<ol>
+<li>stream运行途中可以改变是否是并行运行的状态。例如：顺序运行→并行运行使用parallel方法。并行运行→顺序运行使用sequential方法。并且可以使用isParallel方法判断当前的运行mode。</li>
+<li>因为stream的并行运算依赖于元素数量和处理内容，因此并行运算不一定就比串行运算要快。</li>
+<li>运行中保持线程安全的责任在开发者身上，这点要注意。</li>
+</ol>
+</li>
+<li><p>C</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Gold学习笔记(第六章)</title>
     <url>/2020/12/19/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1398,95 +1526,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第八章)</title>
-    <url>/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
-<p>間違えし易い：</p>
-<p>分からない：5，6， </p>
-<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3">函数型接口</a>, </p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>lamda式的格式：</p>
-<p><code>（变量名参数） -&gt; &#123;处理&#125;;</code>注意，最后要加分号！！</p>
-<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
-</li>
-<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; &#123;处理&#125;;</code>中：</p>
-<ol>
-<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; &#123;处理&#125;;</code></li>
-<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
-<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
-<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
-</ol>
-</li>
-<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = &quot;Hello World!!&quot;;</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
-<table>
-<thead>
-<tr>
-<th align="center">函数式接口</th>
-<th align="center">参数类型</th>
-<th align="center">返回类型</th>
-<th align="center">用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>void</code></td>
-<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
-</tr>
-<tr>
-<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
-<td align="center"><code>无</code></td>
-<td align="center"><code>T</code></td>
-<td align="center">返回类型为T的对象。 <code>T get();</code></td>
-</tr>
-<tr>
-<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>R</code></td>
-<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
-</tr>
-<tr>
-<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>boolean</code></td>
-<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
-</tr>
-</tbody></table>
-</li>
-<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
-</li>
-<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
-</li>
-<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e">参照这里</a>。</p>
-</li>
-</ol>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
-<li><a href="https://juejin.im/post/6844903892166148110#heading-0">「Java8系列」神奇的函数式接口</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第六章)</title>
     <url>/2020/07/19/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AD%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1583,6 +1622,95 @@
 <li><p>当函数的参数是object类型时，函数被呼出时，被拷贝的是指向instance的link。因此可能会对原本的instance产生影响。因此，函数的参数是原始类型（プリミティブ型）还是参照类型，非常关键！！！！！</p>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第八章)</title>
+    <url>/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
+<p>間違えし易い：</p>
+<p>分からない：5，6， </p>
+<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3">函数型接口</a>, </p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>lamda式的格式：</p>
+<p><code>（变量名参数） -&gt; &#123;处理&#125;;</code>注意，最后要加分号！！</p>
+<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
+</li>
+<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; &#123;处理&#125;;</code>中：</p>
+<ol>
+<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; &#123;处理&#125;;</code></li>
+<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
+<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
+<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
+</ol>
+</li>
+<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = &quot;Hello World!!&quot;;</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数式接口</th>
+<th align="center">参数类型</th>
+<th align="center">返回类型</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>void</code></td>
+<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
+</tr>
+<tr>
+<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
+<td align="center"><code>无</code></td>
+<td align="center"><code>T</code></td>
+<td align="center">返回类型为T的对象。 <code>T get();</code></td>
+</tr>
+<tr>
+<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>R</code></td>
+<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
+</tr>
+<tr>
+<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>boolean</code></td>
+<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
+</li>
+<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
+</li>
+<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e">参照这里</a>。</p>
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://juejin.im/post/6844903892166148110#heading-0">「Java8系列」神奇的函数式接口</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1839,41 +1967,6 @@
       </tags>
   </entry>
   <entry>
-    <title>myfirstblog</title>
-    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>生活杂记</title>
-    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>2020已经过去一半了。。。</p>
-</blockquote>
-<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
-<a id="more"></a>
-
-<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
-<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
-<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
-<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
-<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
-<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
-<p>​                                                                                    《爱尔兰人》</p>
-<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
-<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
-<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
-<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我当社会人8个月啦（技术篇）</title>
     <url>/2020/12/29/%E6%88%91%E5%BD%93%E7%A4%BE%E4%BC%9A%E4%BA%BA8%E4%B8%AA%E6%9C%88%E5%95%A6/</url>
     <content><![CDATA[<blockquote>
@@ -1916,6 +2009,207 @@
       <tags>
         <tag>随笔</tag>
         <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirstblog</title>
+    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>生活杂记</title>
+    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>2020已经过去一半了。。。</p>
+</blockquote>
+<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
+<a id="more"></a>
+
+<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
+<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
+<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
+<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
+<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
+<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
+<p>​                                                                                    《爱尔兰人》</p>
+<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
+<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
+<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
+<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程入门</title>
+    <url>/2021/01/05/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<blockquote>
+<p>Java多线程入门</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-创建新线程"><a href="#1-创建新线程" class="headerlink" title="1.创建新线程"></a>1.创建新线程</h3><p>Java用<code>Thread</code>对象表示一个线程，通过调用<code>start()</code>启动一个新线程；</p>
+<p>一个线程对象只能调用一次<code>start()</code>方法；</p>
+<p>线程的执行代码写在<code>run()</code>方法中；</p>
+<p>线程调度由操作系统决定，程序本身无法决定调度顺序；</p>
+<p><code>Thread.sleep()</code>可以把当前线程暂停一段时间。</p>
+<h3 id="2-线程的状态"><a href="#2-线程的状态" class="headerlink" title="2.线程的状态"></a>2.线程的状态</h3><p>Java线程对象<code>Thread</code>的状态包括：<code>New</code>、<code>Runnable</code>、<code>Blocked</code>、<code>Waiting</code>、<code>Timed Waiting</code>和<code>Terminated</code>；</p>
+<p>通过对另一个线程对象调用<code>join()</code>方法可以等待其执行结束；</p>
+<p>可以指定等待时间，超过等待时间线程仍然没有结束就不再等待；</p>
+<p>对已经运行结束的线程调用<code>join()</code>方法会立刻返回。</p>
+<h3 id="3-中断线程"><a href="#3-中断线程" class="headerlink" title="3.中断线程"></a>3.中断线程</h3><p>对目标线程调用<code>interrupt()</code>方法可以请求中断一个线程，目标线程通过检测<code>isInterrupted()</code>标志获取自身是否已中断。如果目标线程处于等待状态，该线程会捕获到<code>InterruptedException</code>；</p>
+<p>目标线程检测到<code>isInterrupted()</code>为<code>true</code>或者捕获了<code>InterruptedException</code>都应该立刻结束自身线程；</p>
+<p>通过标志位判断需要正确使用<code>volatile</code>关键字；</p>
+<p><code>volatile</code>关键字解决了共享变量在线程间的可见性问题。</p>
+<h3 id="4-守护线程"><a href="#4-守护线程" class="headerlink" title="4.守护线程"></a>4.守护线程</h3><p>守护线程是为其他线程服务的线程；</p>
+<p>所有非守护线程都执行完毕后，虚拟机退出；</p>
+<p>守护线程不能持有需要关闭的资源（如打开文件等）。</p>
+<h3 id="5-同步线程"><a href="#5-同步线程" class="headerlink" title="5.同步线程"></a>5.同步线程</h3><p>多线程同时读写共享变量时，会造成逻辑错误，因此需要通过<code>synchronized</code>同步；</p>
+<p>同步的本质就是给指定对象加锁，加锁后才能继续执行后续代码；</p>
+<p>注意加锁对象必须是同一个实例；</p>
+<p>对JVM定义的单个原子操作不需要同步。</p>
+<h3 id="6-同步方法"><a href="#6-同步方法" class="headerlink" title="6.同步方法"></a>6.同步方法</h3><p> 没有特殊说明时，一个类默认是非线程安全的。</p>
+<p>用<code>synchronized</code>修饰方法可以把整个方法变为同步代码块，<code>synchronized</code>方法加锁对象是<code>this</code>；</p>
+<p>通过合理的设计和数据封装可以让一个类变为“线程安全”；</p>
+<p>一个类没有特殊说明，默认不是thread-safe；</p>
+<p>多线程能否安全访问某个非线程安全的实例，需要具体问题具体分析。</p>
+<h3 id="7-死锁"><a href="#7-死锁" class="headerlink" title="7.死锁"></a>7.死锁</h3><p>Java的<code>synchronized</code>锁是可重入锁；</p>
+<p>死锁产生的条件是多线程各自持有不同的锁，并互相试图获取对方已持有的锁，导致无限等待；</p>
+<p>避免死锁的方法是多线程获取锁的顺序要一致。</p>
+<h3 id="8-使用wait或者notify"><a href="#8-使用wait或者notify" class="headerlink" title="8.使用wait或者notify"></a>8.使用wait或者notify</h3><p><code>wait</code>和<code>notify</code>用于多线程协调运行：</p>
+<ul>
+<li>在<code>synchronized</code>内部可以调用<code>wait()</code>使线程进入等待状态；</li>
+<li>必须在已获得的锁对象上调用<code>wait()</code>方法；</li>
+<li>在<code>synchronized</code>内部可以调用<code>notify()</code>或<code>notifyAll()</code>唤醒其他等待线程；</li>
+<li>必须在已获得的锁对象上调用<code>notify()</code>或<code>notifyAll()</code>方法；</li>
+<li>已唤醒的线程还需要重新获得锁后才能继续执行。</li>
+</ul>
+<h3 id="9-使用ReentrantLock"><a href="#9-使用ReentrantLock" class="headerlink" title="9.使用ReentrantLock"></a>9.使用ReentrantLock</h3><p><code>ReentrantLock</code>可以替代<code>synchronized</code>进行同步；</p>
+<p><code>ReentrantLock</code>获取锁更安全；</p>
+<p>必须先获取到锁，再进入<code>try &#123;...&#125;</code>代码块，最后使用<code>finally</code>保证释放锁；</p>
+<p>可以使用<code>tryLock()</code>尝试获取锁。</p>
+<h3 id="10-使用Condition"><a href="#10-使用Condition" class="headerlink" title="10.使用Condition"></a>10.使用Condition</h3><p>使用<code>Condition</code>时，引用的<code>Condition</code>对象必须从<code>Lock</code>实例的<code>newCondition()</code>返回，这样才能获得一个绑定了<code>Lock</code>实例的<code>Condition</code>实例。</p>
+<p><code>Condition</code>提供的<code>await()</code>、<code>signal()</code>、<code>signalAll()</code>原理和<code>synchronized</code>锁对象的<code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>是一致的，并且其行为也是一样的：</p>
+<ul>
+<li><code>await()</code>会释放当前锁，进入等待状态；</li>
+<li><code>signal()</code>会唤醒某个等待线程；</li>
+<li><code>signalAll()</code>会唤醒所有等待线程；</li>
+<li>唤醒线程从<code>await()</code>返回后需要重新获得锁。</li>
+</ul>
+<p>此外，和<code>tryLock()</code>类似，<code>await()</code>可以在等待指定时间后，如果还没有被其他线程通过<code>signal()</code>或<code>signalAll()</code>唤醒，可以自己醒来：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition.await(1, TimeUnit.SECOND)) &#123;</span><br><span class="line">    &#x2F;&#x2F; 被其他线程唤醒</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#x2F;&#x2F; 指定时间内没有被其他线程唤醒</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可见，使用<code>Condition</code>配合<code>Lock</code>，我们可以实现更灵活的线程同步。</p>
+<p><code>Condition</code>可以替代<code>wait</code>和<code>notify</code>；</p>
+<p><code>Condition</code>对象必须从<code>Lock</code>对象获取。</p>
+<h3 id="11-使用ReadWriteLock"><a href="#11-使用ReadWriteLock" class="headerlink" title="11.使用ReadWriteLock"></a>11.使用ReadWriteLock</h3><table>
+<thead>
+<tr>
+<th align="left">读</th>
+<th align="left">写</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">读</td>
+<td align="left">允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td align="left">写</td>
+<td align="left">不允许</td>
+<td>不允许</td>
+</tr>
+</tbody></table>
+<p>使用<code>ReadWriteLock</code>可以提高读取效率：</p>
+<ul>
+<li><code>ReadWriteLock</code>只允许一个线程写入；</li>
+<li><code>ReadWriteLock</code>允许多个线程在没有写入时同时读取；</li>
+<li><code>ReadWriteLock</code>适合读多写少的场景。</li>
+</ul>
+<h3 id="12-使用StampedLock"><a href="#12-使用StampedLock" class="headerlink" title="12.使用StampedLock"></a>12.使用StampedLock</h3><p><code>StampedLock</code>和<code>ReadWriteLock</code>相比，改进之处在于：读的过程中也允许获取写锁后写入！这样一来，我们读的数据就可能不一致，所以，需要一点额外的代码来判断读的过程中是否有写入，这种读锁是一种乐观锁。</p>
+<p>乐观锁的意思就是乐观地估计读的过程中大概率不会有写入，因此被称为乐观锁。反过来，悲观锁则是读的过程中拒绝有写入，也就是写入必须等待。显然乐观锁的并发效率更高，但一旦有小概率的写入导致读取的数据不一致，需要能检测出来，再读一遍就行。</p>
+<p><code>StampedLock</code>提供了乐观读锁，可取代<code>ReadWriteLock</code>以进一步提升并发性能；</p>
+<p><code>StampedLock</code>是不可重入锁。</p>
+<h3 id="13-使用Concurrent集合"><a href="#13-使用Concurrent集合" class="headerlink" title="13.使用Concurrent集合"></a>13.使用Concurrent集合</h3><table>
+<thead>
+<tr>
+<th align="left">interface</th>
+<th align="left">non-thread-safe</th>
+<th align="left">thread-safe</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">List</td>
+<td align="left">ArrayList</td>
+<td align="left">CopyOnWriteArrayList</td>
+</tr>
+<tr>
+<td align="left">Map</td>
+<td align="left">HashMap</td>
+<td align="left">ConcurrentHashMap</td>
+</tr>
+<tr>
+<td align="left">Set</td>
+<td align="left">HashSet / TreeSet</td>
+<td align="left">CopyOnWriteArraySet</td>
+</tr>
+<tr>
+<td align="left">Queue</td>
+<td align="left">ArrayDeque / LinkedList</td>
+<td align="left">ArrayBlockingQueue / LinkedBlockingQueue</td>
+</tr>
+<tr>
+<td align="left">Deque</td>
+<td align="left">ArrayDeque / LinkedList</td>
+<td align="left">LinkedBlockingDeque</td>
+</tr>
+</tbody></table>
+<h4 id="14-使用线程池"><a href="#14-使用线程池" class="headerlink" title="14.使用线程池"></a>14.使用线程池</h4><p>JDK提供了ExecutorService实现了线程池功能：</p>
+<p>线程池内部维护一组线程，可以高效执行大量小任务；</p>
+<p>Executors提供了静态方法创建不同类型的ExecutorService；</p>
+<p>必须调用shutdown()关闭ExecutorService；</p>
+<p>ScheduledThreadPool可以定期调度多个任务。</p>
+<p>创建一个<code>ScheduledThreadPool</code>仍然是通过<code>Executors</code>类：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ScheduledExecutorService ses &#x3D; Executors.newScheduledThreadPool(4);</span><br></pre></td></tr></table></figure>
+
+<p>我们可以提交一次性任务，它会在指定延迟后只执行一次：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 1秒后执行一次性任务:</span><br><span class="line">ses.schedule(new Task(&quot;one-time&quot;), 1, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>如果任务以固定的每3秒执行，我们可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 2秒后开始执行定时任务，每3秒执行:</span><br><span class="line">ses.scheduleAtFixedRate(new Task(&quot;fixed-rate&quot;), 2, 3, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>如果任务以固定的3秒为间隔执行，我们可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 2秒后开始执行定时任务，以3秒为间隔执行:</span><br><span class="line">ses.scheduleWithFixedDelay(new Task(&quot;fixed-delay&quot;), 2, 3, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-使用Future"><a href="#15-使用Future" class="headerlink" title="15.使用Future"></a>15.使用Future</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ExecutorService executor = Executors.newFixedThreadPool(<span class="number">4</span>); </span><br><span class="line"><span class="comment">// 定义任务:</span></span><br><span class="line">Callable&lt;String&gt; task = <span class="keyword">new</span> Task();</span><br><span class="line"><span class="comment">// 提交任务并获得Future:</span></span><br><span class="line">Future&lt;String&gt; future = executor.submit(task);</span><br><span class="line"><span class="comment">// 从Future获取异步执行返回的结果:</span></span><br><span class="line">String result = future.get(); <span class="comment">// 可能阻塞</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Callable</code>接口是一个泛型接口，可以返回指定类型的结果。</p>
+<h3 id="16-使用CompletableFuture"><a href="#16-使用CompletableFuture" class="headerlink" title="16.使用CompletableFuture"></a>16.使用CompletableFuture</h3><p>CompletableFuture的优点是：</p>
+<p>异步任务结束时，会自动回调某个对象的方法；<br>异步任务出错时，会自动回调某个对象的方法；<br>主线程设置好回调后，不再关心异步任务的执行。</p>
+<p><code>CompletableFuture</code>可以指定异步处理流程：</p>
+<ul>
+<li><code>thenAccept()</code>处理正常结果；</li>
+<li><code>exceptional()</code>处理异常结果；</li>
+<li><code>thenApplyAsync()</code>用于串行化另一个<code>CompletableFuture</code>；</li>
+<li><code>anyOf()</code>和<code>allOf()</code>用于并行化多个<code>CompletableFuture</code>。</li>
+</ul>
+<h3 id="17-使用ThreadLocal"><a href="#17-使用ThreadLocal" class="headerlink" title="17.使用ThreadLocal"></a>17.使用ThreadLocal</h3><p>ThreadLocal表示线程的“局部变量”，它确保每个线程的ThreadLocal变量都是各自独立的；</p>
+<p>ThreadLocal适合在一个线程的处理流程中保持上下文（避免了同一参数在所有方法中传递）；</p>
+<p>使用ThreadLocal要用try … finally结构，并在finally中清除。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
 </search>

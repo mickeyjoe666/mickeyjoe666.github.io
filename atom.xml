@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mickeyjoe666.github.io/"/>
-  <updated>2020-12-29T08:06:39.425Z</updated>
+  <updated>2021-01-08T08:09:52.160Z</updated>
   <id>https://mickeyjoe666.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java多线程入门</title>
+    <link href="https://mickeyjoe666.github.io/2021/01/05/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%A5%E9%97%A8/"/>
+    <id>https://mickeyjoe666.github.io/2021/01/05/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%A5%E9%97%A8/</id>
+    <published>2021-01-05T14:51:03.000Z</published>
+    <updated>2021-01-08T08:09:52.160Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java多线程入门&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java" scheme="https://mickeyjoe666.github.io/tags/Java/"/>
+    
+      <category term="多线程" scheme="https://mickeyjoe666.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第八章)</title>
+    <link href="https://mickeyjoe666.github.io/2020/12/30/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/"/>
+    <id>https://mickeyjoe666.github.io/2020/12/30/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</id>
+    <published>2020-12-30T05:30:03.000Z</published>
+    <updated>2021-01-10T09:37:23.941Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Java SE 11 Gold资格考试相关&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java" scheme="https://mickeyjoe666.github.io/tags/Java/"/>
+    
+      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
+    
+      <category term="Java Gold" scheme="https://mickeyjoe666.github.io/tags/Java-Gold/"/>
+    
+  </entry>
   
   <entry>
     <title>我当社会人8个月啦（技术篇）</title>
@@ -485,61 +537,6 @@
       &lt;blockquote&gt;
 &lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Java" scheme="https://mickeyjoe666.github.io/tags/Java/"/>
-    
-      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
-    
-      <category term="Java Sliver" scheme="https://mickeyjoe666.github.io/tags/Java-Sliver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第二章)</title>
-    <link href="https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/"/>
-    <id>https://mickeyjoe666.github.io/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</id>
-    <published>2020-07-18T08:56:00.000Z</published>
-    <updated>2020-11-09T13:42:59.565Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="https://mickeyjoe666.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Java" scheme="https://mickeyjoe666.github.io/tags/Java/"/>
-    
-      <category term="资格考试" scheme="https://mickeyjoe666.github.io/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/"/>
-    
-      <category term="Java Sliver" scheme="https://mickeyjoe666.github.io/tags/Java-Sliver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第一章)</title>
-    <link href="https://mickeyjoe666.github.io/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/"/>
-    <id>https://mickeyjoe666.github.io/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</id>
-    <published>2020-07-17T11:32:00.000Z</published>
-    <updated>2020-11-09T13:43:54.758Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Java SE 11 sliver资格考试相关&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。&lt;/p&gt;
     
     </summary>
     
