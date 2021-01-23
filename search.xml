@@ -2212,4 +2212,82 @@
         <tag>多线程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第九章)</title>
+    <url>/2021/01/23/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第九章-JDBCによるデータベース・アプリケーション"><a href="#第九章-JDBCによるデータベース・アプリケーション" class="headerlink" title="第九章 JDBCによるデータベース・アプリケーション"></a>第九章 JDBCによるデータベース・アプリケーション</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li>C</li>
+<li>C❌⭕️A<ol>
+<li>需要根据使用的数据库自行设置对应的driver</li>
+</ol>
+</li>
+<li>C</li>
+<li>B❌⭕️D<ol>
+<li>接触时使用的类和方法为<code>java.sql.DriverManager</code>和<code>getConnection</code></li>
+<li>需要注意问题中使用的JDBC版本，不同版本使用方法稍有不同。例如3.0需要先获取driver</li>
+<li>connection pool是在用作web application与数据库接触时，为了防止频繁的接触，切断而带来的性能瓶颈。事先准备的多个connection object。</li>
+</ol>
+</li>
+<li>B</li>
+<li>B❌⭕️BC<ol>
+<li>要注意executeQuery和executeUpdate的使用区别</li>
+</ol>
+</li>
+<li>D❌⭕️F<ol>
+<li>使用getString方法时需要注意。根据index取得时是从1开始，根据列名取得时不区分大小写。</li>
+<li>要注意cursor的初始位置是在先头record的上面，因此需要移动。如果不做移动就取得要素，会抛出SQLException</li>
+</ol>
+</li>
+<li>C</li>
+<li>B❌⭕️C<ol>
+<li>execute的结果是当sql的结果是ResultSet不存在的情况或者sql是select以外的情况就返回fasle。</li>
+</ol>
+</li>
+<li>A❌⭕️D<ol>
+<li>同一个statement不能同时取得两个ResultSet。在取得第二个的时候第一个会被close。</li>
+</ol>
+</li>
+<li>D</li>
+<li>ADF❌⭕️ADE<ol>
+<li>不存在forward方法。</li>
+</ol>
+</li>
+<li>A absolute的参数如果比行数大，会移动到最终行后的空行</li>
+<li>A❌⭕️D<ol>
+<li>最终需要使用updateRow来更新</li>
+</ol>
+</li>
+<li>C❌⭕️B<ol>
+<li>插入时先使用moveToInsertRow移动到插入专用行，使用updateXxx进行数据的set，最后使用insertRow插入</li>
+</ol>
+</li>
+<li>C<ol>
+<li>通过分析ErrorCode和SQLState可以得到具体错误ErrorCode根据查询vendor手册可以获得具体讯息，SQLState是sql标准的共同值。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
 </search>
