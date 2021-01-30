@@ -2290,4 +2290,94 @@
         <tag>Java Gold</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java SE 11 Gold学习笔记(第十章)</title>
+    <url>/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第十章-ローカライズ"><a href="#第十章-ローカライズ" class="headerlink" title="第十章 ローカライズ"></a>第十章 ローカライズ</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li>C</li>
+<li>BCE❌⭕️CEF<ol>
+<li>Locale类的构造函数是需要参数的。有三种构造函数,第一个是小写字母表示语言，第二个是大写字母表示国家code，对于一个国家有两种公用语言的情况（加拿大的公用语言是英语和法语），可以通过指定不同的语言参数，生成不同的Locale。<ol>
+<li><code>Locale(String language)</code></li>
+<li><code>Locale(String language, String country)</code></li>
+<li><code>Locale(String language, String country, String variant)</code></li>
+</ol>
+</li>
+<li>注意Locale的构造函数没有对指定的国家和语言code进行妥当性check，因此不会抛出例外。</li>
+</ol>
+</li>
+<li>B❌⭕️D<ol>
+<li>获取系统默认的Locale类的方法是getDefault方法。JVM会在启动时根据host环境设置country和语言</li>
+</ol>
+</li>
+<li>C<ol>
+<li>使用builder来构造Locale时候可以进行国家code和语言code的妥当性check，会丢出IllformedLocaleException</li>
+</ol>
+</li>
+<li>C❌⭕️A<ol>
+<li>可以使用Locale类定义的定数来直接取得Locale实例。</li>
+</ol>
+</li>
+<li>AD<ol>
+<li>java.util.Properties类对应textfile或者是xml文件</li>
+</ol>
+</li>
+<li>A❌⭕️D<ol>
+<li>用load方法取得Properties的object，参数是inputStream或者是Reader，使用getProperty方法，参数是对象的key。如果key不存在返回null。提供了第二参数为不存在时default值的重载方法。</li>
+</ol>
+</li>
+<li>AD❌⭕️CD<ol>
+<li>list方法参数为PrintStream或者是PrintWrite，在用于将设定文件中的内容全部表示时很方便。</li>
+</ol>
+</li>
+<li>D❌⭕️B<ol>
+<li>正确的表示形式是基底名_语言code_国家code</li>
+<li>必须是<code>.properties</code>类型的文件。</li>
+<li>需要放置在classpath中，通常与java的class文件放在一起。</li>
+</ol>
+</li>
+<li>D<ol>
+<li>ResourceBundle是抽象类，没有构造函数。</li>
+<li>getBundle方法参数不需要加上扩展名。</li>
+</ol>
+</li>
+<li>B❌⭕️D<ol>
+<li>getBundle方法找不到指定resource时会丢出<code>java.util.MissingResourceException</code>例外</li>
+</ol>
+</li>
+<li>D❌⭕️E<ol>
+<li>检索ResourceBundle的时候，会按照class→properties文件的顺序。（基底名优先）</li>
+</ol>
+</li>
+<li>B</li>
+<li>C❌⭕️A<ol>
+<li>用class记载resource bundle的时候需要继承ListResourceBundle。</li>
+<li>通过重写ListResourceBundle抽象类的getContent方法可以实现在类中定义resource bundle。</li>
+<li>使用getBundle方法读取class中的bundle是需要记住类名前要有所在的包名。读取后可用getString方法读取具体的object。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
 </search>
