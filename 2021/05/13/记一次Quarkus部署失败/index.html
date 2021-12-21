@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java SE 11 Gold学习笔记(第十章) |  Joe&#39;s blog
+    记一次Quarkus部署失败 |  Joe&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JavaSE11Gold资格考试相关(第十章)" class="article article-type-post" itemscope
+  <article id="post-记一次Quarkus部署失败" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -53,7 +53,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java SE 11 Gold学习笔记(第十章)
+  记一次Quarkus部署失败
 </h1>
  
 
@@ -62,8 +62,8 @@
 
     
     <div class="article-meta">
-      <a href="/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/" class="article-date">
-  <time datetime="2021-01-24T09:12:03.000Z" itemprop="datePublished">2021-01-24</time>
+      <a href="/2021/05/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Quarkus%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5/" class="article-date">
+  <time datetime="2021-05-13T13:00:00.000Z" itemprop="datePublished">2021-05-13</time>
 </a>
       
   <div class="article-category">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">531</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -112,82 +112,51 @@
 
       
       <blockquote>
-<p>Java SE 11 Gold资格考试相关</p>
+<p>记一次Quarkus部署失败</p>
 </blockquote>
 <a id="more"></a>
 
 
 
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
-<ul>
-<li><h4 id="第十章-ローカライズ"><a href="#第十章-ローカライズ" class="headerlink" title="第十章 ローカライズ"></a>第十章 ローカライズ</h4></li>
-</ul>
-<p>間違えた：</p>
-<p>間違えし易い：</p>
-<p>分からない：</p>
+
+
+
+<p>部门里有一个工程师认定考试，主要目的就是考验一些RestApi的写法及熟练度，主流框架SpringBoot的一些简单的功能了解程度，TDD开发手法的运用，UT、IT等测试的写法。关于DI理解程度的report，这种。</p>
+<p>之前考了三次都挂掉了，原因具体如下：</p>
 <ol>
-<li>C</li>
-<li>BCE❌⭕️CEF<ol>
-<li>Locale类的构造函数是需要参数的。有三种构造函数,第一个是小写字母表示语言，第二个是大写字母表示国家code，对于一个国家有两种公用语言的情况（加拿大的公用语言是英语和法语），可以通过指定不同的语言参数，生成不同的Locale。<ol>
-<li><code>Locale(String language)</code></li>
-<li><code>Locale(String language, String country)</code></li>
-<li><code>Locale(String language, String country, String variant)</code></li>
+<li>第一次：UT的覆盖度不够，DI理解不足</li>
+<li>第二次：DI理解不足</li>
+<li>第三次：java doc写的不够准确，DI理解不足（日本人说看不懂我的日语TT）</li>
 </ol>
-</li>
-<li>注意Locale的构造函数没有对指定的国家和语言code进行妥当性check，因此不会抛出例外。</li>
+<p>综上所述，其实要求很严格，题目虽然非常简单，就是最普通的CRUD这些，但是也会一定程度上考虑是否能够熟练掌握工作中必备的开发技巧，DI，springboot的常用功能这种。</p>
+<p>在我挂了三次以后，竟然，课长要求用Quarkus这个框架来重新做。本来自己所在组的后端是有在用Quarkus，貌似是因为在云上跑速度比较快？具体的原因自己也没有深究过，正好借用这个机会准备了解一下。</p>
+<p>结果，竟然在各种地方就卡住了！</p>
+<p>简单来说以下几个地方困扰到了我</p>
+<ol>
+<li>pom依赖</li>
+<li>DI的使用</li>
+<li>deploy（部署）</li>
 </ol>
-</li>
-<li>B❌⭕️D<ol>
-<li>获取系统默认的Locale类的方法是getDefault方法。JVM会在启动时根据host环境设置country和语言</li>
-</ol>
-</li>
-<li>C<ol>
-<li>使用builder来构造Locale时候可以进行国家code和语言code的妥当性check，会丢出IllformedLocaleException</li>
-</ol>
-</li>
-<li>C❌⭕️A<ol>
-<li>可以使用Locale类定义的定数来直接取得Locale实例。</li>
-</ol>
-</li>
-<li>AD<ol>
-<li>java.util.Properties类对应textfile或者是xml文件</li>
-</ol>
-</li>
-<li>A❌⭕️D<ol>
-<li>用load方法取得Properties的object，参数是inputStream或者是Reader，使用getProperty方法，参数是对象的key。如果key不存在返回null。提供了第二参数为不存在时default值的重载方法。</li>
-</ol>
-</li>
-<li>AD❌⭕️CD<ol>
-<li>list方法参数为PrintStream或者是PrintWrite，在用于将设定文件中的内容全部表示时很方便。</li>
-</ol>
-</li>
-<li>D❌⭕️B<ol>
-<li>正确的表示形式是基底名_语言code_国家code</li>
-<li>必须是<code>.properties</code>类型的文件。</li>
-<li>需要放置在classpath中，通常与java的class文件放在一起。</li>
-</ol>
-</li>
-<li>D<ol>
-<li>ResourceBundle是抽象类，没有构造函数。</li>
-<li>getBundle方法参数不需要加上扩展名。</li>
-</ol>
-</li>
-<li>B❌⭕️D<ol>
-<li>getBundle方法找不到指定resource时会丢出<code>java.util.MissingResourceException</code>例外</li>
-</ol>
-</li>
-<li>D❌⭕️E<ol>
-<li>检索ResourceBundle的时候，会按照class→properties文件的顺序。（基底名优先）</li>
-</ol>
-</li>
-<li>B</li>
-<li>C❌⭕️A<ol>
-<li>用class记载resource bundle的时候需要继承ListResourceBundle。</li>
-<li>通过重写ListResourceBundle抽象类的getContent方法可以实现在类中定义resource bundle。</li>
-<li>使用getBundle方法读取class中的bundle是需要记住类名前要有所在的包名。读取后可用getString方法读取具体的object。</li>
-</ol>
-</li>
-</ol>
+<p>Quarkus的中文信息也比较少，好多问题谷歌后发现都没有中文博客可查，于是好多只能通过查看官方文档，正好锻炼了一下英语（谷歌翻译）。哈哈。</p>
+<p>  先说pom依赖，以前springboot都非常简单，用<a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io/</a> 就可以添加自己想要的依赖，但是Quarkus貌似是通过extension追加来增加依赖，知道写这篇文章时候才发现这个网站<a target="_blank" rel="noopener" href="https://code.Quarkus.io/">https://code.Quarkus.io/</a> 。真是后悔，要知道我以为这个框架自带RestApi的功能，写了个api后了老是启动不起来，后来查了半天资料才知道需要一个叫RESTEasy 的依赖。</p>
+<p>  其次，之前在使用springboot时候，只知道自己用的是jackson来解析，对这些也没有很意识到区别，想当然就使用了json的依赖，但是我从工作项目代码中借用（复制粘粘）的注解@JsonbProperty却用不了。好嘛，一顿谷歌，才发现RESTEasy JSON-B和RESTEasy jackson不是一个东西，具体可以参考下面这篇文章，我就不多叙述了。</p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000038482081">Jackson：我是最牛掰的 Java JSON 解析器（有点虚）</a>]:<a target="_blank" rel="noopener" href="https://segmentfault.com/a/119000003848208">https://segmentfault.com/a/119000003848208</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000038482081">JavaEE的JSON API规范JSON-P/JSON-B</a>]:<a target="_blank" rel="noopener" href="https://blog.csdn.net/taiyangdao/article/details/85320579">https://blog.csdn.net/taiyangdao/article/details/85320579</a> </p>
+<p>pom鼓捣了半天，又发现下面有各种跟springboot不同的设置，懵逼了半天，照着tutorial偷了一些设置，终于能跑起来了。</p>
+<p>最后说一下部署时候遇到的问题，之前都是deploy到heroku上，之前几次都是maven打好包，直接传到heroku上去</p>
+<p>稍微查了一下发现了这篇文章，<a target="_blank" rel="noopener" href="https://qiita.com/mr-hisa-child/items/2d6b9d482d3fd017332f">https://qiita.com/mr-hisa-child/items/2d6b9d482d3fd017332f</a></p>
+<p>以为原来这么简单，结果试了一下，果然，不能顺利进行，这里遇到好多坑，分享一下，</p>
+<p>首先构建docker image的docker file中有这么一步<code>COPY *-runner /work/application</code>，现实这步出错，找不到runner文件，看了一下target下面果然没有这个文件，查了半天为什么没有这个文件，看到了这篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://Quarkus.io/guides/building-native-image">https://Quarkus.io/guides/building-native-image</a></p>
+<p><a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/ja-jp/red_hat_build_of_Quarkus/1.3/html/developing_and_compiling_your_Quarkus_applications_with_apache_maven/proc-configuring-the-project-output_Quarkus-maven">https://access.redhat.com/documentation/ja-jp/red_hat_build_of_Quarkus/1.3/html/developing_and_compiling_your_Quarkus_applications_with_apache_maven/proc-configuring-the-project-output_Quarkus-maven</a></p>
+<p>才知道，runner.jar需要设置pom才能生成，ok解决。下一位</p>
+<p>然后docker copy的时候又显示`fast-jar : COPY target/Quarkus-app/lib : no such file or directory ，查了一下，在github issue上发现这位仁兄问的问题：<a target="_blank" rel="noopener" href="https://github.com/Quarkusio/Quarkus/issues/12324">https://github.com/Quarkusio/Quarkus/issues/12324</a></p>
+<p>最后结尾说要设置.dockerignore，照做了，结果还是同样的错误。</p>
+<p>最后实在没办法，谷歌了半天，决定使用uber-jar的方式部署，终于部署成功。具体参考这篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://yusuke.blog/2021/02/03/2916">https://yusuke.blog/2021/02/03/2916</a></p>
+<p>有人要是知道docker image构建失败的原因，欢迎在评论中告诉我！！</p>
+<h5 id="关于Quarkus的文章："><a href="#关于Quarkus的文章：" class="headerlink" title="关于Quarkus的文章："></a>关于Quarkus的文章：</h5><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Dq3hQrXE4XWH-MyjBAGMEw">https://mp.weixin.qq.com/s/Dq3hQrXE4XWH-MyjBAGMEw</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040072190">https://segmentfault.com/a/1190000040072190</a></p>
 
       
       <!-- reward -->
@@ -252,14 +221,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mickeyjoe666.github.io/2021/05/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Quarkus%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Gold/" rel="tag">Java Gold</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/" rel="tag">资格考试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quarkus/" rel="tag">Quarkus</a></li></ul>
 
 
     </footer>
@@ -270,19 +239,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2021/05/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Quarkus%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            记一次Quarkus部署失败
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/01/23/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/" class="article-nav-link">
+      <a href="/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java SE 11 Gold学习笔记(第九章)</div>
+        <div class="article-nav-title">Java SE 11 Gold学习笔记(第十章)</div>
       </a>
     
   </nav>

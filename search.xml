@@ -890,6 +890,143 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Gold学习笔记(第十章)</title>
+    <url>/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 Gold资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
+<ul>
+<li><h4 id="第十章-ローカライズ"><a href="#第十章-ローカライズ" class="headerlink" title="第十章 ローカライズ"></a>第十章 ローカライズ</h4></li>
+</ul>
+<p>間違えた：</p>
+<p>間違えし易い：</p>
+<p>分からない：</p>
+<ol>
+<li>C</li>
+<li>BCE❌⭕️CEF<ol>
+<li>Locale类的构造函数是需要参数的。有三种构造函数,第一个是小写字母表示语言，第二个是大写字母表示国家code，对于一个国家有两种公用语言的情况（加拿大的公用语言是英语和法语），可以通过指定不同的语言参数，生成不同的Locale。<ol>
+<li><code>Locale(String language)</code></li>
+<li><code>Locale(String language, String country)</code></li>
+<li><code>Locale(String language, String country, String variant)</code></li>
+</ol>
+</li>
+<li>注意Locale的构造函数没有对指定的国家和语言code进行妥当性check，因此不会抛出例外。</li>
+</ol>
+</li>
+<li>B❌⭕️D<ol>
+<li>获取系统默认的Locale类的方法是getDefault方法。JVM会在启动时根据host环境设置country和语言</li>
+</ol>
+</li>
+<li>C<ol>
+<li>使用builder来构造Locale时候可以进行国家code和语言code的妥当性check，会丢出IllformedLocaleException</li>
+</ol>
+</li>
+<li>C❌⭕️A<ol>
+<li>可以使用Locale类定义的定数来直接取得Locale实例。</li>
+</ol>
+</li>
+<li>AD<ol>
+<li>java.util.Properties类对应textfile或者是xml文件</li>
+</ol>
+</li>
+<li>A❌⭕️D<ol>
+<li>用load方法取得Properties的object，参数是inputStream或者是Reader，使用getProperty方法，参数是对象的key。如果key不存在返回null。提供了第二参数为不存在时default值的重载方法。</li>
+</ol>
+</li>
+<li>AD❌⭕️CD<ol>
+<li>list方法参数为PrintStream或者是PrintWrite，在用于将设定文件中的内容全部表示时很方便。</li>
+</ol>
+</li>
+<li>D❌⭕️B<ol>
+<li>正确的表示形式是基底名_语言code_国家code</li>
+<li>必须是<code>.properties</code>类型的文件。</li>
+<li>需要放置在classpath中，通常与java的class文件放在一起。</li>
+</ol>
+</li>
+<li>D<ol>
+<li>ResourceBundle是抽象类，没有构造函数。</li>
+<li>getBundle方法参数不需要加上扩展名。</li>
+</ol>
+</li>
+<li>B❌⭕️D<ol>
+<li>getBundle方法找不到指定resource时会丢出<code>java.util.MissingResourceException</code>例外</li>
+</ol>
+</li>
+<li>D❌⭕️E<ol>
+<li>检索ResourceBundle的时候，会按照class→properties文件的顺序。（基底名优先）</li>
+</ol>
+</li>
+<li>B</li>
+<li>C❌⭕️A<ol>
+<li>用class记载resource bundle的时候需要继承ListResourceBundle。</li>
+<li>通过重写ListResourceBundle抽象类的getContent方法可以实现在类中定义resource bundle。</li>
+<li>使用getBundle方法读取class中的bundle是需要记住类名前要有所在的包名。读取后可用getString方法读取具体的object。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Gold</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第一章)</title>
+    <url>/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<p>所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。</p>
+<a id="more"></a>
+
+
+
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
+<ul>
+<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
+</ul>
+<p>間違えた：3, 7</p>
+<p>間違えし易い：</p>
+<p>分からない：8, </p>
+<ol>
+<li>略</li>
+<li>略</li>
+<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
+<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
+<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
+<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+</ol>
+</li>
+<li><code>java</code>命令的参数指定问题<ol>
+<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
+<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Gold学习笔记(第四章)</title>
     <url>/2020/12/05/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%9B%9B%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1041,40 +1178,76 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第一章)</title>
-    <url>/2020/07/17/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%80%E7%AB%A0)/</url>
+    <title>Java SE 11 Sliver学习笔记(第三章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
 <p>Java SE 11 sliver资格考试相关</p>
 </blockquote>
-<p>所在部门的要求下，本Java菜鸟也要备战人生中第一个编程技术资格考试了。这个考试的费用接近3万日币（1800RMB左右），如果没通过就要全额自己支付，因此压力还是蛮大的。并且需要死记硬背的东西很多，而我最讨厌死记硬背的学习模式，所以才有了这篇博文。希望写这篇博文可以帮助自己归纳知识点，并且能够帮助那些看到此博文一样在备考的Java coder们。</p>
 <a id="more"></a>
 
 
 
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>我使用的是《Java SE 11 Sliver問題集》这本书，也就是俗称的“黒本”，该书共有13章，并附带三套模拟习题，接下来，我将对每章易错的知识点尝试进行归纳和总结。</p>
-<ul>
-<li><h4 id="第一章-簡単なJavaプログラムの作成"><a href="#第一章-簡単なJavaプログラムの作成" class="headerlink" title="第一章 簡単なJavaプログラムの作成"></a>第一章 簡単なJavaプログラムの作成</h4></li>
-</ul>
-<p>間違えた：3, 7</p>
-<p>間違えし易い：</p>
-<p>分からない：8, </p>
+<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
+<p>間違えし易い：3, 19</p>
+<p>分からない：2</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>略</p>
+</li>
+<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
+</li>
+<li><p>类型转换问题。</p>
 <ol>
-<li>略</li>
-<li>略</li>
-<li><code>java.lang</code>包和<code>System</code>这两个包是会自动被import的，不需要手动声明。另外，在导入包时<code>*</code>表示导入指定包的全部class，但不能包含指定包下的子包！！</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>java SE 11以后，可以直接使用<code>java Sample.java a b c</code>对Sample.java直接运行。<ol>
-<li>对于没有<code>.java</code>扩展名的文件使用<code>java</code>命令运行时需要加<code>--source</code>option进行运行，并可在后面直接指定java版本，例如<code>java --source 11 Sample a b c</code>, 用source模式运行时即使public的类名和文件名不一致也不会报错。</li>
-<li>对于没有11以前的版本需要先使用<code>javac</code>命令进行编译。</li>
-<li>对于文件名和类名不一样的java文件用<code>javac</code>命令编译时会报错。</li>
+<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
+<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
+<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
 </ol>
 </li>
-<li><code>java</code>命令的参数指定问题<ol>
-<li>通常使用空格进行参数的区分，当想传递含有空格的参数时要使用<code>双引号（&quot;&quot;）</code>进行escape。</li>
-<li>当想使用双引号是需要在前面加入<code>¥符号</code>进行escape。</li>
+<li><p>略</p>
+</li>
+<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
+</li>
+<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
+</li>
+<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
+</li>
+<li><p>java的同一性和同值性的判断问题。</p>
+</li>
+<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
+</li>
+<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
+</li>
+<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
+</li>
+<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
+</li>
+<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>略</p>
+</li>
+<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
+</li>
+<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
+<ol>
+<li>int型以下的整数型和他们的包装类。</li>
+<li>文字和文字列。</li>
+<li>列举型（枚举型）。</li>
 </ol>
+</li>
+<li><p>switch的case值需满足以下三个条件：</p>
+<ol>
+<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
+<li>是定数，在编译时能确定值。</li>
+<li>不能为null。</li>
+</ol>
+</li>
+<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
 </li>
 </ol>
 ]]></content>
@@ -1212,89 +1385,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第三章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B8%89%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第三章-演算子と判定構造"><a href="#第三章-演算子と判定構造" class="headerlink" title="第三章 演算子と判定構造"></a>第三章 演算子と判定構造</h4><p>間違えた：3, 5, 6, 10, 12, 13, 20 </p>
-<p>間違えし易い：3, 19</p>
-<p>分からない：2</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>略</p>
-</li>
-<li><p>-号有两种：1.减法用 2.翻转正负值用（前面有空格也可以）</p>
-</li>
-<li><p>类型转换问题。</p>
-<ol>
-<li>注意范围！！如果超出范围也会报错。例如<code>byte a = 128;//byte 范围是-128~127</code>。</li>
-<li>注意类型！！整数默认型为<code>int</code>, 浮点小数型默认<code>double</code>。范围来讲，小转大ok，大转小因为会面临丢失精度问题，因此不行。</li>
-<li>数值演算时，演算符号两边的operand必须是相同类型，如果是不同类型，范围小的类型会自动转换为大的类型。如果大转小，不做cast表达，会报编译错误。</li>
-</ol>
-</li>
-<li><p>略</p>
-</li>
-<li><p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,<code>&lt;=</code>这四种运算符，只能比较数值的大小，不能用作true和false的比较。</p>
-</li>
-<li><p><code>&amp;&amp;</code>和<code>&amp;</code>的区别，<code>&amp;&amp;</code>只看左边，一旦左边为false右边不会执行。</p>
-</li>
-<li><p>演算子的优先顺序：括号，自增，自减是最优先的，<code>x++</code>要比<code>++x</code>优先级高。</p>
-</li>
-<li><p>java的同一性和同值性的判断问题。</p>
-</li>
-<li><p>判断是否同值用<code>equals</code>方法。如何判断两个instance是否同值可以通过重写object类的<code>equals</code>方法来完成。</p>
-</li>
-<li><p>这道题将instance类型转换为object类，因此使用的<code>equals</code>方法不是自己类中重写的<code>equals</code>方法，而是object类中的方法，定义如下,是用来判断同一性的，因此会返回false。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当x为null以外的参照值时，<code>x.equals(null)</code>只能返回false。</p>
-</li>
-<li><p>常量池（Constant Pool）相关，java中为了避免负荷，当同样文字列的literal出现时，会使用之前生成的instance的参照，因此用==比较结果会返回true。</p>
-</li>
-<li><p>new的时候会强制生成新的instance，因此和指向常量池内存的变量有不同的值，通过==比较会返回false。</p>
-</li>
-<li><p>String类的<code>intern</code>方法的问题。intern是返回常量池内存中已有的文字列，为再利用准备的方法。因此即使参照不同，返回的文字列内容是相同的，比较时会返回true。</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>略</p>
-</li>
-<li><p>else if中 else和if间是不能改行的。如果改行了，意味着在else中加入新的if条件。</p>
-</li>
-<li><p>switch的条件的返回值类型为：<code>char</code>,<code>short</code>,<code>Character</code>,<code>Short</code>,<code>String</code>,<code>byte</code>,<code>int</code>,<code>Byte</code>,<code>Integer</code>,<code>Enum</code>。简单来讲分三类</p>
-<ol>
-<li>int型以下的整数型和他们的包装类。</li>
-<li>文字和文字列。</li>
-<li>列举型（枚举型）。</li>
-</ol>
-</li>
-<li><p>switch的case值需满足以下三个条件：</p>
-<ol>
-<li>和条件式的返回值相同类型或者是有互换性的类型。</li>
-<li>是定数，在编译时能确定值。</li>
-<li>不能为null。</li>
-</ol>
-</li>
-<li><p>switch中如果没有<code>break</code>关键字，将会执行之后的所有case的处理，包括<code>default</code>中的处理。case中什么都不写意味着什么处理都不做，并不会报编译错误。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第九章)</title>
     <url>/2020/08/09/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1385,67 +1475,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第二章)</title>
-    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
-<p>間違えし易い：2, 5, 19</p>
-<p>分からない：2, 3</p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>java压根没有bool这个数据类型，审题失败。</li>
-<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
-<li>下划线出现的规则：<ol>
-<li>不能在Literal的先头或者末尾出现</li>
-<li>不能在记号的前后出现</li>
-</ol>
-</li>
-<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
-<li>关于java中变量的命名规则<ol>
-<li>不能用预约词和记号</li>
-<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
-<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
-</ol>
-</li>
-<li>关于var变量类型推论的用法：<ol>
-<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
-<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
-<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
-</ol>
-</li>
-<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li>略</li>
-<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
-<li>略</li>
-<li>略</li>
-<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
-<li>略</li>
-<li>略</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第五章)</title>
     <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%94%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1514,6 +1543,156 @@
 </li>
 <li><p>可以使用数组的clone方法生成原数组的instance相同的另一个instance。如果是二维数组，一维的instance虽然不同，但是指向的二维的instance是相同的。</p>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第八章)</title>
+    <url>/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
+<p>間違えし易い：</p>
+<p>分からない：5，6， </p>
+<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3">函数型接口</a>, </p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li><p>lamda式的格式：</p>
+<p><code>（变量名参数） -&gt; &#123;处理&#125;;</code>注意，最后要加分号！！</p>
+<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
+</li>
+<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; &#123;处理&#125;;</code>中：</p>
+<ol>
+<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; &#123;处理&#125;;</code></li>
+<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
+<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
+<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
+</ol>
+</li>
+<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = &quot;Hello World!!&quot;;</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数式接口</th>
+<th align="center">参数类型</th>
+<th align="center">返回类型</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>void</code></td>
+<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
+</tr>
+<tr>
+<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
+<td align="center"><code>无</code></td>
+<td align="center"><code>T</code></td>
+<td align="center">返回类型为T的对象。 <code>T get();</code></td>
+</tr>
+<tr>
+<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>R</code></td>
+<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
+</tr>
+<tr>
+<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
+<td align="center"><code>T</code></td>
+<td align="center"><code>boolean</code></td>
+<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
+</li>
+<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
+</li>
+<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e">参照这里</a>。</p>
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://juejin.im/post/6844903892166148110#heading-0">「Java8系列」神奇的函数式接口</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java SE 11 Sliver学习笔记(第二章)</title>
+    <url>/2020/07/18/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%BA%8C%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第二章-Javaの基本データ型と文字列操作"><a href="#第二章-Javaの基本データ型と文字列操作" class="headerlink" title="第二章 Javaの基本データ型と文字列操作"></a>第二章 Javaの基本データ型と文字列操作</h4><p>間違えた：1, 3, 4, 6, 7, 12, 17, 20</p>
+<p>間違えし易い：2, 5, 19</p>
+<p>分からない：2, 3</p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>java压根没有bool这个数据类型，审题失败。</li>
+<li>java除了十进制的表示，还有2进制，8进制，16进制，分别用0b, 0, 0x表示，需要看选项中有没有超过各个进制所能表示<strong>最大位数</strong>的数字！！</li>
+<li>下划线出现的规则：<ol>
+<li>不能在Literal的先头或者末尾出现</li>
+<li>不能在记号的前后出现</li>
+</ol>
+</li>
+<li>文字的Literal必须要用单括号（’’）围起来，文字列的Literal必须要用双括号（””）围起来，并且char可以用0~65535之前的数值代入。且不能直接代入<code>null</code>, 因为在java中<code>null</code>表示什么都不指向，这对java的プリミティブ类型来说是不允许的，因为プリミティブ型就是为了保存变量而存在的。</li>
+<li>关于java中变量的命名规则<ol>
+<li>不能用预约词和记号</li>
+<li>能使用的记号为下划线（<code>_</code>）和通货符号（<code>$</code>）</li>
+<li>不能用数字作为开头（第二个字母开始可以，例如<code>v2ex</code>）</li>
+</ol>
+</li>
+<li>关于var变量类型推论的用法：<ol>
+<li>首先，<code>var</code>只能对local 变量进行类型推论时使用！！！</li>
+<li>在使用<code>var</code>时会根据等号右边的内容对变量的类型进行推论，例如：<code>var a = sample( );</code>尽管右边是函数，但仍然可以使用函数的返回值对变量类型进行推论。但是如果变量没有初始化，或者用<code>null</code>进行初始化，或者不能根据右边的内容进行变量类型推导时，将会在编译时候报错，例如：<code>var a = &#123;1, 2, 3&#125;</code>， 在这里就无法对等号左边a的类型进行确定，因此运行时会发生编译错误。</li>
+<li>对于一种特殊情况<code>var e = new ArrayList&lt;&gt;()</code>, 在<code>&lt;&gt;</code>中没有指定类型时java会自动将类型转化为object型，因此相当于<code>var e = new ArrayList&lt;object&gt;()</code>。这样相当于指定了变量e的类型为object型，因此在这种情况下并不会报错。</li>
+</ol>
+</li>
+<li><code>var</code>只能用在局部变量中！并且不能用在函数的参数宣言中，像这种情况下不能根据value的来推断具体的类型，因此会报错：public void test (var value){}```</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>indexOf</code>方法在找不到对应的文字列时，返回值为<code>-1</code>!!!</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li>略</li>
+<li><code>string</code>类的<code>concat</code>方法用来拼接原有文字列和参数传进来的文字列，<code>append</code>方法属于<code>StringBuffer</code>类。</li>
+<li>略</li>
+<li>略</li>
+<li><code>StringBuffer</code>类的无参构造方法会初始化大小为16文字的容量，有文字列作为参数的构造方法会初始化<code>16+参数文字列长度</code>的容量。</li>
+<li>略</li>
+<li>略</li>
 </ol>
 ]]></content>
       <categories>
@@ -1633,95 +1812,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Sliver学习笔记(第八章)</title>
-    <url>/2020/08/08/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%85%AB%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第八章-関数型インタフェース、ラムダ式"><a href="#第八章-関数型インタフェース、ラムダ式" class="headerlink" title="第八章 関数型インタフェース、ラムダ式"></a>第八章 関数型インタフェース、ラムダ式</h4><p>間違えた：1，3， 4， 6，7，8</p>
-<p>間違えし易い：</p>
-<p>分からない：5，6， </p>
-<p>关键词：lamada式，<a href="https://www.jianshu.com/p/a59a31eb3a41">匿名类</a>，<a href="https://www.jianshu.com/p/86badf2c46c3">函数型接口</a>, </p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li><p>lamda式的格式：</p>
-<p><code>（变量名参数） -&gt; &#123;处理&#125;;</code>注意，最后要加分号！！</p>
-<p>函数型接口中定义的方法的参数定义和lamda式中的参数定义必须相同。并且lamda式的参数可以省略参数的类型。因为可以使用代入的函数型接口来推断参数的类型。如果函数型接口中的方法定义的时候是无参数的（例如<code>Runnable</code>），可以省略lamda式中的参数。</p>
-</li>
-<li><p>在<code>函数型接口的类型 变量名 = （变量名参数） -&gt; &#123;处理&#125;;</code>中：</p>
-<ol>
-<li>当参数只有一个时，的实际上右边的lamda式可以省略为：<code>函数型接口的类型 变量名 = 参数 -&gt; &#123;处理&#125;;</code></li>
-<li>当实现的处理只有一行时，中括号也可以省略：<code>函数型接口的类型 变量名 = （变量名参数） -&gt; 处理;</code></li>
-<li>需要返回的情况下，当实现的处理只有一行，且省略了中括号的情况下，<code>return</code>关键字可以省略。</li>
-<li><code>Test t = () -&gt; return &quot;hello!&quot;</code>会报编译错误。相反如果有中括号，一定是有1行以上的处理，且一定不可以省略<code>return</code>关键字。</li>
-</ol>
-</li>
-<li><p>lamda式中参数不能使用定义lamda式方法中已有的参数的名字，会造成重复定义，例如下面的代码会报编译错误，因为在第三行相当于进行了val字符串的重复定义：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">static</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String val = A;</span><br><span class="line">  Function f = (val) -&gt; &#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于lamda式的scope问题,lamada可以访问同一方法中定义的其他本地变量，但是变量一定要是实质上final的也就是在lamda式后面值也不能改变，<a href="https://www.jianshu.com/p/ade870238d18">参考这里</a>，下面的代码不会报错，但是如果第8行注释取消就会在第5行报编译错误。因为val变量不再是实质final</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lamdaScope</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String val = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        Function f = (nothing ) -&gt; &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//        val = &quot;Hello World!!&quot;;</span></span><br><span class="line">        System.out.println(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在<code>java.util.function</code>中定义好的函数型接口的问题。<a href="https://www.jianshu.com/p/86badf2c46c3">参考这里</a>，由于有参数并且返回值是Boolean类型的可以使用排除法去掉<code>Consumer&lt;T&gt;</code>和<code>Supplier&lt;T&gt;</code>， 最后因为参数只有一个可以排除<code>Function&lt;T, R&gt;</code>。</p>
-<table>
-<thead>
-<tr>
-<th align="center">函数式接口</th>
-<th align="center">参数类型</th>
-<th align="center">返回类型</th>
-<th align="center">用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>Consumer&lt;T&gt;</code>(消费型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>void</code></td>
-<td align="center">对类型为T的对象应用操作。<code>void accept(T t)</code></td>
-</tr>
-<tr>
-<td align="center"><code>Supplier&lt;T&gt;</code>(供给型接口)</td>
-<td align="center"><code>无</code></td>
-<td align="center"><code>T</code></td>
-<td align="center">返回类型为T的对象。 <code>T get();</code></td>
-</tr>
-<tr>
-<td align="center"><code>Function&lt;T, R&gt;</code>(函数型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>R</code></td>
-<td align="center">对类型为T的对象应用操作并返回R类型的对象。<code>R apply(T t);</code></td>
-</tr>
-<tr>
-<td align="center"><code>Predicate&lt;T&gt;</code>(断言型接口)</td>
-<td align="center"><code>T</code></td>
-<td align="center"><code>boolean</code></td>
-<td align="center">确定类型为T的对象是否满足约束。<code>boolean test(T t);</code></td>
-</tr>
-</tbody></table>
-</li>
-<li><p><code>Supplier&lt;T&gt;</code>的使用相关问题。参照上表。</p>
-</li>
-<li><p><code>Function&lt;T, R&gt;</code>的使用，<code>java.util.function</code>中定义的基本函数型接口中，参数有两个的只有<code>Function&lt;T, R&gt;</code>，其中第一参数用泛型表示可以接收任何类型的参数，第二参数表示返回值的类型。</p>
-</li>
-<li><p>关于<code>Consumer&lt;T&gt;</code>(消费型接口)相使用的问题。<a href="https://www.jianshu.com/p/0b955173045e">参照这里</a>。</p>
-</li>
-</ol>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
-<li><a href="https://juejin.im/post/6844903892166148110#heading-0">「Java8系列」神奇的函数式接口</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java SE 11 Sliver学习笔记(第十一章)</title>
     <url>/2020/08/16/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -1770,53 +1860,6 @@
 </li>
 <li><p>关于非公开包的一时利用的问题。通过使用<code>javac</code>命令的<code>--add-exports</code>选项可以在编译时将想利用的包一时公开，被别的module可以利用。写法： 对象module/公开的包=利用的module 例如：-add-exports foo/com.test=hello</p>
 </li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java SE 11 Sliver学习笔记(第十章)</title>
-    <url>/2020/08/15/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
-    <content><![CDATA[<blockquote>
-<p>Java SE 11 sliver资格考试相关</p>
-</blockquote>
-<a id="more"></a>
-
-
-
-<h4 id="第十章-例外処理"><a href="#第十章-例外処理" class="headerlink" title="第十章 例外処理"></a>第十章 例外処理</h4><p>間違えた：3，7，10，11，12，14，17</p>
-<p>間違えし易い：</p>
-<p>分からない： </p>
-<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
-<li>略</li>
-<li>略</li>
-<li>父类异常一定要写在子类异常的下面1，否则父类异常就会被先捕捉导致子类异常无法到达，出现编译错误。</li>
-<li>略</li>
-<li>finally中的代码一定会执行，即使是catch中有return的情况下。</li>
-<li>finally权限最大，当catch和fianlly中都有return时，finally中的return会被执行。</li>
-<li>不懂？return中返回的是一个变量？finally不能对那个变量进行操作？</li>
-<li>一个try只能对应一个finally，但是可以对应多个catch，并且catch可以省略</li>
-<li>嵌套的try catch文中如果有异常，最接近异常的那层try catch将会捕捉异常。</li>
-<li>try中声明的变量，catch和finally中不能访问。try-with-resources的运行顺序是<ol>
-<li>resource中的释放</li>
-<li>catch中的处理</li>
-<li>finally的处理</li>
-</ol>
-</li>
-<li>检查例外（Exception以及继承它的子类（除去RuntimeException））和非检查例外（RuntimeException以及继承它的子类）的区别。检查例外必须要用try catch围起来，或者是必须用throws宣言。而非检查例外就不需要强制，可以自由选择。多个例外throws是用逗号分隔</li>
-<li>Error为了分类，是可以继承Errors类的。常见的例如<code>OutOfMemoryError</code>,<code>NoClassDefFoundError</code>。Error是在程序运行时被抛出的。但是也可以被throw-catch或者throws。</li>
-<li>略</li>
-<li>ArrayList的越界访问时丢出的是<code>IndexOutOfBoundException</code>。数组越界访问异常是<code>ArrayIndexOutOfBoundException</code>。文字越界异常是<code>StringIndexOutOfBoundException</code>。不存在<code>ListIndexOutOfBoundsException</code>这样的例外。</li>
-<li>没有继承或者实现关系の1两个类强制转型时候，运行时会报<code>ClassCastException</code>。强制转型前应该使用<code>instanceof</code>进行判断。</li>
-<li>null是无参照的，因此null使用方法时会报空指针异常。</li>
-<li>因为会发生嵌套引用，用尽stack空间，所以会报StackOverflowError。</li>
 </ol>
 ]]></content>
       <categories>
@@ -1902,148 +1945,6 @@
         <tag>Java</tag>
         <tag>资格考试</tag>
         <tag>Java Sliver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我们都爱cheese！！🧀</title>
-    <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
-    <content><![CDATA[<blockquote>
-<p>记录一下我吃过的cheese（定期更新）</p>
-</blockquote>
-<p>最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。</p>
-<a id="more"></a>
-
-<br>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4k9egsqmg30dw08c163.gif" alt="It&#39;s an all-consuming love_"></p>
-<p>如题，我们都爱cheese！！开一个post记录一下最近吃的奶酪们🧀~~</p>
-<br>
-
-<p>先来一款黑暗的，蓝纹奶酪，貌似意大利语中“piccante”是辛辣的意思。这款不适合喝酒，味道太辛辣，适合小口小口的吃。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ifzccmaj30u00u07wj.jpg" alt="piccante" style="zoom:33%;" />
-
-<br>
-
-<p>这款是我目前吃过最好吃的，有一点像布里，有一点像卡芒贝尔。但是外面的白色霉菌质感还是不太一样，不太清楚学名叫什么，口感非常棒，适合搭配红酒。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ieyi57ej30u00u0kjo.jpg" alt="beili" style="zoom: 33%;" />
-
-<br>
-
-<p>德国经典品牌Bergader的蓝纹奶酪，不用多说，喜欢蓝纹的可以一试，性价比超高。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ijvdt1yj30u00u0npf.jpg" style="zoom: 33%;" />
-
-<br>
-
-<p>日本品牌雪印的卡芒贝尔奶酪，卡芒贝尔也算是我非常喜欢的一个品类。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4im3pur6j30u00u01l0.jpg" alt="camembert" style="zoom:33%;" />
-
-<br>
-
-<p>又一款布里，产自法国，白色霉菌包裹的内部层次感非常好。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4inyo45tj30u00u04qs.jpg" alt="brie" style="zoom:33%;" />
-
-<br>
-
-<p>日本超市随处可见的轻食奶酪，味道很好，尤其左边的这款马苏里拉奶酪，嫩的不行。性价比超高。基本上都在150日元（9RMB）以内。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ipcq8rqj30u00u0b2c.jpg" alt="little" style="zoom:33%;" />
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>美食</category>
-      </categories>
-      <tags>
-        <tag>美食</tag>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我当社会人8个月啦（技术篇）</title>
-    <url>/2020/12/29/%E6%88%91%E5%BD%93%E7%A4%BE%E4%BC%9A%E4%BA%BA8%E4%B8%AA%E6%9C%88%E5%95%A6/</url>
-    <content><![CDATA[<blockquote>
-<p>四月到十二月，我已经成为社畜八个月了。</p>
-</blockquote>
-<p>听到“社会人”这个词让你想到什么？纹龙画虎的大哥？亦或是一天三顿烧烤的东北汉子？其实这个词在日语中，指的是朝九晚五，兢兢业业上班族。弹指一挥间，我成为“社会人”也八个月了。</p>
-<a id="more"></a>
-
-<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm4q58jaogj30u00u03zi.jpg" alt="6591609224392_.pic" style="zoom: 50%;" />
-
-<br>
-
-<p>2020年马上就要过去了，东京的新冠依然保持着每日几百的增长速度，在家堵得无聊，就流水账般的记录一下自己上班这八个月吧。</p>
-<p>先谈谈工作内容。</p>
-<p>4月到7月是漫长的研修，研修内容就是日企都有的那一套，就不提了。7月份结束研修，分到配属的部门，不出意外的做的是java开发。其实一开始自己是想做点比较热门的内容，没想到也变成了茫茫java程序员中的一员。或许这就是命运的安排吧。</p>
-<p>来日本一开始想做的是大数据方向，研究室那会以为老师是做大数据的，进去后才发现是关系数据库。怪自己那会的日语水平太渣。。关系数据库的内部说深奥是真深奥，个人感觉单放现在的研究趋势真的是过时了一点，感觉现在的热门就是AI，数据分析什么的，貌似好多大公司都用OSS的数据库？所以自己后来做的是GPU计算方向，跟现在的的工作内容也算是毫不沾边，感觉去年还在特别努力学习的知识慢慢的就会被遗忘。。可能世界上多数的研究生都是这样吧。</p>
-<p>言归正传，我所在的部门一共10人左右，除了管理职的课长和一个中途入社的以外全是1年和2年的，可以说是非常年轻的部队了。也可以说除了课长，都是年轻的程序员。部门采用的是敏捷开发的一种叫做scrum的开发模式，其实具体都是学欧美那一套，2周为周期给一个项目做一些功能增加或者修改。然后团队都是比较少人数便于管理。这种开发模式希望开发团队的每个人都是“多能工”，也就是俗称的全栈工程师。因为项目的设计开发测试以及前端后端实现都是同一个团队在做，需要的知识就会范围广一点。</p>
-<p>我没在国内的IT公司正式上过班，但我来日本前在北京的一个小创业公司呆过一阵，感觉日本这边和中国不同的就是，日本的好多公司都很重视人才培养，国内更喜欢直接采用有技术的人。但是日本这种模式就导致，好多人没有一点基础，也考虑来做IT的工作，和我同部门的新人，好多人刚来时一些基本的linux操作也不是很熟练，或者java完全是0基础。而我在的部门这种开发模式又要求掌握知识的范围广，这就导致一个问题。只有不断的学习才能做好业务！</p>
-<p>刚进这个部门，每个人就被发了15本左右厚厚的书，让我们回家去看（当然，要用自己的业余时间）。至今为止我也只看完了4本左右，课长还因为这个经常说我们新人没有斗志，无所谓了，哈哈。这个部门还要求新人尽快考下三个资格（java Slive, java Gold和一个关于敏捷开发的资格）。目前我正在为取得最后一个java Gold的资格而奋斗中。。</p>
-<br>
-
-<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm4ryd8j6xj31hc0u07ak.jpg" alt="6601609228101_.pic" style="zoom: 33%;" />                
-
-<p>​                                <center>发的书中的一部分</center></p>
-<p> 一开始还感觉工作的内容会不会很难掌握，其实目前工作的好多东西就是基本的CRUD，大量的重复工作。我也最近吗慢慢的体会到为什么程序员这行被称作“码农”。基础的程序员的工作确实是大量的重复，基本上写的逻辑不会很复杂，站在这个层面上的程序员基本上就需要熟练地使用一些api，在知乎上一个博主的话我觉得很有意思，他称这种人为”Api caller”，也是挺有趣的。这种工作中比拼的就是一个词“效率”。同样的一个查询处理，你需要三小时，别人只需要1小时，那么这个差异就体现出来了。但是，请注意，这个熟练度的东西，是任何人都可以练出来的，俗话熟能生巧，不会有很大的差异。</p>
-<p>我们所在的项目前端用到一些js，js这个东西我的水平就是边查边写，我们组多数人感觉也是这样，大家都是瞎猫碰死耗子，感觉就是copy and paste coder，其实我还是很想系统的学习一下这门语言的。自己做的另外一个项目用到了Vue，慢慢对前端产生了兴趣，但平时工作中实在是没有人带，感觉学习一个东西，最好是有一个前辈能传授一些经验，或者是项目中有一些值得学习的东西，否则只能是自己啃书本了。</p>
-<p>现在这个公司，其实最令我感到惊讶的一点是，这个大的部门中，像我们组一样自己开发做东西的，其实是凤毛麟角，多数部门都是外包给别的公司，或者采用一种日语叫“業務委託”的开发模式，简单说就是交给别的人去做，自己只负责写一写企划书，详细的功能要求之类的。大体比率来讲，自己开发的部门可能只占这个大部门的10%。这点可能国内的很多人都不太理解，包括我一开始也是很费解，光是做这些工作，不需要开发就能挣钱，并且实际上写代码的人的薪水还不如管理的高。这就牵扯到另外一个事实了，可能在国内程序员是妥妥的高薪职业。但在岛国却并不是。</p>
-<p>本来我觉得我就读的庆应大学也算是日本名校，可能在国内来讲最少也是一个985高校的水平。大家可以想象一下985的研究生一般努努力都去了什么公司呢，BAT，美团，字节跳动这类比较多对不对。感觉刚出来就是20k的月薪，虽然程序员这行有着996的传闻，但是看着那白花花的银子，也是真香定理对不对？但在岛国，学历在找工作的时候却并没有绝对的优势。我的同事有一般本科毕业的，我所在的部门就有两个高专毕业的。薪水也没有差很多。跟我最初想象的读个名校然后拿着高于平均线一大截的薪水截然不同好吗，哈哈。</p>
-<p>感觉说了一大堆，中心思想也没有很明确，自己的中文写作能力是越来越差了，还是总结一下目前的苦恼吧，看来得分几篇来写了。开一个新坑吧。</p>
-<ol>
-<li>加班不断，基本上每天回家也是10点了。</li>
-<li>团队技术问题，没有真正的大神镇场子，好多东西都是靠谷歌，虽说善用谷歌是好事，但是一些问题还是需要有经验者前期纠正。</li>
-<li>成长有天花板，部门比较年轻，采用的技术栈是否与外界有脱轨，尚不明确。</li>
-</ol>
-<p>关于这三点，下篇我再有针对性的仔细分析一下。</p>
-]]></content>
-      <categories>
-        <category>杂记</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>myfirstblog</title>
-    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>生活杂记</title>
-    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>2020已经过去一半了。。。</p>
-</blockquote>
-<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
-<a id="more"></a>
-
-<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
-<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
-<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
-<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
-<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
-<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
-<p>​                                                                                    《爱尔兰人》</p>
-<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
-<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
-<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
-<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
@@ -2213,6 +2114,53 @@
       </tags>
   </entry>
   <entry>
+    <title>Java SE 11 Sliver学习笔记(第十章)</title>
+    <url>/2020/08/15/JavaSE11sliver%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
+    <content><![CDATA[<blockquote>
+<p>Java SE 11 sliver资格考试相关</p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h4 id="第十章-例外処理"><a href="#第十章-例外処理" class="headerlink" title="第十章 例外処理"></a>第十章 例外処理</h4><p>間違えた：3，7，10，11，12，14，17</p>
+<p>間違えし易い：</p>
+<p>分からない： </p>
+<h5 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h5><ol>
+<li>略</li>
+<li>略</li>
+<li>父类异常一定要写在子类异常的下面1，否则父类异常就会被先捕捉导致子类异常无法到达，出现编译错误。</li>
+<li>略</li>
+<li>finally中的代码一定会执行，即使是catch中有return的情况下。</li>
+<li>finally权限最大，当catch和fianlly中都有return时，finally中的return会被执行。</li>
+<li>不懂？return中返回的是一个变量？finally不能对那个变量进行操作？</li>
+<li>一个try只能对应一个finally，但是可以对应多个catch，并且catch可以省略</li>
+<li>嵌套的try catch文中如果有异常，最接近异常的那层try catch将会捕捉异常。</li>
+<li>try中声明的变量，catch和finally中不能访问。try-with-resources的运行顺序是<ol>
+<li>resource中的释放</li>
+<li>catch中的处理</li>
+<li>finally的处理</li>
+</ol>
+</li>
+<li>检查例外（Exception以及继承它的子类（除去RuntimeException））和非检查例外（RuntimeException以及继承它的子类）的区别。检查例外必须要用try catch围起来，或者是必须用throws宣言。而非检查例外就不需要强制，可以自由选择。多个例外throws是用逗号分隔</li>
+<li>Error为了分类，是可以继承Errors类的。常见的例如<code>OutOfMemoryError</code>,<code>NoClassDefFoundError</code>。Error是在程序运行时被抛出的。但是也可以被throw-catch或者throws。</li>
+<li>略</li>
+<li>ArrayList的越界访问时丢出的是<code>IndexOutOfBoundException</code>。数组越界访问异常是<code>ArrayIndexOutOfBoundException</code>。文字越界异常是<code>StringIndexOutOfBoundException</code>。不存在<code>ListIndexOutOfBoundsException</code>这样的例外。</li>
+<li>没有继承或者实现关系の1两个类强制转型时候，运行时会报<code>ClassCastException</code>。强制转型前应该使用<code>instanceof</code>进行判断。</li>
+<li>null是无参照的，因此null使用方法时会报空指针异常。</li>
+<li>因为会发生嵌套引用，用尽stack空间，所以会报StackOverflowError。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>资格考试</tag>
+        <tag>Java Sliver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java SE 11 Gold学习笔记(第九章)</title>
     <url>/2021/01/23/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E4%B9%9D%E7%AB%A0)/</url>
     <content><![CDATA[<blockquote>
@@ -2291,93 +2239,203 @@
       </tags>
   </entry>
   <entry>
-    <title>Java SE 11 Gold学习笔记(第十章)</title>
-    <url>/2021/01/24/JavaSE11Gold%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3(%E7%AC%AC%E5%8D%81%E7%AB%A0)/</url>
+    <title>我们都爱cheese！！🧀</title>
+    <url>/2020/07/26/%E6%88%91%E4%BB%AC%E9%83%BD%E7%88%B1cheese/</url>
     <content><![CDATA[<blockquote>
-<p>Java SE 11 Gold资格考试相关</p>
+<p>记录一下我吃过的cheese（定期更新）</p>
+</blockquote>
+<p>最近沉迷在超市搜集各种各类的奶酪，晚上看着电影开一瓶红酒就着奶酪喝个微醺就去睡觉，睡眠质量也提升了不少，趁着闲来无事，把吃过的简单做个评价介绍，踩坑也好运气爆棚也好，总能留下来个印象。</p>
+<a id="more"></a>
+
+<br>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4k9egsqmg30dw08c163.gif" alt="It&#39;s an all-consuming love_"></p>
+<p>如题，我们都爱cheese！！开一个post记录一下最近吃的奶酪们🧀~~</p>
+<br>
+
+<p>先来一款黑暗的，蓝纹奶酪，貌似意大利语中“piccante”是辛辣的意思。这款不适合喝酒，味道太辛辣，适合小口小口的吃。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ifzccmaj30u00u07wj.jpg" alt="piccante" style="zoom:33%;" />
+
+<br>
+
+<p>这款是我目前吃过最好吃的，有一点像布里，有一点像卡芒贝尔。但是外面的白色霉菌质感还是不太一样，不太清楚学名叫什么，口感非常棒，适合搭配红酒。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ieyi57ej30u00u0kjo.jpg" alt="beili" style="zoom: 33%;" />
+
+<br>
+
+<p>德国经典品牌Bergader的蓝纹奶酪，不用多说，喜欢蓝纹的可以一试，性价比超高。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ijvdt1yj30u00u0npf.jpg" style="zoom: 33%;" />
+
+<br>
+
+<p>日本品牌雪印的卡芒贝尔奶酪，卡芒贝尔也算是我非常喜欢的一个品类。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4im3pur6j30u00u01l0.jpg" alt="camembert" style="zoom:33%;" />
+
+<br>
+
+<p>又一款布里，产自法国，白色霉菌包裹的内部层次感非常好。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4inyo45tj30u00u04qs.jpg" alt="brie" style="zoom:33%;" />
+
+<br>
+
+<p>日本超市随处可见的轻食奶酪，味道很好，尤其左边的这款马苏里拉奶酪，嫩的不行。性价比超高。基本上都在150日元（9RMB）以内。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4ipcq8rqj30u00u0b2c.jpg" alt="little" style="zoom:33%;" />
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>美食</category>
+      </categories>
+      <tags>
+        <tag>美食</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我当社会人8个月啦（技术篇）</title>
+    <url>/2020/12/29/%E6%88%91%E5%BD%93%E7%A4%BE%E4%BC%9A%E4%BA%BA8%E4%B8%AA%E6%9C%88%E5%95%A6/</url>
+    <content><![CDATA[<blockquote>
+<p>四月到十二月，我已经成为社畜八个月了。</p>
+</blockquote>
+<p>听到“社会人”这个词让你想到什么？纹龙画虎的大哥？亦或是一天三顿烧烤的东北汉子？其实这个词在日语中，指的是朝九晚五，兢兢业业上班族。弹指一挥间，我成为“社会人”也八个月了。</p>
+<a id="more"></a>
+
+<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm4q58jaogj30u00u03zi.jpg" alt="6591609224392_.pic" style="zoom: 50%;" />
+
+<br>
+
+<p>2020年马上就要过去了，东京的新冠依然保持着每日几百的增长速度，在家堵得无聊，就流水账般的记录一下自己上班这八个月吧。</p>
+<p>先谈谈工作内容。</p>
+<p>4月到7月是漫长的研修，研修内容就是日企都有的那一套，就不提了。7月份结束研修，分到配属的部门，不出意外的做的是java开发。其实一开始自己是想做点比较热门的内容，没想到也变成了茫茫java程序员中的一员。或许这就是命运的安排吧。</p>
+<p>来日本一开始想做的是大数据方向，研究室那会以为老师是做大数据的，进去后才发现是关系数据库。怪自己那会的日语水平太渣。。关系数据库的内部说深奥是真深奥，个人感觉单放现在的研究趋势真的是过时了一点，感觉现在的热门就是AI，数据分析什么的，貌似好多大公司都用OSS的数据库？所以自己后来做的是GPU计算方向，跟现在的的工作内容也算是毫不沾边，感觉去年还在特别努力学习的知识慢慢的就会被遗忘。。可能世界上多数的研究生都是这样吧。</p>
+<p>言归正传，我所在的部门一共10人左右，除了管理职的课长和一个中途入社的以外全是1年和2年的，可以说是非常年轻的部队了。也可以说除了课长，都是年轻的程序员。部门采用的是敏捷开发的一种叫做scrum的开发模式，其实具体都是学欧美那一套，2周为周期给一个项目做一些功能增加或者修改。然后团队都是比较少人数便于管理。这种开发模式希望开发团队的每个人都是“多能工”，也就是俗称的全栈工程师。因为项目的设计开发测试以及前端后端实现都是同一个团队在做，需要的知识就会范围广一点。</p>
+<p>我没在国内的IT公司正式上过班，但我来日本前在北京的一个小创业公司呆过一阵，感觉日本这边和中国不同的就是，日本的好多公司都很重视人才培养，国内更喜欢直接采用有技术的人。但是日本这种模式就导致，好多人没有一点基础，也考虑来做IT的工作，和我同部门的新人，好多人刚来时一些基本的linux操作也不是很熟练，或者java完全是0基础。而我在的部门这种开发模式又要求掌握知识的范围广，这就导致一个问题。只有不断的学习才能做好业务！</p>
+<p>刚进这个部门，每个人就被发了15本左右厚厚的书，让我们回家去看（当然，要用自己的业余时间）。至今为止我也只看完了4本左右，课长还因为这个经常说我们新人没有斗志，无所谓了，哈哈。这个部门还要求新人尽快考下三个资格（java Slive, java Gold和一个关于敏捷开发的资格）。目前我正在为取得最后一个java Gold的资格而奋斗中。。</p>
+<br>
+
+<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm4ryd8j6xj31hc0u07ak.jpg" alt="6601609228101_.pic" style="zoom: 33%;" />                
+
+<p>​                                <center>发的书中的一部分</center></p>
+<p> 一开始还感觉工作的内容会不会很难掌握，其实目前工作的好多东西就是基本的CRUD，大量的重复工作。我也最近吗慢慢的体会到为什么程序员这行被称作“码农”。基础的程序员的工作确实是大量的重复，基本上写的逻辑不会很复杂，站在这个层面上的程序员基本上就需要熟练地使用一些api，在知乎上一个博主的话我觉得很有意思，他称这种人为”Api caller”，也是挺有趣的。这种工作中比拼的就是一个词“效率”。同样的一个查询处理，你需要三小时，别人只需要1小时，那么这个差异就体现出来了。但是，请注意，这个熟练度的东西，是任何人都可以练出来的，俗话熟能生巧，不会有很大的差异。</p>
+<p>我们所在的项目前端用到一些js，js这个东西我的水平就是边查边写，我们组多数人感觉也是这样，大家都是瞎猫碰死耗子，感觉就是copy and paste coder，其实我还是很想系统的学习一下这门语言的。自己做的另外一个项目用到了Vue，慢慢对前端产生了兴趣，但平时工作中实在是没有人带，感觉学习一个东西，最好是有一个前辈能传授一些经验，或者是项目中有一些值得学习的东西，否则只能是自己啃书本了。</p>
+<p>现在这个公司，其实最令我感到惊讶的一点是，这个大的部门中，像我们组一样自己开发做东西的，其实是凤毛麟角，多数部门都是外包给别的公司，或者采用一种日语叫“業務委託”的开发模式，简单说就是交给别的人去做，自己只负责写一写企划书，详细的功能要求之类的。大体比率来讲，自己开发的部门可能只占这个大部门的10%。这点可能国内的很多人都不太理解，包括我一开始也是很费解，光是做这些工作，不需要开发就能挣钱，并且实际上写代码的人的薪水还不如管理的高。这就牵扯到另外一个事实了，可能在国内程序员是妥妥的高薪职业。但在岛国却并不是。</p>
+<p>本来我觉得我就读的庆应大学也算是日本名校，可能在国内来讲最少也是一个985高校的水平。大家可以想象一下985的研究生一般努努力都去了什么公司呢，BAT，美团，字节跳动这类比较多对不对。感觉刚出来就是20k的月薪，虽然程序员这行有着996的传闻，但是看着那白花花的银子，也是真香定理对不对？但在岛国，学历在找工作的时候却并没有绝对的优势。我的同事有一般本科毕业的，我所在的部门就有两个高专毕业的。薪水也没有差很多。跟我最初想象的读个名校然后拿着高于平均线一大截的薪水截然不同好吗，哈哈。</p>
+<p>感觉说了一大堆，中心思想也没有很明确，自己的中文写作能力是越来越差了，还是总结一下目前的苦恼吧，看来得分几篇来写了。开一个新坑吧。</p>
+<ol>
+<li>加班不断，基本上每天回家也是10点了。</li>
+<li>团队技术问题，没有真正的大神镇场子，好多东西都是靠谷歌，虽说善用谷歌是好事，但是一些问题还是需要有经验者前期纠正。</li>
+<li>成长有天花板，部门比较年轻，采用的技术栈是否与外界有脱轨，尚不明确。</li>
+</ol>
+<p>关于这三点，下篇我再有针对性的仔细分析一下。</p>
+]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirstblog</title>
+    <url>/2020/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>终于下定决心要做一个自己的博客了，用来记录一点生活的碎片。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>生活杂记</title>
+    <url>/2020/07/05/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>2020已经过去一半了。。。</p>
+</blockquote>
+<p>4月入职开始，不知不觉已经在家工作了三个月了，加上今年1月从国内回来后在打工的公司就是在宅勤务，我觉得可能我已经不适应在公司的节奏了。想到拥挤无比的山手线，新桥站慢无表情的工薪族人潮，就有种莫名其妙的惶恐。</p>
+<a id="more"></a>
+
+<p>想起之前看过藤子不二雄老先生的一个短篇漫画，成为新卒却畏惧上司和职场文化的主人公每天离开家后，假装去上班缺来到公司附近的一个公园，一坐就是一天。故事的结局记不清了，但想必跟我一样不喜欢处理复杂人际关系的人比比皆是吧。</p>
+<p>一直以来总想写点东西记录自己，包括学习的东西，生活的点滴，之前尝试过写过公众号，写了几篇文章后感觉到但还是觉得作为一个码农，应该有一个自己的博客，关于技术的文章还是应该用markdown去写，这个博客也是搭建了好久，嫌markdown插入图片麻烦，之前写的学习总结都放在google文档里了。考虑到共享精神，希望以后自己可以慢慢全部转成markdown格式copy到这里来。（又一个拖延flag）</p>
+<p>因为疫情，以前好多节奏性的生活模式都被改变了，我已经好久没有去唱片店淘东西，也几乎没能约朋友出来玩了。最近唯一的乐趣的就是每天晚上尽量都会去看一篇电影。上班后就越来能体会到一个道理，时间也是一种资产，每个人对资产的投资直接导致了今后的回报。倘若你喜爱技术，每天下了班还花三个小时去看技术书籍，你以后一定会成为技术大牛；如果你喜欢美剧英剧，每天花上三小时看看剧，没准你得英语也会越来越好，直接开辟一个新的职业道路；就算你每天花上三个小时发呆打盹什么都不干，也许你能过上一个没有心理压力非常悠闲的生活。。但我可能是更偏向于喜欢分散投资的类型？？</p>
+<p>喜欢技术但我一直觉得技术应该是用来解决问题，想要去掌握一门技术应该是对解决一个问题有了需求，而不是追求趋势，人云亦云，现在这个信息爆炸的时代改变了好多人的思维模式，学习东西仿佛变成了大家都在学所以我要去学，而不是我想知道为什么这个事情会这样，我想去解决这个我关心的问题，这个工具应该可以解决这个问题，所以我觉得这个工具值得我去学习。</p>
+<p>貌似有点扯偏了，不过也无所谓，本来这个博文就是生活杂记，单纯的敲敲键盘把自己一闪而过的点子胡乱的记下来就算达成目的。最后给大家推荐一部前天晚上看过的电影吧。</p>
+<p><img src="https://i.loli.net/2020/07/05/TRKL5jSQc8lwkHV.jpg" alt="爱尔兰人.jpg"></p>
+<p>​                                                                                    《爱尔兰人》</p>
+<p>如果你喜欢黑帮片，看到这个卡司还用我说什么吗？？？</p>
+<p>剧情我就也不剧透了，这片的音乐也十分的带感。</p>
+<p>影片有点长，分了两三次才看完的，但相信我，它值得你的时间。</p>
+<p>好了，随随便便杂的要命的一篇水文就这么完了吧，自己的文笔真的是够臭的。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次Quarkus部署失败</title>
+    <url>/2021/05/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Quarkus%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5/</url>
+    <content><![CDATA[<blockquote>
+<p>记一次Quarkus部署失败</p>
 </blockquote>
 <a id="more"></a>
 
 
 
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a><strong>知识点总结</strong></h2><p>❌⭕️</p>
-<ul>
-<li><h4 id="第十章-ローカライズ"><a href="#第十章-ローカライズ" class="headerlink" title="第十章 ローカライズ"></a>第十章 ローカライズ</h4></li>
-</ul>
-<p>間違えた：</p>
-<p>間違えし易い：</p>
-<p>分からない：</p>
+
+
+
+<p>部门里有一个工程师认定考试，主要目的就是考验一些RestApi的写法及熟练度，主流框架SpringBoot的一些简单的功能了解程度，TDD开发手法的运用，UT、IT等测试的写法。关于DI理解程度的report，这种。</p>
+<p>之前考了三次都挂掉了，原因具体如下：</p>
 <ol>
-<li>C</li>
-<li>BCE❌⭕️CEF<ol>
-<li>Locale类的构造函数是需要参数的。有三种构造函数,第一个是小写字母表示语言，第二个是大写字母表示国家code，对于一个国家有两种公用语言的情况（加拿大的公用语言是英语和法语），可以通过指定不同的语言参数，生成不同的Locale。<ol>
-<li><code>Locale(String language)</code></li>
-<li><code>Locale(String language, String country)</code></li>
-<li><code>Locale(String language, String country, String variant)</code></li>
+<li>第一次：UT的覆盖度不够，DI理解不足</li>
+<li>第二次：DI理解不足</li>
+<li>第三次：java doc写的不够准确，DI理解不足（日本人说看不懂我的日语TT）</li>
 </ol>
-</li>
-<li>注意Locale的构造函数没有对指定的国家和语言code进行妥当性check，因此不会抛出例外。</li>
+<p>综上所述，其实要求很严格，题目虽然非常简单，就是最普通的CRUD这些，但是也会一定程度上考虑是否能够熟练掌握工作中必备的开发技巧，DI，springboot的常用功能这种。</p>
+<p>在我挂了三次以后，竟然，课长要求用Quarkus这个框架来重新做。本来自己所在组的后端是有在用Quarkus，貌似是因为在云上跑速度比较快？具体的原因自己也没有深究过，正好借用这个机会准备了解一下。</p>
+<p>结果，竟然在各种地方就卡住了！</p>
+<p>简单来说以下几个地方困扰到了我</p>
+<ol>
+<li>pom依赖</li>
+<li>DI的使用</li>
+<li>deploy（部署）</li>
 </ol>
-</li>
-<li>B❌⭕️D<ol>
-<li>获取系统默认的Locale类的方法是getDefault方法。JVM会在启动时根据host环境设置country和语言</li>
-</ol>
-</li>
-<li>C<ol>
-<li>使用builder来构造Locale时候可以进行国家code和语言code的妥当性check，会丢出IllformedLocaleException</li>
-</ol>
-</li>
-<li>C❌⭕️A<ol>
-<li>可以使用Locale类定义的定数来直接取得Locale实例。</li>
-</ol>
-</li>
-<li>AD<ol>
-<li>java.util.Properties类对应textfile或者是xml文件</li>
-</ol>
-</li>
-<li>A❌⭕️D<ol>
-<li>用load方法取得Properties的object，参数是inputStream或者是Reader，使用getProperty方法，参数是对象的key。如果key不存在返回null。提供了第二参数为不存在时default值的重载方法。</li>
-</ol>
-</li>
-<li>AD❌⭕️CD<ol>
-<li>list方法参数为PrintStream或者是PrintWrite，在用于将设定文件中的内容全部表示时很方便。</li>
-</ol>
-</li>
-<li>D❌⭕️B<ol>
-<li>正确的表示形式是基底名_语言code_国家code</li>
-<li>必须是<code>.properties</code>类型的文件。</li>
-<li>需要放置在classpath中，通常与java的class文件放在一起。</li>
-</ol>
-</li>
-<li>D<ol>
-<li>ResourceBundle是抽象类，没有构造函数。</li>
-<li>getBundle方法参数不需要加上扩展名。</li>
-</ol>
-</li>
-<li>B❌⭕️D<ol>
-<li>getBundle方法找不到指定resource时会丢出<code>java.util.MissingResourceException</code>例外</li>
-</ol>
-</li>
-<li>D❌⭕️E<ol>
-<li>检索ResourceBundle的时候，会按照class→properties文件的顺序。（基底名优先）</li>
-</ol>
-</li>
-<li>B</li>
-<li>C❌⭕️A<ol>
-<li>用class记载resource bundle的时候需要继承ListResourceBundle。</li>
-<li>通过重写ListResourceBundle抽象类的getContent方法可以实现在类中定义resource bundle。</li>
-<li>使用getBundle方法读取class中的bundle是需要记住类名前要有所在的包名。读取后可用getString方法读取具体的object。</li>
-</ol>
-</li>
-</ol>
+<p>Quarkus的中文信息也比较少，好多问题谷歌后发现都没有中文博客可查，于是好多只能通过查看官方文档，正好锻炼了一下英语（谷歌翻译）。哈哈。</p>
+<p>  先说pom依赖，以前springboot都非常简单，用<a href="https://start.spring.io/">https://start.spring.io/</a> 就可以添加自己想要的依赖，但是Quarkus貌似是通过extension追加来增加依赖，知道写这篇文章时候才发现这个网站<a href="https://code.Quarkus.io/">https://code.Quarkus.io/</a> 。真是后悔，要知道我以为这个框架自带RestApi的功能，写了个api后了老是启动不起来，后来查了半天资料才知道需要一个叫RESTEasy 的依赖。</p>
+<p>  其次，之前在使用springboot时候，只知道自己用的是jackson来解析，对这些也没有很意识到区别，想当然就使用了json的依赖，但是我从工作项目代码中借用（复制粘粘）的注解@JsonbProperty却用不了。好嘛，一顿谷歌，才发现RESTEasy JSON-B和RESTEasy jackson不是一个东西，具体可以参考下面这篇文章，我就不多叙述了。</p>
+<p><a href="https://segmentfault.com/a/1190000038482081">Jackson：我是最牛掰的 Java JSON 解析器（有点虚）</a>]:<a href="https://segmentfault.com/a/119000003848208">https://segmentfault.com/a/119000003848208</a></p>
+<p><a href="https://segmentfault.com/a/1190000038482081">JavaEE的JSON API规范JSON-P/JSON-B</a>]:<a href="https://blog.csdn.net/taiyangdao/article/details/85320579">https://blog.csdn.net/taiyangdao/article/details/85320579</a> </p>
+<p>pom鼓捣了半天，又发现下面有各种跟springboot不同的设置，懵逼了半天，照着tutorial偷了一些设置，终于能跑起来了。</p>
+<p>最后说一下部署时候遇到的问题，之前都是deploy到heroku上，之前几次都是maven打好包，直接传到heroku上去</p>
+<p>稍微查了一下发现了这篇文章，<a href="https://qiita.com/mr-hisa-child/items/2d6b9d482d3fd017332f">https://qiita.com/mr-hisa-child/items/2d6b9d482d3fd017332f</a></p>
+<p>以为原来这么简单，结果试了一下，果然，不能顺利进行，这里遇到好多坑，分享一下，</p>
+<p>首先构建docker image的docker file中有这么一步<code>COPY *-runner /work/application</code>，现实这步出错，找不到runner文件，看了一下target下面果然没有这个文件，查了半天为什么没有这个文件，看到了这篇文章</p>
+<p><a href="https://Quarkus.io/guides/building-native-image">https://Quarkus.io/guides/building-native-image</a></p>
+<p><a href="https://access.redhat.com/documentation/ja-jp/red_hat_build_of_Quarkus/1.3/html/developing_and_compiling_your_Quarkus_applications_with_apache_maven/proc-configuring-the-project-output_Quarkus-maven">https://access.redhat.com/documentation/ja-jp/red_hat_build_of_Quarkus/1.3/html/developing_and_compiling_your_Quarkus_applications_with_apache_maven/proc-configuring-the-project-output_Quarkus-maven</a></p>
+<p>才知道，runner.jar需要设置pom才能生成，ok解决。下一位</p>
+<p>然后docker copy的时候又显示`fast-jar : COPY target/Quarkus-app/lib : no such file or directory ，查了一下，在github issue上发现这位仁兄问的问题：<a href="https://github.com/Quarkusio/Quarkus/issues/12324">https://github.com/Quarkusio/Quarkus/issues/12324</a></p>
+<p>最后结尾说要设置.dockerignore，照做了，结果还是同样的错误。</p>
+<p>最后实在没办法，谷歌了半天，决定使用uber-jar的方式部署，终于部署成功。具体参考这篇文章</p>
+<p><a href="https://yusuke.blog/2021/02/03/2916">https://yusuke.blog/2021/02/03/2916</a></p>
+<p>有人要是知道docker image构建失败的原因，欢迎在评论中告诉我！！</p>
+<h5 id="关于Quarkus的文章："><a href="#关于Quarkus的文章：" class="headerlink" title="关于Quarkus的文章："></a>关于Quarkus的文章：</h5><p><a href="https://mp.weixin.qq.com/s/Dq3hQrXE4XWH-MyjBAGMEw">https://mp.weixin.qq.com/s/Dq3hQrXE4XWH-MyjBAGMEw</a></p>
+<p><a href="https://segmentfault.com/a/1190000040072190">https://segmentfault.com/a/1190000040072190</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>资格考试</tag>
-        <tag>Java Gold</tag>
+        <tag>Quarkus</tag>
       </tags>
   </entry>
 </search>
